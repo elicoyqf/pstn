@@ -1,0 +1,81 @@
+<p>
+<h3>
+  开机业务办理
+</h3>
+</p>
+<div class="alert alert-info">
+  <span class="label label-warning">注意</span>
+  每行一个号码或者以“；”进行分隔都可以。请按规定进行输入，以免出错！
+</div>
+<div class="alert alert-success" id="show1">
+  <span class="label label-warning" id="show2">数据提交成功</span><br/>
+  后台程序正在处理中...<br/>
+  由于后台数据执行较慢，请稍候再查询结果！<br/> <br/>
+
+  <p>
+    <a href="#" class="btn btn-success " id="sR">
+      <i class="icon-chevron-left icon-white"></i> 返回</a>
+  </p>
+</div>
+<div class="alert alert-error" id="show3">
+  <span class="label label-warning" id="show4">数据提交失败</span><br/>
+  数据格式不对...<br/>
+  请重新按上面规则输入数据！<br/> <br/>
+
+  <p>
+    <a href="#" class="btn btn-danger " id="dataR">
+      <i class="icon-chevron-left icon-white"></i> 返回</a>
+  </p>
+</div>
+<div id="showContent">
+  <form id="myform1">
+    <textarea id="cont1" class="input-xlarge span12" rows="5"></textarea>
+  </form>
+  <div class="alert alert-block alert-info">
+    <h3 class="alert-heading"><span class="label label-warning">注意</span>先输入上框数据后再选择对应功能进行操作</h3>
+
+    <div class="btn-toolbar" style="margin-top: 18px;">
+      <div class="btn-group">
+        <%= link_to sanitize('<i class="icon-fire icon-white"></i> 去欠费'), { action: "pstn_stop" },
+                    { method: "post", class: "btn btn-large btn-primary", href: "#", id: "reverse_pstn_stop" }
+        %>
+      </div>
+      <div class="btn-group">
+        <%= link_to sanitize('<i class="icon-fire icon-white"></i> 去欠费停机'), { action: "pstn_stop" },
+                    { method: "post", class: "btn btn-large btn-primary ", href: "#", id: "reverse_pstn_badp" }
+        %>
+      </div>
+      <div class="btn-group">
+        <%= link_to sanitize('<i class="icon-fire icon-white"></i> 开机'), { action: "pstn_stop" },
+                    { method: "post", class: "btn btn-large btn-primary ", href: "#", id: "reverse_pstn_deni" }
+        %>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="alert alert-block alert-error">
+    <h3 class="alert-heading"><span class="label label-warning">注意</span>以下操作可能导致后台失败</h3>
+    由于后台设备在整点会自动打印话务报告，请在整点时间往后延5分钟再操作（如9:05分、10:05分、14:05分以后等等），以确保后台能正确进行操作。
+
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <%= link_to sanitize('<i class="icon-fire icon-white"></i> 立即去欠费'), { action: "pstn_stop" },
+                    { method: "post", class: "btn btn-large btn-danger ", href: "#", id: "i_reverse_pstn_stop" }
+        %>
+      </div>
+      <div class="btn-group">
+        <%= link_to sanitize('<i class="icon-fire icon-white"></i> 立即去欠费停机'), { action: "pstn_stop" },
+                    { method: "post", class: "btn btn-large btn-danger ", href: "#", id: "i_reverse_pstn_badp" }
+        %>
+      </div>
+      <div class="btn-group">
+        <%= link_to sanitize('<i class="icon-fire icon-white"></i> 立即开机'), { action: "pstn_stop" },
+                    { method: "post", class: "btn btn-large btn-danger ", href: "#", id: "i_reverse_pstn_deni" }
+        %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,11 @@
+// Place all the styles related to the business_logic controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+input.error {
+  border: 1px dotted red;
+}
+
+label.error {
+  color: red;
+  display: none;
+}
