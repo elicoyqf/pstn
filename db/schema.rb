@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102141549) do
+ActiveRecord::Schema.define(:version => 20121110141353) do
 
   create_table "pstn_stops", :force => true do |t|
     t.integer  "user_id"
@@ -28,6 +28,27 @@ ActiveRecord::Schema.define(:version => 20121102141549) do
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "work_orders", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "s_cf_no"
+    t.integer  "s_cr_no"
+    t.integer  "status"
+    t.string   "s_ad"
+    t.string   "s_cr"
+    t.string   "s_mc"
+    t.string   "s_hs"
+    t.string   "s_cf"
+    t.string   "s_perm"
+    t.string   "s_bt"
+    t.string   "s_no",       :null => false
+    t.string   "s_df_flag"
+    t.string   "s_sg_no"
+    t.string   "s_cid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "priority"
   end
 
 end

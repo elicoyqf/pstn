@@ -1,3 +1,16 @@
+<% unless @wo.blank? %>
+    <% if @wo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@wo.errors.count, "error") %> prohibited this login from being saved:</h2>
+
+          <ul>
+            <% @wo.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+<% end %>
 <div id="content">
 <form class="form-horizontal well " id="b_logic_form">
 <fieldset>
@@ -14,7 +27,7 @@
         <label class="control-label" for="b_s_no">批量输入号码</label>
 
         <div class="controls">
-          <%= text_area_tag :pstn_stop,"",{:class => "span10", :size => "50x10", :id => "b_s_no",} %>
+          <%= text_area_tag :pstn_stop, "", { :class => "span10", :size => "50x10", :id => "b_s_no", } %>
         </div>
       </div>
     </div>
@@ -35,6 +48,18 @@
       </div>
     </div>
     <div class="span6">
+      <div class="control-group">
+        <label class="control-label" for="s_bp">选择业务级别</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">X</span>
+            <%= select(:pstn_stop, "s_bp",
+                       { "新装业务" => "1", "普通业务" => "2", "开机业务" => "3", "停机业务" => "4", "拆机业务" => "5" },
+                       { prompt: "选择业务级别" }, { class: 'span11', id: "s_bp", required: true }) %>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -59,7 +84,7 @@
     </div>
     <div class="span6">
       <div class="control-group">
-        <label class="control-label" for="s_sg_no">指定用户分组号</label>
+        <label class="control-label" for="s_sg_no">指定分组号(虚拟网)</label>
 
 
         <div class="controls">
@@ -91,14 +116,15 @@
     </div>
     <div class="span6">
       <div class="control-group">
-        <label class="control-label" for="s_df_flag">选择欠费标志</label>
+        <label class="control-label" for="s_df_flag">选择欠费停开机标志</label>
 
         <div class="controls">
           <div class="input-prepend">
             <span class="add-on">$</span>
             <%= select(:pstn_stop, "s_dl_flag",
-                       { "去欠费" => "1", "去欠费开机" => "2", "停机保号" => "3" },
-                       { prompt: "选择欠费标志" }, { class: 'span11', id: "s_df_flag" }) %>
+                       { "放欠费" => "1", "欠费停机" => "2", "停机保号" => "3", "拆机" => "4", "去欠费" => "51", "去欠费开机" => "52",
+                         "开机"  => "53" },
+                       { prompt: "选择业务类型" }, { class: 'span11', id: "s_df_flag" }) %>
           </div>
         </div>
       </div>
@@ -159,7 +185,7 @@
           <div class="input-prepend">
             <span class="add-on">%</span>
             <%= text_field :pstn_stop, "s_cr_no", { :class => "span10", placeholder: "默认密码为8888", :size => "16",
-                                                    :id    => "s_cf_no" } %>
+                                                    :id    => "s_cr_no" } %>
           </div>
         </div>
       </div>
@@ -169,6 +195,17 @@
 
 <div class="row">
   <div class="span12">
+    <div class="span3">
+      <div class="control-group">
+        <label class="control-label inline" for="s_cid">选择来电显示</label>
+
+        <div class="controls">
+          <label class="checkbox inline">
+            <%= check_box_tag :s_cid, "cid", false, { name: "ns" } %>
+          </label>
+        </div>
+      </div>
+    </div>
     <div class="span3">
       <div class="control-group">
         <label class="control-label inline" for="s_hs">选择热线服务</label>
@@ -207,7 +244,7 @@
 <div class="span12 offset4">
   <button id="s_b_s" class="btn btn-large btn-success span4">
     <i class="icon-ok icon-white"></i>
-    数据开通
+    开通数据
   </button>
 </div>
 </div>
@@ -215,7 +252,7 @@
 </form>
 </div>
 <div class="alert alert-success" id="show1">
-  <span class="label label-warning" id="show2">数据提交成功</span><br/>
+  <span class="label label-warning" id="succ1">数据提交成功</span><br/>
   后台程序正在处理中...<br/>
   由于后台数据执行较慢，请稍候再查询结果！<br/> <br/>
 
@@ -226,9 +263,9 @@
 </div>
 
 <div class="alert alert-error" id="show3">
-  <span class="label label-warning" id="show4">数据提交失败</span><br/>
+  <span class="label label-warning" id="err1">数据提交失败</span><br/>
   数据输入有错误...<br/>
-  请注意各字段下标红字的字段，按规则进行修改！<br/> <br/>
+  请注意各字段下标红字的字段，按按规则进行修改！<br/> <br/>
 
   <p>
     <a href="#" class="btn btn-danger " id="dataR">
@@ -236,6 +273,16 @@
   </p>
 </div>
 
+<div class="alert alert-error" id="show4">
+  <span class="label label-warning" id="err2">批量数据提交失败</span><br/>
+  批量数据输入有错误...<br/>
+  请仔细检查批量输入号码，按按规则进行修改！<br/> <br/>
+
+  <p>
+    <a href="#" class="btn btn-danger " id="bdataR">
+      <i class="icon-chevron-left icon-white"></i> 返回</a>
+  </p>
+</div>
 
 <div class="modal hide fade" id="conModal">
   <div class="modal-header">

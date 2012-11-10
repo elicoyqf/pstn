@@ -5,6 +5,7 @@
 $ ->
   $('#show1').hide()
   $('#show3').hide()
+  $('#show4').hide()
   $("#b_logic_form").validate()
   #  $("a[rel=popover]").popover({trigger: 'hover' })
   #  $("#p_1").popover('toggle')
@@ -24,8 +25,11 @@ $ ->
     s_cr_no= $('#s_cr_no').val()
     s_df_flag = $('#s_df_flag').val()
     s_sg_no = $('#s_sg_no').val()
+    s_bp = $('#s_bp').val()
     if s_cr_no == "默认密码为8888"
       s_cr_no = ""
+    else
+      s_cr_no = $('#s_cr_no').val()
     ###$("input[name='ns']:checked").each( ->
       alert $(this).val()
     )###
@@ -33,6 +37,7 @@ $ ->
     s_mc = ""
     s_cr = ""
     s_ad = ""
+    s_cid = ""
     if $('#s_hs').attr("checked") != undefined
       s_hs = "hs"
     if $('#s_mc').attr("checked") != undefined
@@ -41,8 +46,10 @@ $ ->
       s_cr = "cr"
     if $('#s_ad').attr("checked") != undefined
       s_ad = "ad"
+    if $('#s_cid').attr("checked") != undefined
+      s_cid = "cid"
 
-    if !b_s_no && !s_no && !s_bt && !s_perm && !s_cf && !s_hs && !s_mc && !s_cr && !s_ad && !s_cr_no && !s_df_flag && !s_sg_no && !s_cf_no
+    if !s_bp && !b_s_no && !s_no && !s_bt && !s_perm && !s_cf && !s_hs && !s_mc && !s_cr && !s_ad && !s_cr_no && !s_df_flag && !s_sg_no && !s_cf_no && !s_cid
       $("#conModal").modal('show')
       false
     else if b_s_no || s_no
@@ -56,36 +63,46 @@ $ ->
         else if s_bt || s_perm || s_cf || s_hs || s_mc || s_cr || s_ad || s_cr_no || s_df_flag || s_sg_no || s_cf_no
           $.post(
             "bl_submit",
-            {b_s_no: b_s_no, s_no: s_no, s_bt: s_bt, s_perm: s_perm, s_cf: s_cf, s_cf_no: s_cf_no, s_hs: s_hs, s_mc: s_mc, s_cr: s_cr, s_cr_no: s_cr_no, s_ad: s_ad,s_df_flag:s_df_flag,s_sg_no: s_sg_no},
+            {
+            b_s_no: b_s_no, s_no: s_no, s_bt: s_bt, s_perm: s_perm, s_cf: s_cf,
+            s_cf_no: s_cf_no, s_hs: s_hs, s_mc: s_mc, s_cr: s_cr, s_cr_no: s_cr_no,
+            s_ad: s_ad, s_df_flag: s_df_flag, s_sg_no: s_sg_no, s_cid: s_cid,s_bp:s_bp
+            },
           (data) ->
-            $('#content').hide()
-            $('#show1').show()
-            #清空原有数据
-            $('#b_s_no').val("")
-            $('#s_no').val("")
-            $('#s_bt').val("")
-            $('#s_perm').val("")
-            $('#s_cf').val("")
-            $('#s_cf_no').val("")
-            $('#s_hs').val("")
-            $('#s_mc').val("")
-            $('#s_cr').val("")
-            $('#s_cr_no').val("")
-            $('#s_ad').val("")
-            $('#s_df_flag').val("")
-            $('#s_sg_no').val("")
-            $("input[name='ns']:checked").each(->
-              $(this).attr("checked", false)
-            )
-            false
+            if data.length == 2
+              $('#content').hide()
+              $('#show4').show()
+              false
+            else
+              $('#content').hide()
+              $('#show1').show()
+              #清空原有数据
+              $('#b_s_no').val("")
+              $('#s_no').val("")
+              $('#s_bt').val("")
+              $('#s_perm').val("")
+              $('#s_cf').val("")
+              $('#s_cf_no').val("")
+              $('#s_hs').val("")
+              $('#s_mc').val("")
+              $('#s_cr').val("")
+              $('#s_cr_no').val("")
+              $('#s_ad').val("")
+              $('#s_df_flag').val("")
+              $('#s_sg_no').val("")
+              $('#s_bp').val("")
+              $("input[name='ns']:checked").each(->
+                $(this).attr("checked", false)
+              )
+              false
             "json"
           )
         else
           $("#conModal").modal('show')
     else
       $("#conModal").modal('show')
-      ###$('#content').hide()
-      $('#show3').show()###
+    ###$('#content').hide()
+    $('#show3').show()###
     false
 
   $('#dataR').click ->
@@ -95,5 +112,10 @@ $ ->
 
   $('#sR').click ->
     $('#show1').hide()
+    $('#content').show()
+    return false
+
+  $('#bdataR').click ->
+    $('#show4').hide()
     $('#content').show()
     return false
