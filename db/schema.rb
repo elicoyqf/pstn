@@ -11,16 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110141353) do
+ActiveRecord::Schema.define(:version => 20121114091735) do
 
-  create_table "pstn_stops", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "sn"
-    t.string   "status"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "work_order_t"
-    t.integer  "emerg"
+  create_table "dn_tables", :force => true do |t|
+    t.integer  "jf_name_id"
+    t.string   "dn_start"
+    t.string   "dn_end"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "jf_names", :force => true do |t|
+    t.string   "name"
+    t.string   "ip_address"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

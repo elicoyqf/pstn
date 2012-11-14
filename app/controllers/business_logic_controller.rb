@@ -1,4 +1,5 @@
 class BusinessLogicController < ApplicationController
+  include ApplicationHelper
   include BusinessLogicHelper
 
   def change
@@ -55,9 +56,8 @@ class BusinessLogicController < ApplicationController
     if b_s_no.blank?
       #  直接插入数据库中
       WorkOrder.create(user_id: 1, status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf, s_cf_no: s_cf_no,
-                       s_cid:   s_cid,
-                       s_cr:    s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag, s_hs: s_hs, s_mc: s_mc, s_no: s_no, s_perm: s_perm,
-                       s_sg_no: s_sg_no, priority: s_bp)
+                       s_cid:   s_cid, s_cr: s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag,
+                       s_hs:    s_hs, s_mc: s_mc, s_no: s_no, s_perm: s_perm, s_sg_no: s_sg_no, priority: s_bp)
       #todo:  一般而言，单个数据输入需要马上进行后台操作。
 
     else
@@ -77,10 +77,8 @@ class BusinessLogicController < ApplicationController
       if @er =~ /normal/
         s_a_no.each do |no|
           @wo = WorkOrder.create(user_id: 1, status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf, s_cf_no: s_cf_no,
-                                 s_cid:   s_cid,
-                                 s_cr:    s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag, s_hs: s_hs, s_mc: s_mc, s_no: no,
-                                 s_perm:  s_perm,
-                                 s_sg_no: s_sg_no, priority: s_bp)
+                                 s_cid:   s_cid, s_cr: s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag, s_hs: s_hs,
+                                 s_mc:    s_mc, s_no: no, s_perm: s_perm, s_sg_no: s_sg_no, priority: s_bp)
         end
       end
     end

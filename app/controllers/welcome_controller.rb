@@ -2,6 +2,7 @@
 require 'net/telnet'
 
 class WelcomeController < ApplicationController
+  include ApplicationHelper
   include WelcomeHelper
 
   def index
@@ -21,7 +22,7 @@ class WelcomeController < ApplicationController
   end
 
   #将数据插入数据库中
-  #其中wo_type(工单类型)规定如下示：
+  #其中欠费标志(s_df_flag)规定如下示：
   #   0:无意义
   #   1：放欠费
   #   2:欠费停机
@@ -40,38 +41,33 @@ class WelcomeController < ApplicationController
   #    55:开来电显示
   #    56:其它...
   #
-  #
-  # 其中的emerg(是否紧急)规定如下示：
-  #    0：非紧急
-  #    1：紧急
-  #
-  #
-  #
-  #split_data(data,下单用户id，数据类型，是否紧急)
 
   def pstn_stop
-    #类型为1
-    #紧急类型为0，即非紧急
-    user     = User.first
-    @number  = params[:number]
-    @wo_type = params[:wo_type]
-    @emerg   = params[:emerg]
+    user      = User.first
+    number    = params[:number]
+    s_df_flag = params[:wo_type]
     puts "--------------->"
-    puts @number
-    puts @wo_type
-    puts @emerg
-    puts "--------------->"
-    split_data(@number, user.id, @wo_type.to_i, @emerg.to_i)
-    if @emerg.to_i == 1
-      puts "----------进入立即制做模式！"
-      #立即模式还需要完善
-      wo_emerg = PstnStop.find_all_by_emerg_and_user_id_and_status_and_work_order_t(
-          1,
-          user.id,
-          "pending",
-          @wo_type.to_i
-      )
-      emerg_complete_data wo_emerg
+    a_no = split_data number
+    @er  = ''
+
+    a_no.each do |no|
+      if no !~ /\d{7}/
+        #返回一数组的json给前台做判断，没有具体意义
+        @er = '[{"one":"errors"},{"two":"errors"}]'
+      else
+        @er = '[{"one":"normal"}]'
+      end
+
+    end
+
+    if @er =~ /normal/
+      a_no.each do |no|
+        @wo = WorkOrder.create(user_id: user.id, status: 0, s_df_flag: s_df_flag, s_no: no, priority: 5)
+      end
+    end
+
+    respond_to do |f|
+      f.json { render json: @er }
     end
 
   end
