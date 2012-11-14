@@ -33,7 +33,9 @@ module BusinessLogicHelper
         "Waittime" => 5
     )
     begin
-
+      telnet.puts "\n"
+      telnet.puts "\n"
+      telnet.puts "\n"
       telnet.waitfor(/>/) { |c| print c }
       telnet.puts "MM"
       puts "<----------------------------->1"
