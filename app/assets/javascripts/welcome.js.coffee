@@ -7,8 +7,9 @@ $ ->
   #  $('input, textarea').placeholder()
   $('#show1').hide()
   $('#show3').hide()
+  $('#show4').hide()
 
-  submitdata = (url, type, emerg) ->
+  submitdata = (url, type) ->
     con = $('#cont1').val()
     $('#showContent').hide()
     if !con && typeof(con) != "undefined" && con != 0
@@ -18,60 +19,35 @@ $ ->
     else
       $.post(
         url,
-        {number: con, wo_type: type, emerg: emerg},
+        {number: con, wo_type: type},
       (data) ->
         ###
          显示json数据
          jsonData = data[1].elico
          alert jsonData
         ###
-        $('#showContent').hide()
-        $('#show1').show()
+        if data.length == 2
+          $('#showContent').hide()
+          $('#show4').show()
+          false
+        else
+          $('#showContent').val("")
+          false
         "json"
       )
       return false
 
   $('#pstn_stop').click ->
-    submitdata("pstn_stop", 1, 0)
+    submitdata("pstn_stop", 1)
 
   $('#pstn_badp').click ->
-    submitdata("pstn_stop", 2, 0)
+    submitdata("pstn_stop", 2)
 
   $('#pstn_deni').click ->
-    submitdata("pstn_stop", 3, 0)
+    submitdata("pstn_stop", 3)
 
   $('#pstn_reset').click ->
-    submitdata("pstn_stop", 4, 0)
-
-  $('#i_pstn_stop').click ->
-    submitdata("pstn_stop", 1, 1)
-
-  $('#i_pstn_badp').click ->
-    submitdata("pstn_stop", 2, 1)
-
-  $('#i_pstn_deni').click ->
-    submitdata("pstn_stop", 3, 1)
-
-  $('#i_pstn_reset').click ->
-    submitdata("pstn_stop", 4, 1)
-
-  $('#reverse_pstn_stop').click ->
-    submitdata("pstn_stop", 51, 0)
-
-  $('#reverse_pstn_badp').click ->
-    submitdata("pstn_stop", 52, 0)
-
-  $('#reverse_pstn_deni').click ->
-    submitdata("pstn_stop", 53, 0)
-
-  $('#i_reverse_pstn_stop').click ->
-    submitdata("pstn_stop", 51, 1)
-
-  $('#i_reverse_pstn_badp').click ->
-    submitdata("pstn_stop", 52, 1)
-
-  $('#i_reverse_pstn_deni').click ->
-    submitdata("pstn_stop", 53, 1)
+    submitdata("pstn_stop", 4)
 
   $('#dataR').click ->
     $('#show3').hide()
@@ -83,6 +59,12 @@ $ ->
     $('#cont1').val("")
     $('#showContent').show()
     return false
+
+  $('#pdataR').click ->
+    $('#show4').hide()
+    $('#showContent').show()
+    return false
+
 
 #  $('#m_stop').click ->
 #    $('#m_stop').attr("class","active")
