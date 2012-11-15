@@ -49,8 +49,6 @@ DnTable.create(jf_name_id:4,dn_start:'6105000',dn_end:'6105499')
 DnTable.create(jf_name_id:4,dn_start:'6989200',dn_end:'6989999')
 
 DnTable.create(jf_name_id:5,dn_start:'6181000',dn_end:'6185999')
-DnTable.create(jf_name_id:5,dn_start:'6999000',dn_end:'6999999')
-DnTable.create(jf_name_id:5,dn_start:'6997000',dn_end:'6997999')
 DnTable.create(jf_name_id:5,dn_start:'6118000',dn_end:'6111899')
 DnTable.create(jf_name_id:5,dn_start:'6111700',dn_end:'6111799')
 DnTable.create(jf_name_id:5,dn_start:'6981000',dn_end:'6982999')
