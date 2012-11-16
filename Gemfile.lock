@@ -119,5 +119,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
-  whenever (= 0.8.0)
+  whenever
   will_paginate
