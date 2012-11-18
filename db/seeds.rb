@@ -7,6 +7,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(name: "易其锋",password:'123456',level:3)
+
 JfName.create(name: '南郊', ip_address: '192.166.16.11', status: 1)
 JfName.create(name: '南枫', ip_address: '192.166.16.8', status: 0)
 JfName.create(name: '茗雅', ip_address: '192.166.16.4', status: 1)

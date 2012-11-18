@@ -31,7 +31,7 @@ $ ->
           $('#show4').show()
           false
         else
-          $('#showContent').val("")
+          $('#show1').show()
           false
         "json"
       )
