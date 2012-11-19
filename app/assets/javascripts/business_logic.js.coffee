@@ -6,6 +6,7 @@ $ ->
   $('#show1').hide()
   $('#show3').hide()
   $('#show4').hide()
+  $('#show5').hide()
   $("#b_logic_form").validate()
   #  $("a[rel=popover]").popover({trigger: 'hover' })
   #  $("#p_1").popover('toggle')
@@ -55,6 +56,10 @@ $ ->
     else if b_s_no || s_no
       if b_s_no && s_no
         $("#noModal").modal('show')
+        false
+      else if s_bt && s_sg_no
+        $('#content').hide()
+        $('#show5').show()
         false
       else
         if s_df_flag && !s_bt && !s_sg_no
@@ -117,5 +122,10 @@ $ ->
 
   $('#bdataR').click ->
     $('#show4').hide()
+    $('#content').show()
+    return false
+
+  $('#gdataR').click ->
+    $('#show5').hide()
     $('#content').show()
     return false

@@ -6,7 +6,7 @@ class QueryDataController < ApplicationController
 
   def start
     #@q_data = ""
-    @q_data = PstnStop.paginate page: params[:page], per_page: 10
+    @q_data = WorkOrder.paginate page: params[:page], per_page: 10
     render layout: "main_layout"
   end
 

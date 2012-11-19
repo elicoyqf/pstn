@@ -1,3 +1,4 @@
+require "net/telnet"
 class BusinessLogicController < ApplicationController
   include ApplicationHelper
   include BusinessLogicHelper
@@ -21,7 +22,7 @@ class BusinessLogicController < ApplicationController
     #s_df_flag:欠费标志
     #s_sg_no:用户组号
     #s_cid:来电显示
-    #s_pp:优先级
+    #s_bp:优先级
     #其中的欠费标志有如下内容:
     #   1：放欠费
     #   2:欠费停机
@@ -90,4 +91,85 @@ class BusinessLogicController < ApplicationController
       f.json { render json: @er }
     end
   end
+
+  def wo_make
+    #优先做新装业务，即优先级为1的(work_orders:priotity = 1)
+    new_or = WorkOrder.find_all_by_priority_and_status(1, 0)
+
+    new_or.each do |x|
+      no = x.s_no.to_i
+      dn = DnTable.where("dn_start <= ? and ? <= dn_end ", no, no).first
+      if dn != null
+        #终端IP地址
+        ip_address = dn.jf_name.ip_address
+        #生成命令行字符串
+        cmd        = "4294:dn=k'#{no}"
+        subctrl    = 'subctrl=1'
+        #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
+        (cmd += ",subgrp=#{x.s_bt}") unless x.s_bt.blank?
+        (cmd += ",subgrp=#{x.s_sg_no}") unless x.s_sg_no.blank?
+        #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
+        (cmd += ",ocb=modify&perm&#{x.s_perm}") unless x.s_perm.blank?
+
+        case x.s_cf
+          when "1"
+            subctrl += "&cfwdu"
+          when "2"
+            subctrl += "&cfwdbsub"
+          when "3"
+            subctrl += "&cfwdnor"
+          else
+
+        end
+
+        (cmd += ",password=1&'8888'") unless x.s_cr.blank?
+        (cmd += ",password=1&'#{x.s_cr_no}'") unless x.s_cr_no.blank?
+
+        (cmd += ",subgrp=1") unless x.s_df_flag.blank?
+        (cmd += "141:dn=k'xxxx,abdrepse=20") unless x.s_ad.blank?
+        (subctrl += "&fdcto") unless x.s_hs.blank?
+        (subctrl += "&ac24hour") unless x.s_mc.blank?
+        (cmd += ",23=1&1") unless x.s_cid.blank?
+        cmd += ","+subctrl+ "."
+        puts cmd
+        puts subctrl
+      end
+
+    end
+
+  end
+
+  def pstn_data(ip_address, cmd)
+    telnet = Net::Telnet.new(
+        "Host"     => ip_address,
+        "Port"     => 10001,
+        "Timeout"  => 10,
+        "Waittime" => 5
+    )
+    #条件：机房登录状态必须为1(jf_name:status = 1)
+
+    begin
+      telnet.puts "\n"
+      telnet.puts "\n"
+      telnet.puts "\n"
+      telnet.waitfor(/>/) { |c| print c }
+      telnet.puts "MM"
+
+      telnet.waitfor(/USERID:/) { |c| print c }
+      telnet.puts "PW0009"
+
+      telnet.waitfor(/PASSWORD:/) { |c| print c }
+      telnet.puts "PW0009"
+
+      telnet.puts "4294:dn=k'6994951,subgrp=5."
+      telnet.waitfor(/>/) { |c| print c }
+    rescue
+      #为了防止未超时的会话，直接输入命令即可。
+      telnet.puts "4294:dn=k'6994951,subgrp=5."
+      telnet.waitfor(/>/) { |c| print c }
+    ensure
+      telnet.close
+    end
+  end
+
 end

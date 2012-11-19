@@ -27,6 +27,12 @@ module ApplicationHelper
   end
 
   def make_data
+    #优先做新装业务，即优先级为1的(work_orders:priotity = 1)
+
+
+    #条件：机房登录状态必须为1(jf_name:status = 1)
+
+
     telnet = Net::Telnet.new(
         "Host"     => '192.166.16.3',
         "Port"     => 10001,

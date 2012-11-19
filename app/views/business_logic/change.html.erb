@@ -142,7 +142,7 @@
           <div class="input-prepend">
             <span class="add-on">*</span>
             <%= select(:pstn_stop, "s_cf",
-                       { "无应答转移" => "1", "无条件转移" => "2", "遇忙转移" => "3" },
+                       { "无条件转移" => "1", "遇忙转移" => "2", "无应答转移" => "3" },
                        { prompt: "选择呼叫转移" }, { class: 'span11', id: "s_cf" }) %>
 
           </div>
@@ -168,7 +168,7 @@
   <div class="span12">
     <div class="span6">
       <div class="control-group">
-        <label class="control-label inline" for="s_cr" name="ns">选择呼出限制</label>
+        <label class="control-label inline" for="s_cr">选择呼出限制</label>
 
         <div class="controls">
           <label class="checkbox inline">
@@ -185,7 +185,7 @@
           <div class="input-prepend">
             <span class="add-on">%</span>
             <%= text_field :pstn_stop, "s_cr_no", { :class => "span10", placeholder: "默认密码为8888", :size => "16",
-                                                    :id    => "s_cr_no" } %>
+                                                    :id    => "s_cr_no"} %>
           </div>
         </div>
       </div>
@@ -265,7 +265,7 @@
 <div class="alert alert-error" id="show3">
   <span class="label label-warning" id="err1">数据提交失败</span><br/>
   数据输入有错误...<br/>
-  请注意各字段下标红字的字段，按按规则进行修改！<br/> <br/>
+  请注意各字段下标红字的字段，按规则进行修改！<br/> <br/>
 
   <p>
     <a href="#" class="btn btn-danger " id="dataR">
@@ -276,10 +276,21 @@
 <div class="alert alert-error" id="show4">
   <span class="label label-warning" id="err2">批量数据提交失败</span><br/>
   批量数据输入有错误...<br/>
-  请仔细检查批量输入号码，按按规则进行修改！<br/> <br/>
+  请仔细检查批量输入号码，按规则进行修改！<br/> <br/>
 
   <p>
     <a href="#" class="btn btn-danger " id="bdataR">
+      <i class="icon-chevron-left icon-white"></i> 返回</a>
+  </p>
+</div>
+
+<div class="alert alert-error" id="show5">
+  <span class="label label-warning" id="err3">数据提交失败</span><br/>
+  指定用户组号和用户类型只能选其一..<br/>
+  请不要同时指定此两项，请按规则进行修改！<br/> <br/>
+
+  <p>
+    <a href="#" class="btn btn-danger " id="gdataR">
       <i class="icon-chevron-left icon-white"></i> 返回</a>
   </p>
 </div>
