@@ -97,19 +97,25 @@ class BusinessLogicController < ApplicationController
     new_or = WorkOrder.find_all_by_priority_and_status(1, 0)
 
     new_or.each do |x|
-      no = x.s_no.to_i
-      dn = DnTable.where("dn_start <= ? and ? <= dn_end ", no, no).first
+      no    = x.s_no.to_i
+      cr_no = x.s_cr_no
+      bt    = x.s_bt
+      sg_no = x.s_sg_no
+      perm  = x.s_perm
+      dn    = DnTable.where("dn_start <= ? and ? <= dn_end ", no, no).first
+
       if dn != null
         #终端IP地址
         ip_address = dn.jf_name.ip_address
         #生成命令行字符串
         cmd        = "4294:dn=k'#{no}"
         subctrl    = 'subctrl=1'
+        adstr      = ''
         #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
-        (cmd += ",subgrp=#{x.s_bt}") unless x.s_bt.blank?
-        (cmd += ",subgrp=#{x.s_sg_no}") unless x.s_sg_no.blank?
+        (cmd += ",subgrp=#{bt}") unless x.s_bt.blank?
+        (cmd += ",subgrp=#{sg_no}") unless x.s_sg_no.blank?
         #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
-        (cmd += ",ocb=modify&perm&#{x.s_perm}") unless x.s_perm.blank?
+        (cmd += ",ocb=modify&perm&#{perm}") unless x.s_perm.blank?
 
         case x.s_cf
           when "1"
@@ -119,20 +125,27 @@ class BusinessLogicController < ApplicationController
           when "3"
             subctrl += "&cfwdnor"
           else
-
+            puts "nothing."
         end
 
-        (cmd += ",password=1&'8888'") unless x.s_cr.blank?
-        (cmd += ",password=1&'#{x.s_cr_no}'") unless x.s_cr_no.blank?
+        if !x.s_cr.blank? and !x.s_cr_no.blank?
+          cmd += ",password=1&"+"\""+"#{cr_no}"+"\""
+          subctrl += '&ocbvar'
+        elsif !x.s_cr.blank? and x.s_cr_no.blank?
+          cmd += ",password=1&"+"\""+"8888"+"\""
+          subctrl += '&ocbvar'
+        end
 
         (cmd += ",subgrp=1") unless x.s_df_flag.blank?
-        (cmd += "141:dn=k'xxxx,abdrepse=20") unless x.s_ad.blank?
+        (adstr = "141:dn=k'#{no},abdrepsz=20.") unless x.s_ad.blank?
         (subctrl += "&fdcto") unless x.s_hs.blank?
         (subctrl += "&ac24hour") unless x.s_mc.blank?
         (cmd += ",23=1&1") unless x.s_cid.blank?
         cmd += ","+subctrl+ "."
+        puts adstr unless adstr.blank?
         puts cmd
         puts subctrl
+
       end
 
     end
