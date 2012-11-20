@@ -86,7 +86,7 @@ class BusinessLogicController < ApplicationController
         end
       end
     end
-
+    wo_make
     respond_to do |f|
       f.json { render json: @er }
     end
@@ -99,18 +99,20 @@ class BusinessLogicController < ApplicationController
     new_or.each do |x|
       no    = x.s_no.to_i
       cr_no = x.s_cr_no
+      cf_no = x.s_cf_no
       bt    = x.s_bt
       sg_no = x.s_sg_no
       perm  = x.s_perm
       dn    = DnTable.where("dn_start <= ? and ? <= dn_end ", no, no).first
 
-      if dn != null
+      unless dn.blank?
         #终端IP地址
         ip_address = dn.jf_name.ip_address
         #生成命令行字符串
         cmd        = "4294:dn=k'#{no}"
         subctrl    = 'subctrl=1'
-        adstr      = ''
+        ad_cmd     = ''
+        cf_cmd     = ''
         #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
         (cmd += ",subgrp=#{bt}") unless x.s_bt.blank?
         (cmd += ",subgrp=#{sg_no}") unless x.s_sg_no.blank?
@@ -128,23 +130,33 @@ class BusinessLogicController < ApplicationController
             puts "nothing."
         end
 
+        #todo:如果设置了呼叫转移的号码则需要另外再将呼转号码激活
+        unless cf_no.blank?
+          cf_cmd = "4294:dn=k'xxxx,cfwdu=1&xxxx"
+        end
+
         if !x.s_cr.blank? and !x.s_cr_no.blank?
-          cmd += ",password=1&"+"\""+"#{cr_no}"+"\""
+          cmd     += ",password=1&"+"\""+"#{cr_no}"+"\""
           subctrl += '&ocbvar'
         elsif !x.s_cr.blank? and x.s_cr_no.blank?
-          cmd += ",password=1&"+"\""+"8888"+"\""
+          cmd     += ",password=1&"+"\""+"8888"+"\""
           subctrl += '&ocbvar'
         end
 
         (cmd += ",subgrp=1") unless x.s_df_flag.blank?
-        (adstr = "141:dn=k'#{no},abdrepsz=20.") unless x.s_ad.blank?
+        (ad_cmd = "141:dn=k'#{no},abdrepsz=20.") unless x.s_ad.blank?
         (subctrl += "&fdcto") unless x.s_hs.blank?
         (subctrl += "&ac24hour") unless x.s_mc.blank?
         (cmd += ",23=1&1") unless x.s_cid.blank?
-        cmd += ","+subctrl+ "."
-        puts adstr unless adstr.blank?
+        if subctrl =~ /^subctrl=1$/
+          cmd += "."
+        else
+          cmd += ","+subctrl+ "."
+        end
+
+        puts ad_cmd unless ad_cmd.blank?
         puts cmd
-        puts subctrl
+        puts cf_cmd
 
       end
 
