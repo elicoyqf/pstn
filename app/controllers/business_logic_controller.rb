@@ -1,4 +1,6 @@
+#encoding: utf-8
 require "net/telnet"
+require "hanzi_to_pinyin"
 class BusinessLogicController < ApplicationController
   include ApplicationHelper
   include BusinessLogicHelper
@@ -103,36 +105,61 @@ class BusinessLogicController < ApplicationController
       bt    = x.s_bt
       sg_no = x.s_sg_no
       perm  = x.s_perm
-      dn    = DnTable.where("dn_start <= ? and ? <= dn_end ", no, no).first
+      dn    = DnTable.includes(:jf_name).where("dn_start <= ? and ? <= dn_end ", no, no).first
 
       unless dn.blank?
         #终端IP地址
-        ip_address = dn.jf_name.ip_address
         #生成命令行字符串
+        ip_address = dn.jf_name.ip_address
+        #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
         cmd        = "4294:dn=k'#{no}"
-        subctrl    = 'subctrl=1'
-        ad_cmd     = ''
-        cf_cmd     = ''
+        subctrl    = "subctrl=1"
+        ad_cmd     = ""
+        cf_no_cmd  = ""
+        cf_act_cmd = ""
+        perm_cmd   = ",ocb=modify&perm&"
+
         #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
         (cmd += ",subgrp=#{bt}") unless x.s_bt.blank?
         (cmd += ",subgrp=#{sg_no}") unless x.s_sg_no.blank?
         #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
-        (cmd += ",ocb=modify&perm&#{perm}") unless x.s_perm.blank?
+        #"国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5"
+        #各个机房的权限已经放到jf_name里面p_nat,p_local,p_suburban,p_int,p_emerg.
+        case perm
+          when '1'
+            perm_cmd += "#{dn.jf_name.p_nat}"
+          when '2'
+            perm_cmd += "#{dn.jf_name.p_local}"
+          when '3'
+            perm_cmd += "#{dn.jf_name.p_suburban}"
+          when '4'
+            perm_cmd += "#{dn.jf_name.p_int}"
+          when '5'
+            perm_cmd += "#{dn.jf_name.p_emerg}"
+          else
+            puts "Perm errors.-------------->"
+        end
+
+        cmd += perm_cmd
 
         case x.s_cf
           when "1"
-            subctrl += "&cfwdu"
+            subctrl    += "&cfwdu"
+            cf_act_cmd = "cfwdu"
           when "2"
-            subctrl += "&cfwdbsub"
+            subctrl    += "&cfwdbsub"
+            cf_act_cmd = "cfwdbsub"
           when "3"
-            subctrl += "&cfwdnor"
+            subctrl    += "&cfwdnor"
+            cf_act_cmd = "cfwdnor"
           else
-            puts "nothing."
+            puts "cf is null.---------->"
         end
 
         #todo:如果设置了呼叫转移的号码则需要另外再将呼转号码激活
         unless cf_no.blank?
-          cf_cmd = "4294:dn=k'xxxx,cfwdu=1&xxxx"
+          cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act_cmd}&k'#{cf_no}"
+          cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act_cmd}&k'#{cf_no}"
         end
 
         if !x.s_cr.blank? and !x.s_cr_no.blank?
@@ -153,10 +180,15 @@ class BusinessLogicController < ApplicationController
         else
           cmd += ","+subctrl+ "."
         end
-
+        #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
+        #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样
+        if false
+          cmd.gsub!(/4294/, '4382')
+        end
         puts ad_cmd unless ad_cmd.blank?
         puts cmd
-        puts cf_cmd
+        puts cf_no_cmd
+        puts cf_act_cmd
 
       end
 

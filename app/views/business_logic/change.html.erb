@@ -108,7 +108,7 @@
           <div class="input-prepend">
             <span class="add-on">P</span>
             <%= select(:pstn_stop, "s_perm",
-                       { "国内" => "1", "本地" => "2", "郊话" => "3", "国际" => "4" },
+                       { "国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5" },
                        { prompt: "选择用户权限" }, { class: 'span11', id: "s_perm" }) %>
           </div>
         </div>
@@ -185,7 +185,7 @@
           <div class="input-prepend">
             <span class="add-on">%</span>
             <%= text_field :pstn_stop, "s_cr_no", { :class => "span10", placeholder: "默认密码为8888", :size => "16",
-                                                    :id    => "s_cr_no"} %>
+                                                    :id    => "s_cr_no" } %>
           </div>
         </div>
       </div>
