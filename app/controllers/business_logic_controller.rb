@@ -228,16 +228,22 @@ class BusinessLogicController < ApplicationController
       #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
       #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
       if r_cmd_str =~ /BCG/
+        telnet.puts "MM"
+        telnet.waitfor(/</) { |c| print c }
         bcg_cmd = cmd.gsub(/4294/, '4382')
         telnet.puts "#{bcg_cmd}"
         bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
 
+        telnet.puts "MM"
+        telnet.waitfor(/</) { |c| print c }
         unless cf_no_cmd.blank?
           bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
           telnet.puts "#{bcg_cf_no_cmd}"
           bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
         end
 
+        telnet.puts "MM"
+        telnet.waitfor(/</) { |c| print c }
         unless cf_act_cmd.blank?
           bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
           telnet.puts "#{bcg_cf_act_cmd}"
@@ -246,11 +252,15 @@ class BusinessLogicController < ApplicationController
 
       else
         unless cf_no_cmd.blank?
+          telnet.puts "MM"
+          telnet.waitfor(/</) { |c| print c }
           telnet.puts "#{cf_no_cmd}"
           r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
         end
 
         unless cf_act_cmd.blank?
+          telnet.puts "MM"
+          telnet.waitfor(/</) { |c| print c }
           telnet.puts "#{cf_act_cmd}"
           r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
         end
@@ -258,6 +268,8 @@ class BusinessLogicController < ApplicationController
       end
 
       unless ad_cmd.blank?
+        telnet.puts "MM"
+        telnet.waitfor(/</) { |c| print c }
         telnet.puts "#{ad_cmd}"
         r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
       end
@@ -276,17 +288,23 @@ class BusinessLogicController < ApplicationController
       #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
       #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
       if r_cmd_str =~ /BCG/
+        telnet.puts "MM"
+        telnet.waitfor(/</) { |c| print c }
         bcg_cmd = cmd.gsub(/4294/, '4382')
         telnet.puts "#{bcg_cmd}"
         bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
 
         unless cf_no_cmd.blank?
+          telnet.puts "MM"
+          telnet.waitfor(/</) { |c| print c }
           bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
           telnet.puts "#{bcg_cf_no_cmd}"
           bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
         end
 
         unless cf_act_cmd.blank?
+          telnet.puts "MM"
+          telnet.waitfor(/</) { |c| print c }
           bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
           telnet.puts "#{bcg_cf_act_cmd}"
           bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
@@ -294,11 +312,15 @@ class BusinessLogicController < ApplicationController
 
       else
         unless cf_no_cmd.blank?
+          telnet.puts "MM"
+          telnet.waitfor(/</) { |c| print c }
           telnet.puts "#{cf_no_cmd}"
           r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
         end
 
         unless cf_act_cmd.blank?
+          telnet.puts "MM"
+          telnet.waitfor(/</) { |c| print c }
           telnet.puts "#{cf_act_cmd}"
           r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
         end
@@ -306,6 +328,8 @@ class BusinessLogicController < ApplicationController
       end
 
       unless ad_cmd.blank?
+        telnet.puts "MM"
+        telnet.waitfor(/</) { |c| print c }
         telnet.puts "#{ad_cmd}"
         r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
       end
