@@ -1,6 +1,6 @@
 #encoding: utf-8
 require "net/telnet"
-require "hanzi_to_pinyin"
+require "timeout"
 class BusinessLogicController < ApplicationController
   include ApplicationHelper
   include BusinessLogicHelper
@@ -107,108 +107,110 @@ class BusinessLogicController < ApplicationController
       perm  = x.s_perm
       dn    = DnTable.includes(:jf_name).where("dn_start <= ? and ? <= dn_end ", no, no).first
 
-      unless dn.blank?
-        #终端IP地址
-        #生成命令行字符串
-        ip_address = dn.jf_name.ip_address
-        #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
-        cmd        = "4294:dn=k'#{no}"
-        subctrl    = "subctrl=1"
-        ad_cmd     = ""
-        cf_no_cmd  = ""
-        cf_act_cmd = ""
-        perm_cmd   = ",ocb=modify&perm&"
+      #条件：机房登录状态必须为1(jf_name:status == 1)
+      if dn.jf_name.status == 1
+        unless dn.blank?
+          #终端IP地址
+          #生成命令行字符串
+          ip_address = dn.jf_name.ip_address
+          #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
+          cmd        = "4294:dn=k'#{no}"
+          subctrl    = "subctrl=1"
+          ad_cmd     = ""
+          cf_no_cmd  = ""
+          cf_act_cmd = ""
+          perm_cmd   = ",ocb=modify&perm&"
+          test_r     = []
 
-        #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
-        (cmd += ",subgrp=#{bt}") unless x.s_bt.blank?
-        (cmd += ",subgrp=#{sg_no}") unless x.s_sg_no.blank?
-        #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
-        #"国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5"
-        #各个机房的权限已经放到jf_name里面p_nat,p_local,p_suburban,p_int,p_emerg.
-        case perm
-          when '1'
-            perm_cmd += "#{dn.jf_name.p_nat}"
-          when '2'
-            perm_cmd += "#{dn.jf_name.p_local}"
-          when '3'
-            perm_cmd += "#{dn.jf_name.p_suburban}"
-          when '4'
-            perm_cmd += "#{dn.jf_name.p_int}"
-          when '5'
-            perm_cmd += "#{dn.jf_name.p_emerg}"
+          #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
+          (cmd += ",subgrp=#{bt}") unless x.s_bt.blank?
+          (cmd += ",subgrp=#{sg_no}") unless x.s_sg_no.blank?
+          #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
+          #"国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5"
+          #各个机房的权限已经放到jf_name里面p_nat,p_local,p_suburban,p_int,p_emerg.
+          case perm
+            when '1'
+              perm_cmd += "#{dn.jf_name.p_nat}"
+            when '2'
+              perm_cmd += "#{dn.jf_name.p_local}"
+            when '3'
+              perm_cmd += "#{dn.jf_name.p_suburban}"
+            when '4'
+              perm_cmd += "#{dn.jf_name.p_int}"
+            when '5'
+              perm_cmd += "#{dn.jf_name.p_emerg}"
+            else
+              puts "Perm errors.-------------->"
+          end
+
+          cmd += perm_cmd
+
+          case x.s_cf
+            when "1"
+              subctrl    += "&cfwdu"
+              cf_act_cmd = "cfwdu"
+            when "2"
+              subctrl    += "&cfwdbsub"
+              cf_act_cmd = "cfwdbsub"
+            when "3"
+              subctrl    += "&cfwdnor"
+              cf_act_cmd = "cfwdnor"
+            else
+              puts "cf is null.---------->"
+          end
+
+          #todo:如果设置了呼叫转移的号码则需要另外再将呼转号码激活
+          unless cf_no.blank?
+            cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act_cmd}&k'#{cf_no}"
+            cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act_cmd}&k'#{cf_no}"
+          end
+
+          if !x.s_cr.blank? and !x.s_cr_no.blank?
+            cmd     += ",password=1&"+"\""+"#{cr_no}"+"\""
+            subctrl += '&ocbvar'
+          elsif !x.s_cr.blank? and x.s_cr_no.blank?
+            cmd     += ",password=1&"+"\""+"8888"+"\""
+            subctrl += '&ocbvar'
+          end
+
+          (cmd += ",subgrp=1") unless x.s_df_flag.blank?
+          (ad_cmd = "141:dn=k'#{no},abdrepsz=20.") unless x.s_ad.blank?
+          (subctrl += "&fdcto") unless x.s_hs.blank?
+          (subctrl += "&ac24hour") unless x.s_mc.blank?
+          (cmd += ",23=1&1") unless x.s_cid.blank?
+          if subctrl =~ /^subctrl=1$/
+            cmd += "."
           else
-            puts "Perm errors.-------------->"
-        end
+            cmd += ","+subctrl+ "."
+          end
+          puts x.id
+          puts cmd
+          puts ad_cmd
+          puts cf_no_cmd
+          puts cf_act_cmd
 
-        cmd += perm_cmd
-
-        case x.s_cf
-          when "1"
-            subctrl    += "&cfwdu"
-            cf_act_cmd = "cfwdu"
-          when "2"
-            subctrl    += "&cfwdbsub"
-            cf_act_cmd = "cfwdbsub"
-          when "3"
-            subctrl    += "&cfwdnor"
-            cf_act_cmd = "cfwdnor"
-          else
-            puts "cf is null.---------->"
         end
-
-        #todo:如果设置了呼叫转移的号码则需要另外再将呼转号码激活
-        unless cf_no.blank?
-          cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act_cmd}&k'#{cf_no}"
-          cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act_cmd}&k'#{cf_no}"
-        end
-
-        if !x.s_cr.blank? and !x.s_cr_no.blank?
-          cmd     += ",password=1&"+"\""+"#{cr_no}"+"\""
-          subctrl += '&ocbvar'
-        elsif !x.s_cr.blank? and x.s_cr_no.blank?
-          cmd     += ",password=1&"+"\""+"8888"+"\""
-          subctrl += '&ocbvar'
-        end
-
-        (cmd += ",subgrp=1") unless x.s_df_flag.blank?
-        (ad_cmd = "141:dn=k'#{no},abdrepsz=20.") unless x.s_ad.blank?
-        (subctrl += "&fdcto") unless x.s_hs.blank?
-        (subctrl += "&ac24hour") unless x.s_mc.blank?
-        (cmd += ",23=1&1") unless x.s_cid.blank?
-        if subctrl =~ /^subctrl=1$/
-          cmd += "."
-        else
-          cmd += ","+subctrl+ "."
-        end
-        #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
-        #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样
-        if false
-          cmd.gsub!(/4294/, '4382')
-        end
-        puts ad_cmd unless ad_cmd.blank?
-        puts cmd
-        puts cf_no_cmd
-        puts cf_act_cmd
-
       end
-
     end
 
   end
 
-  def pstn_data(ip_address, cmd)
+  def pstn_data(ip_address, id, cmd, ad_cmd='', cf_no_cmd='', cf_act_cmd='')
     telnet = Net::Telnet.new(
         "Host"     => ip_address,
         "Port"     => 10001,
         "Timeout"  => 10,
         "Waittime" => 5
     )
-    #条件：机房登录状态必须为1(jf_name:status = 1)
 
     begin
       telnet.puts "\n"
       telnet.puts "\n"
       telnet.puts "\n"
+
+      timeout(10) {
+
+      }
       telnet.waitfor(/>/) { |c| print c }
       telnet.puts "MM"
 
@@ -218,12 +220,99 @@ class BusinessLogicController < ApplicationController
       telnet.waitfor(/PASSWORD:/) { |c| print c }
       telnet.puts "PW0009"
 
-      telnet.puts "4294:dn=k'6994951,subgrp=5."
-      telnet.waitfor(/>/) { |c| print c }
+      #普通号码测试使用6994951
+      #telnet.puts "4294:dn=k'6994951,subgrp=5."
+      telnet.puts "#{cmd}"
+      r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+
+      #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
+      #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
+      if r_cmd_str =~ /BCG/
+        bcg_cmd = cmd.gsub(/4294/, '4382')
+        telnet.puts "#{bcg_cmd}"
+        bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+
+        unless cf_no_cmd.blank?
+          bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
+          telnet.puts "#{bcg_cf_no_cmd}"
+          bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+        unless cf_act_cmd.blank?
+          bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
+          telnet.puts "#{bcg_cf_act_cmd}"
+          bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+      else
+        unless cf_no_cmd.blank?
+          telnet.puts "#{cf_no_cmd}"
+          r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+        unless cf_act_cmd.blank?
+          telnet.puts "#{cf_act_cmd}"
+          r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+      end
+
+      unless ad_cmd.blank?
+        telnet.puts "#{ad_cmd}"
+        r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
+      end
+
+        #todo:更新数据库状态。
+
     rescue
       #为了防止未超时的会话，直接输入命令即可。
-      telnet.puts "4294:dn=k'6994951,subgrp=5."
-      telnet.waitfor(/>/) { |c| print c }
+      #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
+      #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样
+      #普通号码测试使用6994951
+      #telnet.puts "4294:dn=k'6994951,subgrp=5."
+      telnet.puts "#{cmd}"
+      r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+
+      #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
+      #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
+      if r_cmd_str =~ /BCG/
+        bcg_cmd = cmd.gsub(/4294/, '4382')
+        telnet.puts "#{bcg_cmd}"
+        bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+
+        unless cf_no_cmd.blank?
+          bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
+          telnet.puts "#{bcg_cf_no_cmd}"
+          bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+        unless cf_act_cmd.blank?
+          bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
+          telnet.puts "#{bcg_cf_act_cmd}"
+          bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+      else
+        unless cf_no_cmd.blank?
+          telnet.puts "#{cf_no_cmd}"
+          r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+        unless cf_act_cmd.blank?
+          telnet.puts "#{cf_act_cmd}"
+          r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
+        end
+
+      end
+
+      unless ad_cmd.blank?
+        telnet.puts "#{ad_cmd}"
+        r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
+      end
+
+        #todo:更新数据库状态。
+
+
     ensure
       telnet.close
     end
