@@ -213,20 +213,23 @@
             <span class="add-on">R</span>
             <%= select(:pstn_stop, "s_cr",
                        { "开通呼出限制" => "1", "去除呼出限制" => "2" },
-                       { prompt: "选择呼出限制" }, { class: 'span11', id: "s_cf" }) %>
+                       { prompt: "选择呼出限制" }, { class: 'span11', id: "s_cr" }) %>
           </div>
         </div>
       </div>
     </div>
     <div class="span6">
       <div class="control-group">
-        <label class="control-label" for="s_cr_no">呼出限制密码</label>
+        <label class="control-label" for="s_cr_no">
+          <a id="pop1"  data-content="密码最长可设置4位，如果超过则后台会出错。" rel="popover" href="#"
+                       data-original-title="注意">呼出限制密码</a>
+        </label>
 
         <div class="controls">
           <div class="input-prepend">
             <span class="add-on">R</span>
             <%= text_field :pstn_stop, "s_cr_no", { :class => "span10", placeholder: "默认密码为8888", :size => "16",
-                                                    :id    => "s_cr_no" } %>
+                                                    :id    => "s_cr_no"} %>
           </div>
         </div>
       </div>

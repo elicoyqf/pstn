@@ -8,6 +8,7 @@ $ ->
   $('#show4').hide()
   $('#show5').hide()
   $('#pop').popover({trigger: "hover"})
+  $('#pop1').popover({trigger: "hover"})
   $('#tp').tooltip({selector: "a[rel=tooltip]"})
 
   $("#b_logic_form").validate()

@@ -116,17 +116,19 @@ class BusinessLogicController < ApplicationController
           ip_address = dn.jf_name.ip_address
           #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
           cmd        = "4294:dn=k'#{no}"
+          df_cmd     = ""
+          r_cmd      = cmd
           subctrl    = "subctrl=1"
           r_subctrl  = "subctrl=2"
           ad_cmd     = ""
           cf_no_cmd  = ""
           cf_act     = ""
           cf_act_cmd = ""
-          perm_cmd   = ",ocb=modify&perm&"
+          perm_cmd   = ""
           test_r     = []
           p_nat      = dn.jf_name.p_nat
           p_local    = dn.jf_name.p_local
-          p_suburban =dn.jf_name.p_suburban
+          p_suburban = dn.jf_name.p_suburban
           p_int      = dn.jf_name.p_int
           p_emerg    = dn.jf_name.p_emerg
 
@@ -136,38 +138,42 @@ class BusinessLogicController < ApplicationController
           #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
           #"国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5"
           #各个机房的权限已经放到jf_name里面p_nat,p_local,p_suburban,p_int,p_emerg.
-          case perm
-            when '1'
-              perm_cmd += "#{p_nat}"
-              test_r << "PERM      #{p_nat}"
-            when '2'
-              perm_cmd += "#{p_local}"
-              test_r << "PERM      #{p_local}"
-            when '3'
-              perm_cmd += "#{p_suburban}"
-              test_r << "PERM      #{p_suburban}"
-            when '4'
-              perm_cmd += "#{p_int}"
-              test_r << "PERM      #{p_int}"
-            else
-              perm_cmd += "#{p_emerg}"
-              test_r << "PERM      #{p_emerg}"
+          unless perm.blank?
+            case perm
+              when '1'
+                perm_cmd = ",ocb=modify&perm&#{p_nat}"
+                test_r << "PERM      #{p_nat}"
+              when '2'
+                perm_cmd = ",ocb=modify&perm&#{p_local}"
+                test_r << "PERM      #{p_local}"
+              when '3'
+                perm_cmd = ",ocb=modify&perm&#{p_suburban}"
+                test_r << "PERM      #{p_suburban}"
+              when '4'
+                perm_cmd = ",ocb=modify&perm&#{p_int}"
+                test_r << "PERM      #{p_int}"
+              when '5'
+                perm_cmd = ",ocb=modify&perm&#{p_emerg}"
+                test_r << "PERM      #{p_emerg}"
+              else
+
+            end
+            cmd += perm_cmd
           end
 
-          cmd += perm_cmd
           #欠费标志需要细化
           #{ "放欠费" => "1", "欠费停机" => "2", "停机保号" => "3", "拆机" => "4",
           #"去欠费" => "51","去欠费开机" => "52","开机"  => "53" }
           unless x.s_df_flag.blank?
             case x.s_df_flag
               when '1'
-                cmd = "4294:dn=k'#{no},subgrp=18."
+                df_cmd += "4294:dn=k'#{no},subgrp=18."
               when '2'
-                cmd = "4294:dn=k'#{no},subgrp=18,intcp=badp."
+                df_cmd += "4294:dn=k'#{no},subgrp=18,intcp=badp."
               when '3'
-                cmd = "4294:dn=k'#{no},subgrp=18,intcp=deni."
+                df_cmd += "4294:dn=k'#{no},subgrp=18,intcp=deni."
               when '4'
-                cmd = "4294:dn=k'#{no},subgrp=1,23=2&1,ocb=modify&perm&#{p_emerg},intcp=deni."
+                df_cmd += "4294:dn=k'#{no},subgrp=1,23=2&1,ocb=modify&perm&#{p_emerg},intcp=deni."
               else
                 cmd += ",intcp=remove"
             end
@@ -177,7 +183,7 @@ class BusinessLogicController < ApplicationController
             if x.s_cid == "1"
               cmd += ",23=1&1"; test_r << "CGLIP"
             else
-              cmd += ",23=2&1"; test_r << "CGLIP"
+              r_cmd += ",23=2&1"; test_r << "CGLIP"
             end
           end
 
@@ -196,8 +202,8 @@ class BusinessLogicController < ApplicationController
                 cf_act  = "cfwdu"
                 test_r << "CFWDU"
                 unless cf_no.blank?
-                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}"
-                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}"
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
                   test_r << "ACTIVATE"
                 end
               when "2"
@@ -205,8 +211,8 @@ class BusinessLogicController < ApplicationController
                 cf_act  = "cfwdbsub"
                 test_r << "CFWDBSUB"
                 unless cf_no.blank?
-                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}"
-                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}"
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
                   test_r << "ACTIVATE"
                 end
               when "3"
@@ -214,37 +220,39 @@ class BusinessLogicController < ApplicationController
                 cf_act  = "cfwdnor"
                 test_r << "CFWDNOR"
                 unless cf_no.blank?
-                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}"
-                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}"
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
                   test_r << "ACTIVATE"
                 end
               when "4"
                 r_subctrl += "&cfwdu"
                 cf_act    = "cfwdu"
                 test_r << "CFWDU"
-                unless cf_no.blank?
-                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=remove"
-                  cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}"
-                  test_r << "ACTIVATE"
-                end
+
+                cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
+                #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
+                test_r << "ACTIVATE"
+
               when "5"
                 r_subctrl += "&cfwdbsub"
                 cf_act    = "cfwdbsub"
                 test_r << "CFWDBSUB"
-                unless cf_no.blank?
-                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=remove"
-                  cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}"
-                  test_r << "ACTIVATE"
-                end
-              else
+
+                cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
+                #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
+                test_r << "ACTIVATE"
+
+              when "6"
                 r_subctrl += "&cfwdnor"
                 cf_act    = "cfwdnor"
                 test_r << "CFWDNOR"
-                unless cf_no.blank?
-                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=remove"
-                  cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}"
-                  test_r << "ACTIVATE"
-                end
+
+                cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
+                #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
+                test_r << "ACTIVATE"
+
+              else
+
             end
           end
 
@@ -262,6 +270,7 @@ class BusinessLogicController < ApplicationController
             else
               r_subctrl += '&ocbvar'
               #还需要加上"password=2"
+              r_cmd     += ",password=2"
             end
           end
 
@@ -283,18 +292,39 @@ class BusinessLogicController < ApplicationController
             end
           end
 
+          if r_subctrl !~ /^subctrl=2$/
+            r_cmd += ","+r_subctrl+"."
+          else
+            r_cmd += "."
+          end
 
           if subctrl =~ /^subctrl=1$/
             cmd += "."
           else
             cmd += ","+subctrl+ "."
           end
+
           puts x.id
-          puts cmd
-          puts ad_cmd
-          puts cf_no_cmd
-          puts cf_act_cmd
-          puts test_r
+          #如果cmd或者r_cmd没有数据，则不发送到终端。
+          if r_cmd =~/4294:dn=k'#{no}.$/
+            puts "不发送命令"
+          else
+
+          end
+
+          if cmd =~/4294:dn=k'#{no}.$/
+            puts "不发送命令"
+          else
+
+          end
+          puts "cmd---->"+cmd
+          #cf_no_cmd在删除的时候需要在r_cmd的前面。
+          puts "cf_no_cmd---->"+cf_no_cmd
+          puts "cf_act_cmd---->"+cf_act_cmd
+          puts "r_cmd---->"+r_cmd
+          puts "df_cmd---->"+df_cmd
+          puts "ad_cmd---->"+ad_cmd
+          puts "test_r---->"+test_r.to_s
 
         end
       end
