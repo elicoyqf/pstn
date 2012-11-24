@@ -116,7 +116,11 @@
     </div>
     <div class="span6">
       <div class="control-group">
-        <label class="control-label" for="s_df_flag">选择欠费停开机标志</label>
+        <label class="control-label" for="s_df_flag">
+          <!--<a href="#" id="tp" rel="tooltip" title="必须要选择相关的用户权限及组号">hover over me</a>-->
+          <a id="pop"  data-content="如果选择了去欠费或开机类业务，必须要选择用户类型或指定分组号，否则后台会出错。" rel="popover" href="#"
+             data-original-title="注意">选择业务类型</a>
+        </label>
 
         <div class="controls">
           <div class="input-prepend">
@@ -136,13 +140,47 @@
   <div class="span12">
     <div class="span6">
       <div class="control-group">
+        <label class="control-label inline" for="s_cid">选择来电显示</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">%</span>
+            <%= select(:pstn_stop, "s_cid",
+                       { "开通来电显示" => "1", "去除来电显示" => "2" },
+                       { prompt: "选择来电显示" }, { class: 'span11', id: "s_cid" }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group">
+        <label class="control-label inline" for="s_hs">选择热线服务</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">%</span>
+            <%= select(:pstn_stop, "s_hs",
+                       { "开通热线服务" => "1", "去除热线服务" => "2" },
+                       { prompt: "选择热线服务" }, { class: 'span11', id: "s_hs" }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="span6">
+      <div class="control-group">
         <label class="control-label" for="s_cf">选择呼叫转移</label>
 
         <div class="controls">
           <div class="input-prepend">
             <span class="add-on">*</span>
             <%= select(:pstn_stop, "s_cf",
-                       { "无条件转移" => "1", "遇忙转移" => "2", "无应答转移" => "3" },
+                       { "无条件转移"  => "1", "遇忙转移" => "2", "无应答转移" => "3",
+                         "去无条件转移" => "4", "去遇忙转移" => "5", "去无应答转移" => "6" },
                        { prompt: "选择呼叫转移" }, { class: 'span11', id: "s_cf" }) %>
 
           </div>
@@ -151,7 +189,7 @@
     </div>
     <div class="span6">
       <div class="control-group">
-        <label class="control-label" for="s_cf_no">转移到号码</label>
+        <label class="control-label" for="s_cf_no">呼叫转移号码</label>
 
         <div class="controls">
           <div class="input-prepend">
@@ -171,19 +209,22 @@
         <label class="control-label inline" for="s_cr">选择呼出限制</label>
 
         <div class="controls">
-          <label class="checkbox inline">
-            <%= check_box_tag :s_cr, "cr", false, { name: "ns" } %>
-          </label>
+          <div class="input-prepend">
+            <span class="add-on">R</span>
+            <%= select(:pstn_stop, "s_cr",
+                       { "开通呼出限制" => "1", "去除呼出限制" => "2" },
+                       { prompt: "选择呼出限制" }, { class: 'span11', id: "s_cf" }) %>
+          </div>
         </div>
       </div>
     </div>
     <div class="span6">
       <div class="control-group">
-        <label class="control-label" for="s_cr_no">输入呼出限制密码</label>
+        <label class="control-label" for="s_cr_no">呼出限制密码</label>
 
         <div class="controls">
           <div class="input-prepend">
-            <span class="add-on">%</span>
+            <span class="add-on">R</span>
             <%= text_field :pstn_stop, "s_cr_no", { :class => "span10", placeholder: "默认密码为8888", :size => "16",
                                                     :id    => "s_cr_no" } %>
           </div>
@@ -195,52 +236,38 @@
 
 <div class="row">
   <div class="span12">
-    <div class="span3">
-      <div class="control-group">
-        <label class="control-label inline" for="s_cid">选择来电显示</label>
-
-        <div class="controls">
-          <label class="checkbox inline">
-            <%= check_box_tag :s_cid, "cid", false, { name: "ns" } %>
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="span3">
-      <div class="control-group">
-        <label class="control-label inline" for="s_hs">选择热线服务</label>
-
-        <div class="controls">
-          <label class="checkbox inline">
-            <%= check_box_tag :s_hs, "hs", false, { name: "ns" } %>
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="span3">
+    <div class="span6">
       <div class="control-group">
         <label class="control-label inline" for="s_mc">选择叫醒服务</label>
 
         <div class="controls">
-          <label class="checkbox inline">
-            <%= check_box_tag :s_mc, "mc", false, { name: "ns" } %>
-          </label>
+          <div class="input-prepend">
+            <span class="add-on">H</span>
+            <%= select(:pstn_stop, "s_mc",
+                       { "开通叫醒服务" => "1", "去除叫醒服务" => "2" },
+                       { prompt: "选择叫醒服务" }, { class: 'span11', id: "s_mc" }) %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="span3">
+    <div class="span6">
       <div class="control-group">
         <label class="control-label inline" for="s_ad">选择缩位拔号</label>
 
         <div class="controls">
-          <label class="checkbox inline">
-            <%= check_box_tag :s_ad, "ad", false, { name: "ns" } %>
-          </label>
+
+          <div class="input-prepend">
+            <span class="add-on">A</span>
+            <%= select(:pstn_stop, "s_ad",
+                       { "开通缩位拔号" => "1", "去除缩位拔号" => "2" },
+                       { prompt: "选择缩位拔号" }, { class: 'span11', id: "s_ad" }) %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="span12 offset4">
   <button id="s_b_s" class="btn btn-large btn-success span4">
     <i class="icon-ok icon-white"></i>

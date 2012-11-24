@@ -7,6 +7,9 @@ $ ->
   $('#show3').hide()
   $('#show4').hide()
   $('#show5').hide()
+  $('#pop').popover({trigger: "hover"})
+  $('#tp').tooltip({selector: "a[rel=tooltip]"})
+
   $("#b_logic_form").validate()
   #  $("a[rel=popover]").popover({trigger: 'hover' })
   #  $("#p_1").popover('toggle')
@@ -34,12 +37,12 @@ $ ->
     ###$("input[name='ns']:checked").each( ->
       alert $(this).val()
     )###
-    s_hs = ""
-    s_mc = ""
-    s_cr = ""
-    s_ad = ""
-    s_cid = ""
-    if $('#s_hs').attr("checked") != undefined
+    s_hs = $('#s_hs').val()
+    s_mc = $('#s_mc').val()
+    s_cr = $('#s_cr').val()
+    s_ad = $('#s_ad').val()
+    s_cid = $('#s_cid').val()
+    ###if $('#s_hs').attr("checked") != undefined
       s_hs = "hs"
     if $('#s_mc').attr("checked") != undefined
       s_mc = "mc"
@@ -48,7 +51,7 @@ $ ->
     if $('#s_ad').attr("checked") != undefined
       s_ad = "ad"
     if $('#s_cid').attr("checked") != undefined
-      s_cid = "cid"
+      s_cid = "cid"###
 
     if !s_bp && !b_s_no && !s_no && !s_bt && !s_perm && !s_cf && !s_hs && !s_mc && !s_cr && !s_ad && !s_cr_no && !s_df_flag && !s_sg_no && !s_cf_no && !s_cid
       $("#conModal").modal('show')
@@ -96,9 +99,14 @@ $ ->
               $('#s_df_flag').val("")
               $('#s_sg_no').val("")
               $('#s_bp').val("")
-              $("input[name='ns']:checked").each(->
+              $('#s_hs').val("")
+              $('#s_mc').val("")
+              $('#s_cr').val("")
+              $('#s_ad').val("")
+              $('#s_cid').val("")
+              ###$("input[name='ns']:checked").each(->
                 $(this).attr("checked", false)
-              )
+              )###
               false
             "json"
           )

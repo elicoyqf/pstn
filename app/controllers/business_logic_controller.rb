@@ -100,6 +100,7 @@ class BusinessLogicController < ApplicationController
 
     new_or.each do |x|
       no    = x.s_no.to_i
+      s_cr  = x.s_cr
       cr_no = x.s_cr_no
       cf_no = x.s_cf_no
       bt    = x.s_bt
@@ -116,68 +117,173 @@ class BusinessLogicController < ApplicationController
           #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
           cmd        = "4294:dn=k'#{no}"
           subctrl    = "subctrl=1"
+          r_subctrl  = "subctrl=2"
           ad_cmd     = ""
           cf_no_cmd  = ""
+          cf_act     = ""
           cf_act_cmd = ""
           perm_cmd   = ",ocb=modify&perm&"
           test_r     = []
+          p_nat      = dn.jf_name.p_nat
+          p_local    = dn.jf_name.p_local
+          p_suburban =dn.jf_name.p_suburban
+          p_int      = dn.jf_name.p_int
+          p_emerg    = dn.jf_name.p_emerg
 
           #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
-          (cmd += ",subgrp=#{bt}") unless x.s_bt.blank?
-          (cmd += ",subgrp=#{sg_no}") unless x.s_sg_no.blank?
+          (cmd += ",subgrp=#{bt}"; test_r << "SUBGRP  :  #{bt}") unless x.s_bt.blank?
+          (cmd += ",subgrp=#{sg_no}"; test_r << "SUBGRP  :  #{sg_no}") unless x.s_sg_no.blank?
           #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
           #"国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5"
           #各个机房的权限已经放到jf_name里面p_nat,p_local,p_suburban,p_int,p_emerg.
           case perm
             when '1'
-              perm_cmd += "#{dn.jf_name.p_nat}"
+              perm_cmd += "#{p_nat}"
+              test_r << "PERM      #{p_nat}"
             when '2'
-              perm_cmd += "#{dn.jf_name.p_local}"
+              perm_cmd += "#{p_local}"
+              test_r << "PERM      #{p_local}"
             when '3'
-              perm_cmd += "#{dn.jf_name.p_suburban}"
+              perm_cmd += "#{p_suburban}"
+              test_r << "PERM      #{p_suburban}"
             when '4'
-              perm_cmd += "#{dn.jf_name.p_int}"
-            when '5'
-              perm_cmd += "#{dn.jf_name.p_emerg}"
+              perm_cmd += "#{p_int}"
+              test_r << "PERM      #{p_int}"
             else
-              puts "Perm errors.-------------->"
+              perm_cmd += "#{p_emerg}"
+              test_r << "PERM      #{p_emerg}"
           end
 
           cmd += perm_cmd
+          #欠费标志需要细化
+          #{ "放欠费" => "1", "欠费停机" => "2", "停机保号" => "3", "拆机" => "4",
+          #"去欠费" => "51","去欠费开机" => "52","开机"  => "53" }
+          unless x.s_df_flag.blank?
+            case x.s_df_flag
+              when '1'
+                cmd = "4294:dn=k'#{no},subgrp=18."
+              when '2'
+                cmd = "4294:dn=k'#{no},subgrp=18,intcp=badp."
+              when '3'
+                cmd = "4294:dn=k'#{no},subgrp=18,intcp=deni."
+              when '4'
+                cmd = "4294:dn=k'#{no},subgrp=1,23=2&1,ocb=modify&perm&#{p_emerg},intcp=deni."
+              else
+                cmd += ",intcp=remove"
+            end
+          end
 
-          case x.s_cf
-            when "1"
-              subctrl    += "&cfwdu"
-              cf_act_cmd = "cfwdu"
-            when "2"
-              subctrl    += "&cfwdbsub"
-              cf_act_cmd = "cfwdbsub"
-            when "3"
-              subctrl    += "&cfwdnor"
-              cf_act_cmd = "cfwdnor"
+          unless x.s_cid.blank?
+            if x.s_cid == "1"
+              cmd += ",23=1&1"; test_r << "CGLIP"
             else
-              puts "cf is null.---------->"
+              cmd += ",23=2&1"; test_r << "CGLIP"
+            end
           end
 
-          #todo:如果设置了呼叫转移的号码则需要另外再将呼转号码激活
-          unless cf_no.blank?
-            cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act_cmd}&k'#{cf_no}"
-            cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act_cmd}&k'#{cf_no}"
+          unless x.s_ad.blank?
+            if x.s_ad == "1"
+              ad_cmd = "141:dn=k'#{no},abdrepsz=20."
+            else
+              ad_cmd = "142:dn=k'#{no}."
+            end
           end
 
-          if !x.s_cr.blank? and !x.s_cr_no.blank?
-            cmd     += ",password=1&"+"\""+"#{cr_no}"+"\""
-            subctrl += '&ocbvar'
-          elsif !x.s_cr.blank? and x.s_cr_no.blank?
-            cmd     += ",password=1&"+"\""+"8888"+"\""
-            subctrl += '&ocbvar'
+          unless x.s_cf.blank?
+            case x.s_cf
+              when "1"
+                subctrl += "&cfwdu"
+                cf_act  = "cfwdu"
+                test_r << "CFWDU"
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}"
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}"
+                  test_r << "ACTIVATE"
+                end
+              when "2"
+                subctrl += "&cfwdbsub"
+                cf_act  = "cfwdbsub"
+                test_r << "CFWDBSUB"
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}"
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}"
+                  test_r << "ACTIVATE"
+                end
+              when "3"
+                subctrl += "&cfwdnor"
+                cf_act  = "cfwdnor"
+                test_r << "CFWDNOR"
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}"
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}"
+                  test_r << "ACTIVATE"
+                end
+              when "4"
+                r_subctrl += "&cfwdu"
+                cf_act    = "cfwdu"
+                test_r << "CFWDU"
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=remove"
+                  cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}"
+                  test_r << "ACTIVATE"
+                end
+              when "5"
+                r_subctrl += "&cfwdbsub"
+                cf_act    = "cfwdbsub"
+                test_r << "CFWDBSUB"
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=remove"
+                  cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}"
+                  test_r << "ACTIVATE"
+                end
+              else
+                r_subctrl += "&cfwdnor"
+                cf_act    = "cfwdnor"
+                test_r << "CFWDNOR"
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=remove"
+                  cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}"
+                  test_r << "ACTIVATE"
+                end
+            end
           end
 
-          (cmd += ",subgrp=1") unless x.s_df_flag.blank?
-          (ad_cmd = "141:dn=k'#{no},abdrepsz=20.") unless x.s_ad.blank?
-          (subctrl += "&fdcto") unless x.s_hs.blank?
-          (subctrl += "&ac24hour") unless x.s_mc.blank?
-          (cmd += ",23=1&1") unless x.s_cid.blank?
+          unless s_cr.blank?
+            if s_cr == "1"
+              if cr_no.blank?
+                cmd     += ",password=1&"+"\""+"8888"+"\""
+                subctrl += '&ocbvar'
+                test_r << "PASSWORD"
+              else
+                cmd     += ",password=1&"+"\""+"#{cr_no}"+"\""
+                subctrl += '&ocbvar'
+                test_r << "PASSWORD"
+              end
+            else
+              r_subctrl += '&ocbvar'
+              #还需要加上"password=2"
+            end
+          end
+
+          unless  x.s_hs.blank?
+            if x.s_hs == "1"
+              subctrl += "&fdcto"
+              test_r << "FDCTO"
+            else
+              r_subctrl += "&fdcto"
+            end
+          end
+
+          unless  x.s_mc.blank?
+            if x.s_mc == "1"
+              subctrl += "&ac24hour"
+              test_r << "AC24HOUR"
+            else
+              r_subctrl += "&ac24hour"
+            end
+          end
+
+
           if subctrl =~ /^subctrl=1$/
             cmd += "."
           else
@@ -188,6 +294,7 @@ class BusinessLogicController < ApplicationController
           puts ad_cmd
           puts cf_no_cmd
           puts cf_act_cmd
+          puts test_r
 
         end
       end
