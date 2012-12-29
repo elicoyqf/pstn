@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="cd031064-8ae0-4119-bf5f-145853f094c1" name="New changelist" comment="" />
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" time="1356769141733" ignored="false" />
+    <file path="/Dummy.txt" changelist="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" time="1356769153660" ignored="false" />
     <file path="/.gitignore" changelist="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" time="1356768981253" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +43,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="5" selection-start="436" selection-end="436" vertical-scroll-proportion="0.7281553">
+            <state line="14" column="4" selection-start="430" selection-end="430" vertical-scroll-proportion="0.6796116">
               <folding />
             </state>
           </provider>
@@ -1033,7 +1034,11 @@
       <created>1356769146517</created>
       <updated>1356769146517</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="添加了idea项目文件的git归档。">
+      <created>1356769159357</created>
+      <updated>1356769159357</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1240,7 +1245,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="436" selection-end="436" vertical-scroll-proportion="0.7281553">
+        <state line="14" column="4" selection-start="430" selection-end="430" vertical-scroll-proportion="0.6796116">
           <folding />
         </state>
       </provider>
