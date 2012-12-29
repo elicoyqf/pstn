@@ -1,5 +1,7 @@
 Pstn::Application.routes.draw do
 
+  get "log_book/logging"
+
   get "business_logic/change"
   post "business_logic/bl_submit"
 

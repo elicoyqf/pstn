@@ -1,0 +1,105 @@
+body {
+    padding: 0;
+    margin: 0;
+    font: 1em/1.4 Cambria, Georgia, sans-serif;
+    color: #333;
+    background: #fff;
+}
+
+blockquote p {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#container {
+    width: 500px;
+    padding: 0 0 50px;
+    margin: 0 auto;
+}
+
+/*显示对左边的泡泡对话框模型*/
+.example-left {
+    position: relative;
+    padding: 15px 30px;
+    margin: 0;
+    color: #fff;
+    background: #333333; /* default background for browsers without gradient support */
+    /* css3 */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    -moz-box-shadow: 10px 10px 20px #000; /* Firefox */
+    -webkit-box-shadow: 10px 10px 20px #000; /* Safari 和 Chrome */
+    box-shadow: 10px 10px 20px #000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+    behavior: url(ie-css3.htc);
+}
+
+/* display of quote author (alternatively use a class on the element following the blockquote) */
+.example-left + p {
+    margin: 15px 0 2em 85px;
+    font-style: italic;
+    behavior: url(ie-css3.htc);
+}
+
+/* creates the triangle */
+.example-left:after {
+    content: "";
+    position: absolute;
+    /*bottom:-50px; */
+    left: -40px;
+    top: 40px;
+    border-width: 20px 40px 20px 0px;
+    border-style: solid;
+    border-color: transparent #333333;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
+    behavior: url(ie-css3.htc);
+}
+
+/*================================================================*/
+
+/*显示对右边的泡泡对话框模型*/
+.example-right {
+    position: relative;
+    padding: 15px 30px;
+    margin: 0;
+    color: #fff;
+    background: #333333; /* default background for browsers without gradient support */
+    /* css3 */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    -moz-box-shadow: 10px 10px 20px #000; /* Firefox */
+    -webkit-box-shadow: 10px 10px 20px #000; /* Safari 和 Chrome */
+    box-shadow: 10px 10px 20px #000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+    behavior: url(ie-css3.htc);
+}
+
+/* display of quote author (alternatively use a class on the element following the blockquote) */
+.example-right + p {
+    margin: 15px 0 2em 85px;
+    font-style: italic;
+    behavior: url(ie-css3.htc);
+}
+
+/* creates the triangle */
+.example-right:after {
+    content: "";
+    position: absolute;
+    /*bottom:-50px; */
+    /*left:-30px;*/
+    right: -40px;
+    top: 40px;
+    border-width: 20px 0px 20px 40px;
+    border-style: solid;
+    border-color: transparent #333333;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
+    behavior: url(ie-css3.htc);
+}
+
+/*================================================================*/

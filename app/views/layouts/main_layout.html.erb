@@ -9,15 +9,20 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
-<div class = "container" style="width: 1250px;">
+<div class="container" style="width: 1250px;">
   <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "alert alert-#{key}") %>
   <% end %>
 
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span3 well" style="background-color: #DDD;">
-        <%= render 'layouts/slide' %>
+      <div class="span3">
+        <div class="row well" style="background-color: #DDD;">
+          <%= render 'layouts/slide' %>
+        </div>
+        <div class="row well" style="background-color: #DDD;">
+          <%= render 'layouts/logbook_slide' %>
+        </div>
       </div>
       <div class="span9 well" style="background-color: #DDD;">
         <%= yield %>
