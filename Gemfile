@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
-gem 'whenever', '0.8.0'
+gem 'whenever'
 gem 'bootstrap-sass', '2.1.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
