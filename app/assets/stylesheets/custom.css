@@ -32,14 +32,14 @@ blockquote p {
     -moz-box-shadow: 10px 10px 20px #000; /* Firefox */
     -webkit-box-shadow: 10px 10px 20px #000; /* Safari 和 Chrome */
     box-shadow: 10px 10px 20px #000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
-    behavior: url(ie-css3.htc);
+    behavior: url(/ie-css3.htc);
 }
 
 /* display of quote author (alternatively use a class on the element following the blockquote) */
 .example-left + p {
     margin: 15px 0 2em 85px;
     font-style: italic;
-    behavior: url(ie-css3.htc);
+    behavior: url(/ie-css3.htc);
 }
 
 /* creates the triangle */
@@ -47,15 +47,15 @@ blockquote p {
     content: "";
     position: absolute;
     /*bottom:-50px; */
-    left: -40px;
-    top: 40px;
+    left: -30px;
+    top: 10px;
     border-width: 20px 40px 20px 0px;
     border-style: solid;
     border-color: transparent #333333;
     /* reduce the damage in FF3.0 */
     display: block;
     width: 0;
-    behavior: url(ie-css3.htc);
+    behavior: url(/ie-css3.htc);
 }
 
 /*================================================================*/
@@ -75,14 +75,14 @@ blockquote p {
     -moz-box-shadow: 10px 10px 20px #000; /* Firefox */
     -webkit-box-shadow: 10px 10px 20px #000; /* Safari 和 Chrome */
     box-shadow: 10px 10px 20px #000; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
-    behavior: url(ie-css3.htc);
+    behavior: url(/ie-css3.htc);
 }
 
 /* display of quote author (alternatively use a class on the element following the blockquote) */
 .example-right + p {
     margin: 15px 0 2em 85px;
     font-style: italic;
-    behavior: url(ie-css3.htc);
+    behavior: url(/ie-css3.htc);
 }
 
 /* creates the triangle */
@@ -91,15 +91,15 @@ blockquote p {
     position: absolute;
     /*bottom:-50px; */
     /*left:-30px;*/
-    right: -40px;
-    top: 40px;
+    right: -30px;
+    top: 10px;
     border-width: 20px 0px 20px 40px;
     border-style: solid;
     border-color: transparent #333333;
     /* reduce the damage in FF3.0 */
     display: block;
     width: 0;
-    behavior: url(ie-css3.htc);
+    behavior: url(/ie-css3.htc);
 }
 
 /*================================================================*/
