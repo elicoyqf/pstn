@@ -19,3 +19,12 @@ en:
 
       multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
+
+  date:
+    formats:
+      default: "%日/%月/%年"
+
+    day_names: [星期天, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [周末, 周一, 周二, 周三, 周四, 周五, 周六]
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    abbr_month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]

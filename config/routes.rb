@@ -1,5 +1,9 @@
 Pstn::Application.routes.draw do
 
+  resources :events
+
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
   get "log_book/logging"
   get "log_book/log_type1"
   get "log_book/log_type2"
