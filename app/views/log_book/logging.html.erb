@@ -1,11 +1,13 @@
 <!--todo:需要先把数据库里面的记录先显示出来。-->
 <div class="container-fluid">
   <div class="row-fluid">
-
+    <div class="content-box-header">
+      今日交班所有事项如下示：
+    </div>
     <% @logs.each_with_index do |x, i| %>
         <div class="row">
-          <% if i%2 == 0 %>
-              <div class="span2" style="width: 150px;">
+          <% if i % 2 == 0 %>
+              <div class="span2 offset1" >
                 <%= image_tag 'avatar.png' %>
                 易其锋<br/>
                 类型：
@@ -17,24 +19,22 @@
                 <br/>
                 时间：<%= x.created_at.strftime('%Y-%m-%d %H:%M') %>
               </div>
-              <div class="span5 offset1">
-                <blockquote class="example-left">
+              <div class="span6">
+                <blockquote class="triangle-border left">
                   <p>
                     <%= x.content %>
                   </p>
                 </blockquote>
               </div>
           <% else %>
-              <div class="span2" style="width: 150px;">
-              </div>
-              <div class="span5 offset1">
-                <blockquote class="example-right">
+              <div class="span6 offset3">
+                <blockquote class="triangle-border right">
                   <p>
                     <%= x.content %>
                   </p>
                 </blockquote>
               </div>
-              <div class="span2 offset1" style="width: 150px;">
+              <div class="span2">
                 <%= image_tag 'avatar.png' %>
                 易其锋<br/>
                 类型：

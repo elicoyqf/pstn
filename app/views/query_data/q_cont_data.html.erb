@@ -101,7 +101,7 @@
   <table class="table table-bordered ">
     <thead class="table-header-owen">
     <tr>
-      <th colspan="5" style="text-align: center;">查询显示结果如下所示：</th>
+      <th colspan="7" style="text-align: center;">查询显示结果如下所示：</th>
     </tr>
     <tr>
       <th>#序号</th>
@@ -116,8 +116,8 @@
     <% @q_data.each_with_index do |x, index| %>
         <tr class="<%= cycle("list-line-odd", "list-line-even") %>">
           <td><%= index %></td>
-          <td><%= x.sn %></td>
-          <td><%= x.work_order_t %></td>
+          <td><%= x.s_no %></td>
+          <td><%= x.s_cid %></td>
           <td><%= x.status %></td>
           <td><%= x.user.name %></td>
           <td><%= x.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>

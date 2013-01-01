@@ -17,15 +17,20 @@
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span2 offset1">
-        <div class="row well" style="background-color: #DDD;">
+        <div class="row">
           <%= render 'layouts/slide' %>
         </div>
-        <div class="row well" style="background-color: #DDD;">
+        <div class="row">
+          <%= render 'layouts/gpon_slide' %>
+        </div>
+        <div class="row">
           <%= render 'layouts/logbook_slide' %>
         </div>
       </div>
-      <div class="span9 well" style="background-color: #DDD;">
-        <%= yield %>
+      <div class="span9">
+        <div class="content-box ">
+          <%= yield %>
+        </div>
       </div>
     </div>
   </div>

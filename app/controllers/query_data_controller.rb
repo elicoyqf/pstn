@@ -36,7 +36,7 @@ class QueryDataController < ApplicationController
     q_hash = { id: 1 }
     q_str  = "user_id = :id"
     unless q_no.blank?
-      q_str      += " and sn = :sn"
+      q_str      += " and s_no = :sn"
       q_hash[:sn]=q_no
     end
 
@@ -71,7 +71,7 @@ class QueryDataController < ApplicationController
     #content = PstnStop.where(q_str,)
     #@q_data = PstnStop.paginate page: params[:page], per_page: 10
     #@q_data = PstnStop.where(q_str,q_hash).paginate page: params[:page], per_page: 10
-    @q_data = PstnStop.where(q_str, q_hash).paginate page: params[:page], per_page: 10
+    @q_data = WorkOrder.where(q_str, q_hash).paginate page: params[:page], per_page: 10
     puts "---------------q_data"
     puts @q_data
     puts "---------------q_data"

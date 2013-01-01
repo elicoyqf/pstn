@@ -12,7 +12,7 @@ gem 'bootstrap-sass', '2.1.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'hanzi_to_pinyin'
-
+gem 'font-awesome-sass-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
