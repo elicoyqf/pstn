@@ -4,35 +4,34 @@
     韶关铁通业务运营支撑系统
   </div>
   <br/>
-      <br/>
+  <br/>
 
   <div class="row">
-    <form action="welcome/main" method="get">
-      <div class="span4 offset4">
-        <label class="control-label" for="inputEmail">用户名</label>
-
-        <div class="controls">
-          <input type="text" id="inputEmail" placeholder="输入用户名">
+    <%= form_tag 'welcome/main', :method => :post do -%>
+        <div class="span4 offset4">
+          <%= label_tag 'name','用户名' %>
+          <div class="controls">
+            <%= text_field_tag 'name', nil, placeholder: "输入用户名"  %>
+          </div>
         </div>
-      </div>
-      <div class="span4 offset4">
-        <label class="control-label" for="inputPassword">密 码</label>
+        <div class="span4 offset4">
+          <%= label_tag 'pass', '密  码' %>
 
-        <div class="controls">
-          <input type="password" id="inputPassword" placeholder="输入密码">
+          <div class="controls">
+            <%= text_field_tag 'pass',nil,  placeholder: '输入密码'  %>
+          </div>
         </div>
-      </div>
-      <div class="span4 offset4 control-group">
-        <div class="controls">
-          <label class="checkbox">
-            <input type="checkbox"> 记住我
-          </label>
-          <br/>
-          <button type="submit" class="btn btn-primary btn-large">登录系统 <i class="icon-chevron-right
+        <div class="span4 offset4 control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox"> 记住我
+            </label>
+            <br/>
+            <button type="submit" class="btn btn-primary btn-large">登录系统 <i class="icon-chevron-right
                   icon-white"></i></button>
+          </div>
         </div>
-      </div>
-    </form>
+    <% end -%>
   </div>
 
   <br/>

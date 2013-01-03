@@ -4,9 +4,10 @@ Pstn::Application.routes.draw do
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
-  get "log_book/logging"
-  get "log_book/log_type1"
-  get "log_book/log_type2"
+  get 'log_book/logging'
+  get 'log_book/log_type1'
+  get 'log_book/log_type2'
+  get 'log_book/switch'
   post 'log_book/log_submit'
   get "business_logic/change"
   post "business_logic/bl_submit"
@@ -32,7 +33,7 @@ Pstn::Application.routes.draw do
   post "welcome/i_reverse_pstn_badp"
   post "welcome/i_reverse_pstn_deni"
 
-  get "welcome/main"
+  post "welcome/main"
   get "welcome/p_stop"
   get "welcome/p_start"
 

@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
   has_many :pstn_stops
   has_many :work_orders
   has_many :logbooks
+  has_many :events
 end

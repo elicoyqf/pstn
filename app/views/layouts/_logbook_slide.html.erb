@@ -4,22 +4,32 @@
       交接班处理
     </li>
     <li id="m_stop">
-      <a href="/log_book/logging"><i class="icon-book"></i>今日交班</a>
+      <%= content_tag :a, href: '/log_book/logging' do -%>
+          <%= content_tag(:i, '', class: 'icon-book') -%>今日交班
+      <% end %>
     </li>
     <li>
-      <a href="/log_book/log_type1">&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-book"></i>故障</a>
+      <%= content_tag :a, href: '/log_book/log_type1' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= content_tag(:i, '', class: 'icon-book') -%>故障
+      <% end %>
     </li>
     <li>
-      <a href="/log_book/log_type2">&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-book"></i>日常</a>
+      <%= content_tag :a, href: '/log_book/log_type2' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= content_tag(:i, '', class: 'icon-book') -%>日常
+      <% end %>
     </li>
     <li class="nav-header">
       其它
     </li>
     <li id="m_stop">
-      <a href="#"><i class="icon-book"></i>月交班记录</a>
+      <%= content_tag :a, href: '/calendar' do -%>
+          <%= content_tag(:i, '', class: 'icon-book') -%>月交班记录
+      <% end %>
     </li>
     <li id="m_stop">
-      <a href="#"><i class="icon-book"></i>查询记录</a>
+      <%= content_tag :a, href: '/events' do -%>
+          <%= content_tag(:i, '', class: 'icon-book') -%>交班记录汇总及查询
+      <% end %>
     </li>
   </ul>
 </div>

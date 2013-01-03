@@ -2,6 +2,7 @@
 require 'net/telnet'
 
 class WelcomeController < ApplicationController
+  skip_before_filter :authenticate, :only => [:index, :main]
   include ApplicationHelper
   include WelcomeHelper
 
@@ -18,7 +19,19 @@ class WelcomeController < ApplicationController
   end
 
   def main
-    render layout: "main_layout"
+    name = params[:name]
+    pass = params[:pass]
+    user = User.find_by_name(name)
+    if user.blank?
+      redirect_to root_path
+    else
+      if user.password == pass
+        session[:user_id] = user.id
+        render layout: "main_layout"
+      end
+    end
+
+
   end
 
   #将数据插入数据库中

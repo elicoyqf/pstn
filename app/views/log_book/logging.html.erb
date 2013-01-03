@@ -4,47 +4,67 @@
     <div class="content-box-header">
       今日交班所有事项如下示：
     </div>
-    <% @logs.each_with_index do |x, i| %>
+    <% @logs.each_with_index do |event, i| %>
         <div class="row">
           <% if i % 2 == 0 %>
-              <div class="span2 offset1" >
+              <div class="span2 offset1">
                 <%= image_tag 'avatar.png' %>
                 易其锋<br/>
                 类型：
-                <% if x.log_type.to_i == 1 %>
+                <% if event.event_type.to_i == 1 %>
                     故障
                 <% else %>
                     日常
                 <% end %>
                 <br/>
-                时间：<%= x.created_at.strftime('%Y-%m-%d %H:%M') %>
+                时间：<%= event.created_at.strftime('%Y-%m-%d %H:%M') %>
+
               </div>
               <div class="span6">
                 <blockquote class="triangle-border left">
                   <p>
-                    <%= x.content %>
+                    <%= event.name %>
                   </p>
+                  <div class="btn-toolbar">
+                    <div class="btn-group">
+                      <%= link_to '查看', event, { class: 'btn btn-info' } %>
+                      <%= link_to '编辑', edit_event_path(event), { class: 'btn btn-warning' } %>
+                      <%= link_to '删除', event, method: :delete, data: { confirm: '删除的日志无法恢复,确定要删除吗?' },
+                                  class:               'btn btn-danger' %>
+                    </div>
+                  </div>
+
                 </blockquote>
               </div>
           <% else %>
               <div class="span6 offset3">
                 <blockquote class="triangle-border right">
                   <p>
-                    <%= x.content %>
+                    <%= event.name %>
                   </p>
+                  <div class="btn-toolbar">
+                    <div class="btn-group">
+                      <%= link_to '查看', event, { class: 'btn btn-info' } %>
+                      <%= link_to '编辑', edit_event_path(event), { class: 'btn btn-warning' } %>
+                      <%= link_to '删除', event, method: :delete, data: { confirm: '删除的日志无法恢复,确定要删除吗?' },
+                                  class:               'btn btn-danger' %>
+                    </div>
+                  </div>
+
                 </blockquote>
+
               </div>
               <div class="span2">
                 <%= image_tag 'avatar.png' %>
                 易其锋<br/>
                 类型：
-                <% if x.log_type.to_i == 1 %>
+                <% if event.event_type.to_i == 1 %>
                     故障
                 <% else %>
                     日常
                 <% end %>
                 <br/>
-                时间：<%= x.created_at.strftime('%Y-%m-%d %H:%M') %>
+                时间：<%= event.created_at.strftime('%Y-%m-%d %H:%M') %>
               </div>
           <% end %>
         </div>
@@ -59,13 +79,13 @@
 <div class="container-fluid alert alert-block alert-info">
   <div class="row-fluid">
     <div class="span3 offset1" style="width: 100px;height:20px">
-      <%= image_tag 'sound.png' %>
+      <%= image_tag 'sound.png' -%>
     </div>
     <div class="span9">
-      <%= form_tag('log_submit') do %>
+      <%= form_tag('log_submit') do -%>
           <%= select(:loging, 'log_type', { "故障" => "1", "日常" => "2" }, { prompt: '选择交班类型' }, { class:    'span4', id: "s_bp",
-                                                                                                required: true }) %>
-          <%= text_area_tag 'my_log', nil, rows: 6, class: 'input-xlarge span12' %>
+                                                                                                required: true }) -%>
+          <%= text_area_tag 'my_log', nil, rows: 6, class: 'input-xlarge span12' -%>
 
           <div class="span12 offset4">
             <button id="s_b_s" class="btn btn-large btn-success span4">
@@ -73,7 +93,7 @@
               提交日志
             </button>
           </div>
-      <% end %>
+      <% end -%>
     </div>
   </div>
 </div>
