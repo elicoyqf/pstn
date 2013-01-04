@@ -9,7 +9,8 @@ class LogBookController < ApplicationController
     a = params[:my_log]
     t = params[:log_type]
     t = '2' if t.blank?
-    Event.create(user_id: 1, name: "#{a}", event_type: "#{t}")
+    Event.create(user_id: 1, name: "#{a}", event_type: "#{t}",start_at: Time.now.at_beginning_of_day + 8.5.hour,
+                 end_at: Time.now.at_beginning_of_day + 18.hour)
     redirect_to action: 'logging'
   end
 

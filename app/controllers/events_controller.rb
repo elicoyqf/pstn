@@ -78,7 +78,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to '/log_book/logging' }
       format.json { head :no_content }
     end
   end
