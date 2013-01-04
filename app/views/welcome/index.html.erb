@@ -11,14 +11,14 @@
         <div class="span4 offset4">
           <%= label_tag 'name','用户名' %>
           <div class="controls">
-            <%= text_field_tag 'name', nil, placeholder: "输入用户名"  %>
+            <%= text_field_tag 'name', nil, placeholder: '输入用户名' %>
           </div>
         </div>
         <div class="span4 offset4">
           <%= label_tag 'pass', '密  码' %>
 
           <div class="controls">
-            <%= text_field_tag 'pass',nil,  placeholder: '输入密码'  %>
+            <%= password_field_tag 'pass','', { placeholder: '输入密码' } %>
           </div>
         </div>
         <div class="span4 offset4 control-group">

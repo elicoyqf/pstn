@@ -9,15 +9,21 @@
       <% end %>
     </li>
     <li>
+      <%= content_tag :a, href: '/log_book/log_type2' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= content_tag(:i, '', class: 'icon-book') -%>日常
+      <% end %>
+    </li>
+    <li>
       <%= content_tag :a, href: '/log_book/log_type1' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
           <%= content_tag(:i, '', class: 'icon-book') -%>故障
       <% end %>
     </li>
     <li>
-      <%= content_tag :a, href: '/log_book/log_type2' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= content_tag(:i, '', class: 'icon-book') -%>日常
+      <%= content_tag :a, href: '/log_book/log_type3' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= content_tag(:i, '', class: 'icon-book') -%>要点
       <% end %>
     </li>
+
     <li class="nav-header">
       其它
     </li>
@@ -28,7 +34,12 @@
     </li>
     <li id="m_stop">
       <%= content_tag :a, href: '/events' do -%>
-          <%= content_tag(:i, '', class: 'icon-book') -%>交班记录汇总及查询
+          <%= content_tag(:i, '', class: 'icon-book') -%>交班记录汇总
+      <% end %>
+    </li>
+    <li id="m_stop">
+      <%= content_tag :a, href: '/events/query' do -%>
+          <%= content_tag(:i, '', class: 'icon-book') -%>查询交班记录
       <% end %>
     </li>
   </ul>

@@ -1,12 +1,19 @@
 Pstn::Application.routes.draw do
 
-  resources :events
+  resources :events do
+    collection do
+      get 'query'
+      post 'q_submit'
+    end
+  end
 
-  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-
+  get '/events/query'
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => { :year => /\d{4}/, :month => /\d{1,2}/ }
+  match '/logout',to:'welcome#logout'
   get 'log_book/logging'
   get 'log_book/log_type1'
   get 'log_book/log_type2'
+  get 'log_book/log_type3'
   get 'log_book/switch'
   post 'log_book/log_submit'
   get "business_logic/change"

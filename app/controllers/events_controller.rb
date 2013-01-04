@@ -1,5 +1,44 @@
 #coding: utf-8
 class EventsController < ApplicationController
+  #Get /events/query
+  def query
+    render layout: 'main_layout'
+  end
+
+  def q_submit
+    content = params[:event][:content]
+    date1   = params[:event][:date1]
+    date2   = params[:event][:date2]
+    q_sql   = ''
+    q_value = []
+    unless content.blank?
+      q_sql += 'name like ? '
+      q_value << '%' + content + '%'
+    end
+
+    unless date1.blank?
+      if q_sql.blank?
+        q_sql += 'created_at >= ? '
+        q_value << date1
+      else
+        q_sql += 'and created_at >= ? '
+        q_value << date1
+      end
+    end
+
+    unless date2.blank?
+      if q_sql.blank?
+        q_sql += 'created_at <= ?'
+        q_value << date2
+      else
+        q_sql += 'and created_at <= ?'
+        q_value << date2
+      end
+    end
+    @events = Event.where(q_sql, q_value)
+    render :template => 'events/index', layout: 'main_layout'
+  end
+
   # GET /events
   # GET /events.json
   def index

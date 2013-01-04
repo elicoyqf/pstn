@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
   $("#datepicker1").datepicker(changeMonth: true)
-  $("#datepicker2").datepicker()
+  $("#datepicker2").datepicker(changeMonth: true)
 #  $('#query_data_t1').hide()
 
   $('#q_b_s').click ->

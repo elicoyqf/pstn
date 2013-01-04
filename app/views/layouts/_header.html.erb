@@ -6,13 +6,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">韶关铁通业务运营支撑系统</a>
+      <a class="brand active" href="#"><%= full_title(yield(:title)) %> - <%= '{'+session[:name]+'}童鞋 ' %> 欢迎您登录本系统</a>
 
-      <div class="nav-collapse collapse">
+      <div class="nav-collapse collapse pull-right">
         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">关于</a></li>
+          <li><a href="#contact">反馈信息</a></li>
+          <li><a href="/logout">退出</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->

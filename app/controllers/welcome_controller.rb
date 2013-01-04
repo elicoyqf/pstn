@@ -10,12 +10,17 @@ class WelcomeController < ApplicationController
 
   end
 
+  def logout
+    reset_session
+    redirect_to root_url
+  end
+
   def p_stop
-    render layout: "main_layout"
+    render layout: 'main_layout'
   end
 
   def p_start
-    render layout: "main_layout"
+    render layout: 'main_layout'
   end
 
   def main
@@ -25,9 +30,14 @@ class WelcomeController < ApplicationController
     if user.blank?
       redirect_to root_path
     else
-      if user.password == pass
+      if Digest::MD5.hexdigest(pass) == user.password
         session[:user_id] = user.id
-        render layout: "main_layout"
+        session[:name]    = user.alias_name
+        session[:level]   = user.level
+        session[:d_id]    = user.department_id
+        render layout: 'main_layout'
+      else
+        redirect_to root_path
       end
     end
 

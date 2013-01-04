@@ -1,29 +1,38 @@
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <% if @event.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @event.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label '交班日志如下示：' %>
+      <%= f.text_area :name, :class => 'span12', :rows => 5 %>
     </div>
-  <% end %>
+    <br/>
+    <div class="field">
+      <%= f.label '交班类型' %>
+      <%= select :event,:event_type,[['日常',2],['故障',1],['要点',3]], {:prompt => '选择交班类型', class: 'span3'}%>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_area :name , :class => 'span12',:rows => 5 %>
-  </div>
-  <div class="field">
-    <%= f.label :start_at %><br />
-    <%= f.datetime_select :start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :end_at %><br />
-    <%= f.datetime_select :end_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    </div>
+    <br/>
+    <div class="field">
+      <%= f.label '开始于' %>
+
+      <%= f.datetime_select :start_at %>
+    </div>
+    <br/>
+    <div class="field">
+      <%= f.label '结束于' %>
+      <%= f.datetime_select :end_at %>
+    </div>
+    <div class="actions">
+      <%= f.submit '提交修改' %>
+    </div>
 <% end %>

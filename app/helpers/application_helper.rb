@@ -1,7 +1,7 @@
 #encoding: utf-8
 module ApplicationHelper
   def full_title(page_title)
-    base_title = "自动停复机系统"
+    base_title = '韶关铁通业务运营支撑系统'
     if page_title.empty?
       base_title
     else
