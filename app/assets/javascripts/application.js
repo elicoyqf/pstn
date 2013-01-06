@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery.validate.min
+//= require jquery.placeholder.1.3.min
+//= require jquery.ui.datepicker-zh-CN
 //= require bootstrap
+//= require events
+//= require business_logic
 //= require_tree .

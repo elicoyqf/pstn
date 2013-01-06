@@ -3,7 +3,9 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag "application", media: "all", :cache => false %>
+  <%= stylesheet_link_tag "/stylesheets/event_calendar", media: "all", :cache => false %>
   <%= javascript_include_tag "application", :cache => false %>
+  <%= javascript_include_tag "/javascripts/event_calendar", :cache => false %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
