@@ -1,5 +1,8 @@
 Pstn::Application.routes.draw do
 
+  get 'pass_modify/modify'
+  post 'pass_modify/m_submit'
+
   resources :events do
     collection do
       get 'query'

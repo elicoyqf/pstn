@@ -9,16 +9,19 @@
   <div class="row">
     <%= form_tag 'welcome/main', :method => :post do -%>
         <div class="span4 offset4">
-          <%= label_tag 'name','用户名' %>
           <div class="controls">
-            <%= text_field_tag 'name', nil, placeholder: '输入用户名' %>
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-user icon-large"></i></span>
+              <%= text_field_tag 'name', nil, placeholder: '输入用户名' %>
+            </div>
           </div>
         </div>
         <div class="span4 offset4">
-          <%= label_tag 'pass', '密  码' %>
-
           <div class="controls">
-            <%= password_field_tag 'pass','', { placeholder: '输入密码' } %>
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-pencil icon-large"></i></span>
+              <%= password_field_tag 'pass', '', { placeholder: '输入密码' } %>
+            </div>
           </div>
         </div>
         <div class="span4 offset4 control-group">

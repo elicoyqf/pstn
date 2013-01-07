@@ -35,7 +35,7 @@ class EventsController < ApplicationController
         q_value << date2
       end
     end
-    @events = Event.where(q_sql, q_value)
+    @events = Event.where(q_sql, *q_value)
     render :template => 'events/index', layout: 'main_layout'
   end
 
@@ -98,7 +98,8 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
+    #添加一个新的更新用户id的参数。
+    params[:event][:update_id] = session[:user_id]
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }

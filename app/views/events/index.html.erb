@@ -15,8 +15,9 @@
       <tr>
         <td><%= event.name %></td>
         <td class="span2" style="vertical-align:middle;text-align: center"><%= event.start_at.strftime('%Y-%m-%d %H:%M') %></td>
-        <td class="span2" style="vertical-align:middle;text-align: center"><%= event.end_at.strftime('%y-%m-%d %H:%M') %></td>
-        <td class='span1' style="vertical-align:middle;text-align: center"><%= event.user.alias_name %></td>
+        <td class="span2" style="vertical-align:middle;text-align: center"><%= event.end_at.strftime('%Y-%m-%d
+        %H:%M') %></td>
+        <td style="vertical-align:middle;text-align: center;width: 50px;"><%= event.user.alias_name %></td>
         <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '查看', event %></td>
         <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '编辑', edit_event_path(event) %></td>
         <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '删除', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,4 +28,6 @@
 
 <br/>
 
-<%= link_to '新建交班日志', new_event_path ,{class:'btn btn-primary'}%>
+<!--删除新建链接。
+<% link_to '新建交班日志', new_event_path, { class: 'btn btn-primary' } %>
+-->

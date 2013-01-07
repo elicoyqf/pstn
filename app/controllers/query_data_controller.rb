@@ -39,7 +39,7 @@ class QueryDataController < ApplicationController
       q_str      += " and s_no = :sn"
       q_hash[:sn]=q_no
     end
-
+    #todo:查询业务类别此处还需要再进行修改才能查询数据。
     unless q_bt.blank?
       q_str      += " and work_order_t = :bt"
       q_hash[:bt]=q_bt
