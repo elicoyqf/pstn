@@ -191,7 +191,7 @@ blockquote p {
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
 	border-radius:10px;
-    behavior: url(/ie-css3.htc);
+    /*behavior: url(/ie-css3.htc);*/
 }
 
 /* Variant : for left positioned triangle
