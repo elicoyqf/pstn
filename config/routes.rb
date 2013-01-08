@@ -17,6 +17,8 @@ Pstn::Application.routes.draw do
   get 'log_book/log_type1'
   get 'log_book/log_type2'
   get 'log_book/log_type3'
+  get 'log_book/log_type4'
+  get 'log_book/log_type5'
   get 'log_book/switch'
   post 'log_book/log_submit'
   get "business_logic/change"

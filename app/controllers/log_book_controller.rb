@@ -30,6 +30,17 @@ class LogBookController < ApplicationController
     render action: 'logging', layout: 'main_layout'
   end
 
+  def log_type4
+    @logs = Event.find_all_by_event_type('4')
+    render action: 'logging', layout: 'main_layout'
+  end
+
+  def log_type5
+    @logs = Event.find_all_by_event_type('5')
+    render action: 'logging', layout: 'main_layout'
+  end
+
+
   def switch
     e_id  = params[:id]
     e     = Event.find(e_id.to_i)
