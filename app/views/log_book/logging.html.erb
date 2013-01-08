@@ -11,10 +11,18 @@
                 <%= event.user.alias_name %>
                 <br/>
                 类型：
-                <% if event.event_type.to_i == 1 %>
-                    故障
+                <% case event.event_type %>
+                <% when '1' %>
+                    <%= '故障' %>
+                <% when '2' %>
+                    <%= '日常' %>
+                <% when '3' %>
+                    <%= '要点' %>
+                <% when '4' %>
+                    <%= '调令' %>
+                <% when '5' %>
+                    <%= '会议令' %>
                 <% else %>
-                    日常
                 <% end %>
                 <br/>
                 时间：<%= event.created_at.strftime('%Y-%m-%d %H:%M') %>
@@ -75,10 +83,18 @@
                 <%= event.user.alias_name %>
                 <br/>
                 类型：
-                <% if event.event_type.to_i == 1 %>
-                    故障
+                <% case event.event_type %>
+                <% when '1' %>
+                    <%= '故障' %>
+                <% when '2' %>
+                    <%= '日常' %>
+                <% when '3' %>
+                    <%= '要点' %>
+                <% when '4' %>
+                    <%= '调令' %>
+                <% when '5' %>
+                    <%= '会议令' %>
                 <% else %>
-                    日常
                 <% end %>
                 <br/>
                 时间：<%= event.created_at.strftime('%Y-%m-%d %H:%M') %>
