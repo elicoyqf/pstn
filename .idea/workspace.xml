@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="修正了日志菜单查询bug。">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="修正了日志显示类型错误的问题。">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/log_book/logging.html.erb" afterPath="$PROJECT_DIR$/app/views/log_book/logging.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357662289741" ignored="false" />
-    <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357662956707" ignored="false" />
+    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357663078561" ignored="false" />
+    <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357664005420" ignored="false" />
     <file path="/change.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356795143271" ignored="false" />
     <file path="/routes.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357656935997" ignored="false" />
     <file path="/log_book_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357556016213" ignored="false" />
@@ -22,7 +21,7 @@
     <file path="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..jf_names" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356876394657" ignored="false" />
     <file path="/dummy.sql" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356876395832" ignored="false" />
     <file path="/a.sql" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356876395833" ignored="false" />
-    <file path="/fake_console.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357660737231" ignored="false" />
+    <file path="/fake_console.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357663529564" ignored="false" />
     <file path="/application.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356878577205" ignored="false" />
     <file path="/_logbook_slide.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357660836615" ignored="false" />
     <file path="/main_layout.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357572546261" ignored="false" />
@@ -105,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log_book_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="log_book_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/log_book_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="43" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0">
+            <state line="42" column="51" selection-start="1200" selection-end="1200" vertical-scroll-proportion="1.4681724">
               <folding />
             </state>
           </provider>
@@ -123,10 +122,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logging.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="logging.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/log_book/logging.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="25" selection-start="3795" selection-end="3795" vertical-scroll-proportion="0.6940582">
+            <state line="73" column="53" selection-start="3077" selection-end="3077" vertical-scroll-proportion="-7.857143">
               <folding />
             </state>
           </provider>
@@ -135,7 +134,7 @@
       <file leaf-file-name="application_helper.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="17" selection-end="96" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -1360,10 +1359,10 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
-        <item index="1" class="java.lang.String" itemvalue="Rake.routes" />
-        <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
-        <item index="3" class="java.lang.String" itemvalue="Rake.db:migrate" />
-        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
+        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
+        <item index="2" class="java.lang.String" itemvalue="Rake.routes" />
+        <item index="3" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
+        <item index="4" class="java.lang.String" itemvalue="Rake.db:migrate" />
       </list>
     </recent_temporary>
   </component>
@@ -1514,7 +1513,11 @@
       <created>1357662300596</created>
       <updated>1357662300596</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="修正了日志显示类型错误的问题。">
+      <created>1357663083889</created>
+      <updated>1357663083889</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1539,18 +1542,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3442438" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3782267" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32659933" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16773848" sideWeight="0.66891134" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16773848" sideWeight="0.62738496" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2449089" sideWeight="0.22222222" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.244373" sideWeight="0.66891134" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.244373" sideWeight="0.62738496" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39730638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3973747" sideWeight="0.49429968" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33108866" sideWeight="0.497557" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37261504" sideWeight="0.497557" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4090268" sideWeight="0.49348533" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1603,7 +1606,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正了日志菜单查询bug。" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正了日志显示类型错误的问题。" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1635,6 +1638,7 @@
     <MESSAGE value="将calendar的字体调整到14px" />
     <MESSAGE value="调整了日志的分类，将分类提到全局变量applicationHelp中，添加了日志的相关查询，优化了部分代码。" />
     <MESSAGE value="修正了日志菜单查询bug。" />
+    <MESSAGE value="修正了日志显示类型错误的问题。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1697,13 +1701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="4" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/events/query.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="54" selection-start="1003" selection-end="1003" vertical-scroll-proportion="-14.142858">
@@ -1725,13 +1722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/log_book_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="43" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="25" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
@@ -1741,14 +1731,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="17" selection-end="96" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/log_book/logging.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="25" selection-start="3795" selection-end="3795" vertical-scroll-proportion="0.6940582">
+        <state line="73" column="53" selection-start="3077" selection-end="3077" vertical-scroll-proportion="-7.857143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="4" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/log_book_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="51" selection-start="1200" selection-end="1200" vertical-scroll-proportion="1.4681724">
           <folding />
         </state>
       </provider>
