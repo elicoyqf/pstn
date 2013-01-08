@@ -10,17 +10,27 @@
     </li>
     <li>
       <%= content_tag :a, href: '/log_book/log_type2' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= content_tag(:i, '', class: 'icon-book') -%>日常
+          <%= content_tag(:i, '', class: 'icon-list-alt') -%>日常
       <% end %>
     </li>
     <li>
       <%= content_tag :a, href: '/log_book/log_type1' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= content_tag(:i, '', class: 'icon-book') -%>故障
+          <%= content_tag(:i, '', class: 'icon-warning-sign') -%>故障
       <% end %>
     </li>
     <li>
       <%= content_tag :a, href: '/log_book/log_type3' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
           <%= content_tag(:i, '', class: 'icon-book') -%>要点
+      <% end %>
+    </li>
+    <li>
+      <%= content_tag :a, href: '/log_book/log_type3' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= content_tag(:i, '', class: 'icon-print') -%>调令
+      <% end %>
+    </li>
+    <li>
+      <%= content_tag :a, href: '/log_book/log_type3' do -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= content_tag(:i, '', class: 'icon-bullhorn') -%>会议令
       <% end %>
     </li>
 

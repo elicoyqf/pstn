@@ -18,7 +18,7 @@
     <br/>
     <div class="field">
       <%= f.label '交班类型' %>
-      <%= select :event,:event_type,[['日常',2],['故障',1],['要点',3]], {:prompt => '选择交班类型', class: 'span3'}%>
+      <%= select :event,:event_type,LOG_TYPE, {:prompt => '选择交班类型', class: 'span3'}%>
 
     </div>
     <br/>

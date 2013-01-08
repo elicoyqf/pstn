@@ -6,7 +6,7 @@ Pstn::Application.routes.draw do
   resources :events do
     collection do
       get 'query'
-      post 'q_submit'
+      get 'q_submit'
     end
   end
 

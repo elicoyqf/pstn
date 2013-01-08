@@ -100,7 +100,7 @@
     </div>
     <div class="span9">
       <%= form_tag('log_submit') do -%>
-          <%= select_tag('log_type', options_for_select([['日常', 2], ['故障', 1], ['要点', 3]]),
+          <%= select_tag('log_type', options_for_select(LOG_TYPE),
                          { prompt:   '选择交班类型',
                            class:    'span3',
                            id:       's_bp',

@@ -5,7 +5,7 @@
         输入查询条件：
       </div>
       <br/>
-      <%= form_tag 'q_submit', id: 'e_query' do -%>
+      <%= form_tag 'q_submit', id: 'e_query', method: 'get' do -%>
           <div class="row-fluid">
             <div class="span6">
               <div class="controls">
@@ -18,14 +18,25 @@
             <div class="span6">
               <div class="controls">
                 <div class="input-prepend">
+                  <span class="add-on">日志类型</span>
+                  <%= select_tag('log_type', options_for_select(LOG_TYPE),
+                                 { prompt:   '选择交班类型',
+                                   class:    'span6',
+                                   id:       'log_type',
+                                   required: true }) -%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span6">
+              <div class="controls">
+                <div class="input-prepend">
                   <span class="add-on">开始日期</span>
                   <%= text_field :event, "date1", { :class => "span6", :id => "e_q_date1" } %>
                 </div>
               </div>
-
             </div>
-          </div>
-          <div class="row-fluid">
             <div class="span6">
               <div class="controls">
                 <div class="input-prepend">
@@ -34,7 +45,9 @@
                 </div>
               </div>
             </div>
-            <div class="span6">
+          </div>
+          <div class="row-fluid">
+            <div class="span6 offset3">
               <button id="e_q_submit" class="btn btn-primary span8">查 询 数 据</button>
             </div>
           </div>

@@ -6,43 +6,54 @@ class EventsController < ApplicationController
   end
 
   def q_submit
-    content = params[:event][:content]
-    date1   = params[:event][:date1]
-    date2   = params[:event][:date2]
-    q_sql   = ''
-    q_value = []
+    content  = params[:event][:content]
+    date1    = params[:event][:date1]
+    date2    = params[:event][:date2]
+    log_type = params[:log_type]
+    q_sql    = ''
+    q_value  = []
+
     unless content.blank?
       q_sql += 'name like ? '
       q_value << '%' + content + '%'
     end
 
+    unless log_type.blank?
+      if q_sql.blank?
+        q_sql+= 'event_type = ?'
+      else
+        q_sql+= 'and event_type = ? '
+      end
+      q_value << log_type
+    end
+
     unless date1.blank?
       if q_sql.blank?
         q_sql += 'created_at >= ? '
-        q_value << date1
       else
         q_sql += 'and created_at >= ? '
-        q_value << date1
       end
+      q_value << date1
     end
 
     unless date2.blank?
       if q_sql.blank?
         q_sql += 'created_at <= ?'
-        q_value << date2
       else
-        q_sql += 'and created_at <= ?'
-        q_value << date2
+        q_sql += 'and created_at <= ? '
       end
+      q_value << date2
     end
-    @events = Event.where(q_sql, *q_value)
+
+    @title  = '查询'
+    @events = Event.where(q_sql, *q_value).paginate page: params[:page], per_page: 10
     render :template => 'events/index', layout: 'main_layout'
   end
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.paginate page: params[:page], per_page: 10
 
     respond_to do |format|
       format.html { render layout: 'main_layout' }
@@ -97,7 +108,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
-    @event = Event.find(params[:id])
+    @event                     = Event.find(params[:id])
     #添加一个新的更新用户id的参数。
     params[:event][:update_id] = session[:user_id]
     respond_to do |format|
