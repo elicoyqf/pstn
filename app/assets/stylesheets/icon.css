@@ -1,0 +1,35 @@
+.key {
+    background:url(key.png) center right no-repeat;
+    padding:0 16px 0 0;
+    /*white-space:nowrap;*/
+}
+
+.user {
+    background:url(user-black.png) center right no-repeat;
+    padding:0 16px 0 0;
+    /*white-space:nowrap;*/
+}
+
+.calendar {
+    background:url(calendar-month.png) center right no-repeat;
+    padding:0 16px 0 0;
+    /*white-space:nowrap;*/
+}
+
+.search {
+    background:url(search.png) center right no-repeat;
+    padding:0 16px 0 0;
+    /*white-space:nowrap;*/
+}
+
+.report {
+    background:url(report.png) center right no-repeat;
+    padding:0 16px 0 0;
+    /*white-space:nowrap;*/
+}
+
+.comment {
+    background:url(comments.png) center right no-repeat;
+    padding:0 16px 0 0;
+    /*white-space:nowrap;*/
+}

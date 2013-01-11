@@ -20,15 +20,16 @@
         <td style="vertical-align:middle;text-align: center;width: 50px;"><%= event.user.alias_name %></td>
         <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '查看', event %></td>
         <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '编辑', edit_event_path(event) %></td>
-        <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '删除', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='span1' style="vertical-align:middle;text-align: center"><%= link_to '删除', event, method: :delete,
+                                                                                       data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
-<div class="pagination pagination-small">
+<div class="pagination pagination-small center">
   <%= will_paginate @events,:inner_window => 2 %>
 </div>
-<div class="well">
+<div class="well center">
   统计信息：共<%= @events.total_entries %>条,共<%= (@events.total_entries / @events.per_page)+1 %>页,
   当前第<%= @events.current_page %>页.
 </div>

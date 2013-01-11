@@ -96,7 +96,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: '交班日志已新建成功.' }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
@@ -113,7 +113,7 @@ class EventsController < ApplicationController
     params[:event][:update_id] = session[:user_id]
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event, notice: '交班日志已成功更新.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

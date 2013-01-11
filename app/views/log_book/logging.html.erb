@@ -25,7 +25,7 @@
                   <% unless event.update_id.blank? %>
                       <blockquote class="pull-right">
                         <small>最后一次修改是由
-                          <%= User.where('id = ?', event.update_id).first.alias_name %> 在
+                          <%= event.update_user.alias_name %> 在
                           <%= event.updated_at.strftime('%Y-%m-%d %H:%M') %></small>
                       </blockquote>
                   <% end %>
@@ -50,7 +50,7 @@
                   <% unless event.update_id.blank? %>
                       <blockquote class="pull-right">
                         <small>最后一次修改是由
-                          <%= User.where('id = ?', event.update_id).first.alias_name %> 在
+                          <%= event.update_user.alias_name %> 在
                           <%= event.updated_at.strftime('%Y-%m-%d %H:%M') %></small>
                       </blockquote>
                   <% end %>
@@ -81,10 +81,15 @@
 
   </div>
 </div>
-
-<br/>
-<br/>
-
+<% unless @logs.blank? %>
+    <div class="pagination pagination-small center">
+      <%= will_paginate @logs, :inner_window => 2 %>
+    </div>
+    <div class="well center">
+      统计信息：共<%= @logs.total_entries %>条,共<%= (@logs.total_entries / @logs.per_page)+1 %>页,
+      当前第<%= @logs.current_page %>页.
+    </div>
+<% end %>
 <div class="container-fluid alert alert-block alert-info">
   <div class="row-fluid">
     <div class="span3 offset1" style="width: 100px;height:20px">
