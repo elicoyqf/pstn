@@ -1,6 +1,6 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,11 +8,11 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 
 gem 'whenever'
-gem 'bootstrap-sass', '2.1.0'
+gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'hanzi_to_pinyin'
-gem 'font-awesome-rails'
+#gem 'hanzi_to_pinyin'
+#gem 'font-awesome-rails','0.5.0'
 
 gem 'event-calendar', :require => 'event_calendar'
 # Gems used only for assets and not required
