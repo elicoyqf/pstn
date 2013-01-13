@@ -1,0 +1,17 @@
+.slide-box
+  ul.nav.nav-list.bs-docs-sidenav
+
+    li.nav-header
+      | 程控业务相关
+    li#m_stop
+      = content_tag :a, href: '/welcome/p_stop' do
+        = content_tag(:i, '', class: 'icon-tag')
+        | 停机业务办理
+    li
+      = content_tag :a, href: '/business_logic/change' do
+        = content_tag(:i, '', class: 'icon-th')
+        | 其它业务办理
+    li#m_q_data
+      = content_tag :a, href: '/query_data/start' do
+        = content_tag(:i, '', class: 'icon-search')
+        | 查询工单状态

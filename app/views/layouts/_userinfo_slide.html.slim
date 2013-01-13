@@ -1,0 +1,12 @@
+.slide-box
+  ul.nav.nav-list
+    li.nav-header
+      | 个人信息页面
+    li#m_stop
+      = content_tag :a, href: '#' do
+        = content_tag(:i, '', class: 'icon-briefcase')
+        | 个人资料
+    li
+      = content_tag :a, href: '/pass_modify/modify' do
+        = content_tag(:i, '', class: 'icon-wrench')
+        | 密码修改

@@ -1,0 +1,60 @@
+p
+h3 停机业务办理
+.alert.alert-info
+  span.label.label-warning 注意
+  | 每行一个号码或者以“；”进行分隔都可以。请按规定进行输入，以免出错！
+.alert.alert-success#show1
+  span.label.label-warning#err1 数据提交成功
+  br
+  | 后台程序正在处理中...
+  br
+  | 由于后台数据执行较慢，请稍候再查询结果！
+  br
+  br
+  p
+    a.btn.btn-success#sR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
+.alert.alert-error#show3
+  span.label.label-warning#err2 数据提交失败
+  br
+  | 数据格式不对...
+  br
+  | 请重新按上面规则输入数据！
+  br
+  br
+  p
+    a.btn.btn-danger#dataR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
+
+.alert.alert-error#show4
+  span.label.label-warning#err3 批量数据提交失败
+  br
+  | 批量数据输入有错误...
+  br
+  | 请仔细检查批量输入号码，按按规则进行修改！
+  br
+  br
+  p
+    a.btn.btn-danger#pdataR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
+
+#showContent
+  form#myform1
+    = text_area_tag 'cont1',nil,rows:6,class:'input-xlarge span12'
+  .alert.alert-block.alert-info
+    h3.alert-heading
+      span.label.label-warning 注意
+      | 先输入上框数据后再选择对应功能进行操作
+    | 如果点击以下功能进行操作，过程不可逆，请慎重操作！
+    .btn-toolbar style="margin-top: 18px;"
+      .btn-group
+        = link_to sanitize('<i class="icon-fire icon-white"></i> 放欠费'), { action: "pstn_stop" }, { method: "post", class: "btn btn-large btn-primary", href: "#", id: "pstn_stop" }
+      .btn-group
+        = link_to sanitize('<i class="icon-fire icon-white"></i> 欠费停机'), { action: "pstn_stop" }, { method: "post", class: "btn btn-large btn-primary ", href: "#", id: "pstn_badp" }
+      .btn-group
+        = link_to sanitize('<i class="icon-fire icon-white"></i> 停机'), { action: "pstn_stop" }, { method: "post", class: "btn btn-large btn-primary ", href: "#", id: "pstn_deni" }
+      .btn-group
+        = link_to sanitize('<i class="icon-fire icon-white"></i> 拆机'), { action: "pstn_stop" }, { method: "post", class: "btn btn-large btn-primary ", href: "#", id: "pstn_reset" }
