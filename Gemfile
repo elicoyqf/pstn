@@ -6,7 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'slim','1.3.6'
 gem 'whenever'
 gem 'bootstrap-sass'
 gem 'will_paginate'

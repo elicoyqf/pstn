@@ -1,0 +1,12 @@
+.slide-box
+  ul.nav.nav-list
+    li.nav-header
+      | GPON业务相关
+    li#m_stop
+      = content_tag :a, href: '/log_book/logging' do
+        = content_tag(:i, '', class: 'icon-road')
+        |数据开通
+    li#m_stop
+      = content_tag :a, href: '/log_book/logging' do
+        = content_tag(:i, '', class: 'icon-remove')
+        |数据删除

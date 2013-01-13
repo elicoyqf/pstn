@@ -28,6 +28,7 @@ class WelcomeController < ApplicationController
     pass = params[:pass]
     user = User.find_by_name(name)
     if user.blank?
+      flash[:error] = '用户名或密码输入不正确，请重试!'
       redirect_to root_path
     else
       if Digest::MD5.hexdigest(pass) == user.password
@@ -37,6 +38,7 @@ class WelcomeController < ApplicationController
         session[:d_id]    = user.department_id
         render layout: 'main_layout'
       else
+        flash[:error] = '用户名或密码输入不正确，请重试!'
         redirect_to root_path
       end
     end

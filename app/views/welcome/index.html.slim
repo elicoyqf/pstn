@@ -1,0 +1,30 @@
+.login-box
+  .login-box-header
+    | 韶关铁通业务运营支撑系统
+  br
+  br
+
+  .row
+    = form_tag 'welcome/main', :method => :post do
+      .span4.offset4
+        .controls
+          .input-prepend
+            span.add-on
+              i.user
+            = text_field_tag 'name', nil, placeholder: '输入用户名'
+      .span4.offset4
+        .controls
+          .input-prepend
+            span.add-on
+              i.key
+            = password_field_tag 'pass', '', { placeholder: '输入密码' }
+      .span4.offset4.control-group
+        .controls
+          label.checkbox
+            input type="checkbox" 记住我
+          br
+          button.btn.btn-primary.btn-large type="submit"
+            | 登录系统
+            i.icon-chevron-right.icon-white
+
+  br
