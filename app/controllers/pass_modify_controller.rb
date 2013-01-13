@@ -13,14 +13,14 @@ class PassModifyController < ApplicationController
       if n_pass == a_pass
         p_md5 = Digest::MD5.hexdigest(n_pass)
         user.update_attribute(:password, p_md5)
-        flash[:notice] = '密码修改成功，请保存好你的新密码。'
+        flash[:success] = '密码修改成功，请保存好你的新密码。'
         redirect_to action: 'modify'
       else
-        flash[:notice] = '新密码两次确认不一致，请重新输入。'
+        flash[:error] = '新密码两次确认不一致，请重新输入。'
         redirect_to action: 'modify'
       end
     else
-      flash[:notice] = '原始密码输入不正确，请重新输入。'
+      flash[:error] = '原始密码输入不正确，请重新输入。'
       redirect_to action: 'modify'
     end
 

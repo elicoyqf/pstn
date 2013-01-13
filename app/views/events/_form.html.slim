@@ -1,0 +1,27 @@
+= form_for(@event) do |f|
+  - if @event.errors.any?
+    #error_explanation
+      h2 = pluralize(@event.errors.count, 'Error')
+        | 交班日志保存失败:
+      ul
+        - @event.errors.full_messages.each do |msg|
+          li = msg
+
+    .field
+      = f.label '交班日志如下示：'
+      = f.text_area :name, :class => 'span12', :rows => 5
+    br
+    .field
+      = f.label '交班类型'
+      = select :event,:event_type,LOG_TYPE, {:prompt => '选择交班类型', class: 'span3'}
+
+    br
+    .field
+      = f.label '开始于'
+      = f.datetime_select :start_at
+    br
+    .field
+      = f.label '结束于'
+      = f.datetime_select :end_at
+    .actions
+      = f.submit '提交修改'

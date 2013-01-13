@@ -1,0 +1,58 @@
+form.form-vertical.well#q_data_form action="q_cont_data" method="get"
+  .alert.alert-block.alert-info
+    h4.alert-heading 查询提交数据!
+    | 可以通过此页面查询个人提交的所有数据状态，此数据状态只查询数据更新一次后的结果...
+  fieldset
+    legend 输入查询条件
+    .row-fluid
+      .span12
+        .row-fluid
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 查询号码
+                = text_field :pstn_stop, 'sn', { :class => 'span6', :size => '16', :id => 'q_no' }
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 业务类型
+                = select(:pstn_stop, 'work_order_t', { '所有' => '0', '放欠费' => '1', '欠费停机' => '2', '停机' => '3', '拆机' => '3' }, { prompt: '选择业务类型' }, { class: 'span6', id: 'q_bt' })
+        .row-fluid
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 开始日期
+                = text_field :pstn_stop, 'date1', { :class => 'span6', :id => 'datepicker1' }
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 结束日期
+                = text_field :pstn_stop, 'date2', { :class => 'span6', :id => 'datepicker2' }
+        .row-fluid
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 后台状态
+                = select(:pstn_stop, 'status', { '所有状态' => '1', '成功状态' => '1', '等待状态' => '2', '失败状态' => '3' }, { prompt: '选择后台数据状态' }, { class: 'span6', id: 'q_bs' })
+          .span6
+            button.btn.btn-primary.span8#q_b_s 查 询 数 据
+
+.modal.hide.fade#myModal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal" ×
+    h3 日期选择有错误
+  .modal-body
+    h4
+      p 结束日期要大于或等于开始日期!
+  .modal-footer
+    a.btn.btn-danger.btn-large href="#" data-dismiss="modal" 关 闭
+
+.modal.hide.fade#conModal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal" ×
+    h3 条件输入有错误
+  .modal-body
+    h4
+      p 最少需要输入一项条件才能查询!
+  .modal-footer
+    a.btn.btn-danger.btn-large href="#" data-dismiss="modal" 关 闭

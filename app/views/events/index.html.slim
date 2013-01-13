@@ -1,0 +1,29 @@
+h1 #{ @title }所有交班记录汇总
+
+table.table.table-striped.table-bordered.table-condensed
+  thead
+    tr
+      th style="text-align: center" 内容
+      th style="text-align: center" 开始于
+      th style="text-align: center" 结束于
+      th style="text-align: center" 记录员
+      th colspan="3" style="text-align: center" 动作
+  tbody
+  - @events.each do |event|
+    tr
+      td = event.name
+      td class="span2" style="vertical-align:middle;text-align: center" = event.start_at.strftime('%Y-%m-%d %H:%M')
+      td class="span2" style="vertical-align:middle;text-align: center" = event.end_at.strftime('%Y-%m-%d %H:%M')
+      td style="vertical-align:middle;text-align: center;width: 50px;" = event.user.alias_name
+      td class='span1' style="vertical-align:middle;text-align: center" = link_to '查看', event
+      td class='span1' style="vertical-align:middle;text-align: center" = link_to '编辑', edit_event_path(event)
+      td class='span1' style="vertical-align:middle;text-align: center" = link_to '删除', event, method: :delete, data: { confirm: 'Are you sure?' }
+
+.pagination.pagination-small.center
+  = will_paginate @events,:inner_window => 2
+.well.center
+  | 统计信息：一共有 #{ @events.total_entries } 条,当前第 #{ @events.current_page } 页，
+  | 共 #{ (@events.total_entries / @events .per_page)+1 } 页.
+br
+
+- link_to '新建交班日志', new_event_path, { class: 'btn btn-primary' }

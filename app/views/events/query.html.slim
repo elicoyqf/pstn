@@ -1,0 +1,52 @@
+.container-fluid
+  .span12
+    .row-fluid
+      .content-box-header
+        | 输入查询条件：
+      br
+      = form_tag 'q_submit', id: 'e_query', method: 'get' do
+        .row-fluid
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 查询内容
+                = text_field :event, 'content', { :class => 'span6', :size => '16', :id => 'q_content' }
+          .span6
+            .controls
+              .input-prepend
+                span.add-on 日志类型
+                = select_tag('log_type', options_for_select(LOG_TYPE), { prompt:'选择交班类型', class:'span6', id:'log_type', required:true })
+          .row-fluid
+            .span6
+              .controls
+                .input-prepend
+                  span.add-on 开始日期
+                  = text_field :event, 'date1', { :class => 'span6', :id => 'e_q_date1' }
+            .span6
+              .controls
+                .input-prepend
+                  span.add-on 结束日期
+                  = text_field :event, 'date2', { :class => 'span6', :id => 'e_q_date2' }
+          .row-fluid
+            .span6.offset3
+              button#e_q_submit.btn.btn-primary.span8 查 询 数 据
+
+.modal.hide.fade#e_con_Modal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal">×</button>
+    h3 条件输入有错误
+  .modal-body
+    h4
+      p 最少需要输入一项条件才能查询!
+  .modal-footer
+    a.btn.btn-danger.btn-large href="#"  data-dismiss="modal" 关 闭
+
+.modal.hide.fade#e_date_Modal
+  .modal-header
+    button.close type="button" data-dismiss="modal" ×
+    h3 日期选择有错误
+  .modal-body
+    h4
+      p 结束日期要大于或等于开始日期!
+  .modal-footer
+    a.btn.btn-danger.btn-large href="#" data-dismiss="modal" 关 闭

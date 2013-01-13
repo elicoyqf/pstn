@@ -1,344 +1,250 @@
 - unless @wo.blank?
   - if @wo.errors.any?
     #error_explanation
-      h2
-        = pluralize(@wo.errors.count, "error")
+      h2 #{ pluralize(@wo.errors.count, 'error') }
           | prohibited this login from being saved:
 
       ul
         - @wo.errors.full_messages.each do |msg|
           li = msg
 #content
-form.form-horizontal.well#b_logic_form
-  fieldset
-  legend 新装、去欠费、新业务等业务办理
-  .row-fluid
-  .alert.alert-block.alert-info
-    h4.alert-heading
-      span.label.label-warning 注意
-      | 业务办理
-    | 批量号码请按每行一个号码或者以“；”进行分隔都可以。请按规定进行输入，以免出错！
-  .row
-    .span12
+  form.form-horizontal.well#b_logic_form
+    fieldset
+    legend 新装、去欠费、新业务等业务办理
+    .row-fluid
+    .alert.alert-block.alert-info
+      h4.alert-heading
+        span.label.label-warning 注意
+        | 业务办理
+      | 批量号码请按每行一个号码或者以“；”进行分隔都可以。请按规定进行输入，以免出错！
+    .row
       .span12
-        .control-group
-          label.control-label for="b_s_no" 批量输入号码
+        .span12
+          .control-group
+            label.control-label for="b_s_no" 批量输入号码
 
-          .controls
-            = text_area_tag :pstn_stop, nil, { :class => "span10", :size => "50x10", :id => "b_s_no", }
-  .row
-    .span12
-      .span6
-        .control-group
-          label.control-label for="s_no" 输入用户号码
+            .controls
+              = text_area_tag :pstn_stop, nil, { :class => 'span10', :size => '50x10', :id => 'b_s_no', }
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label for="s_no" 输入用户号码
 
-          .controls
-            .input-prepend
-              span class="add-on" K
-              = text_field :pstn_stop, "s_no", { :class => "span10", :size => "16", :id => "s_no", digits: true }
-      .span6
-        .control-group
-          label.control-label for="s_bp" 选择业务级别
+            .controls
+              .input-prepend
+                span class="add-on" K
+                = text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no', digits: true }
+        .span6
+          .control-group
+            label.control-label for="s_bp" 选择业务级别
 
-          .controls
-            input-prepend
-              span.add-on X
-              = select(:pstn_stop, "s_bp", { "新装业务" => "1", "普通业务" => "2", "开机业务" => "3", "停机业务" => "4", "拆机业务" => "5" }, { prompt: "选择业务级别" }, { class: 'span11', id: "s_bp", required: true })
+            .controls
+              .input-prepend
+                span.add-on X
+                = select(:pstn_stop, 's_bp', { '新装业务' => '1', '普通业务' => '2', '开机业务' => '3', '停机业务' => '4', '拆机业务' => '5' }, { prompt: '选择业务级别' }, { class: 'span11', id: 's_bp', required: true })
 
-  .row
-    .span12
-      .span6
-        .control-group
-          label.control-label for="s_bt" 选择用户类型
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label for="s_bt" 选择用户类型
 
-          .controls
-            .input-prepend
-              span.add-on #
-              = select(:pstn_stop, "s_bt", { "普通公网用户" => "1", "语音专线" => "5", "预付费" => "7", "易套餐" => "5" }, { prompt: "选择用户类型" }, { class: 'span11', id: "s_bt" })
-      .span6
-        .control-group
-          <label class="control-label" for="s_sg_no">指定分组号(虚拟网)</label>
+            .controls
+              .input-prepend
+                span.add-on #
+                = select(:pstn_stop, 's_bt', { '普通公网用户' => '1', '语音专线' => '5', '预付费' => '7', '易套餐' => '5' }, { prompt: '选择用户类型' }, { class: 'span11', id: 's_bt' })
+        .span6
+          .control-group
+            label.control-label for="s_sg_no" 指定分组号(虚拟网)
 
+            .controls
+              .input-prepend
+                span.add-on S
+                = text_field :pstn_stop, 's_sg_no', { :class => 'span10', :size => '16', :id => 's_sg_no', digits: true }
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">S</span>
-              <%= text_field :pstn_stop, "s_sg_no", { :class => "span10", :size => "16", :id => "s_sg_no", digits: true } %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label for="s_perm" 选择用户权限
 
-  <div class="row">
-    <div class="span12">
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label" for="s_perm">选择用户权限</label>
+            .controls
+              .input-prepend
+                span.add-on P
+                = select(:pstn_stop, 's_perm', { '国内' => '1', '市话' => '2', '郊话' => '3', '国际' => '4', '紧急' => '5' }, { prompt: '选择用户权限' }, { class: 'span11', id: 's_perm' })
+        .span6
+          .control-group
+            label.control-label for="s_df_flag"
+              a id="pop"  data-content="如果选择了去欠费或开机类业务，必须要选择用户类型或指定分组号，否则后台会出错。" rel="popover" href="#" data-original-title="注意" 选择业务类型
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">P</span>
-              <%= select(:pstn_stop, "s_perm",
-                         { "国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5" },
-                         { prompt: "选择用户权限" }, { class: 'span11', id: "s_perm" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label" for="s_df_flag">
-            <!--<a href="#" id="tp" rel="tooltip" title="必须要选择相关的用户权限及组号">hover over me</a>-->
-            <a id="pop"  data-content="如果选择了去欠费或开机类业务，必须要选择用户类型或指定分组号，否则后台会出错。" rel="popover" href="#"
-               data-original-title="注意">选择业务类型</a>
-          </label>
+            .controls
+              .input-prepend
+                span.add-on $
+                = select(:pstn_stop, 's_dl_flag', { '放欠费' => '1', '欠费停机' => '2', '停机保号' => '3', '拆机' => '4', '去欠费' => '51', '去欠费开机' => '52', '开机'  => '53' }, { prompt: '选择业务类型' }, { class: 'span11', id: 's_df_flag' })
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">$</span>
-              <%= select(:pstn_stop, "s_dl_flag",
-                         { "放欠费" => "1", "欠费停机" => "2", "停机保号" => "3", "拆机" => "4", "去欠费" => "51", "去欠费开机" => "52",
-                           "开机"  => "53" },
-                         { prompt: "选择业务类型" }, { class: 'span11', id: "s_df_flag" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label.inline for="s_cid" 选择来电显示
 
-  <div class="row">
-    <div class="span12">
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label inline" for="s_cid">选择来电显示</label>
+            .controls
+              .input-prepend
+                span.add-on %
+                = select(:pstn_stop, 's_cid', { '开通来电显示' => '1', '去除来电显示' => '2' }, { prompt: '选择来电显示' }, { class: 'span11', id: 's_cid' })
+        .span6
+          .control-group
+            label.control-label.inline for="s_hs" 选择热线服务
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">%</span>
-              <%= select(:pstn_stop, "s_cid",
-                         { "开通来电显示" => "1", "去除来电显示" => "2" },
-                         { prompt: "选择来电显示" }, { class: 'span11', id: "s_cid" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label inline" for="s_hs">选择热线服务</label>
+            .controls
+              .input-prepend
+                span.add-on %
+                = select(:pstn_stop, 's_hs', { '开通热线服务' => '1', '去除热线服务' => '2' }, { prompt: '选择热线服务' }, { class: 'span11', id: 's_hs' })
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">%</span>
-              <%= select(:pstn_stop, "s_hs",
-                         { "开通热线服务" => "1", "去除热线服务" => "2" },
-                         { prompt: "选择热线服务" }, { class: 'span11', id: "s_hs" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label for="s_cf" 选择呼叫转移
 
-  <div class="row">
-    <div class="span12">
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label" for="s_cf">选择呼叫转移</label>
+            .controls
+              .input-prepend
+                span.add-on *
+                = select(:pstn_stop, 's_cf', { '无条件转移'  => '1', '遇忙转移' => '2', '无应答转移' => '3', '去无条件转移' => '4', '去遇忙转移' => '5', '去无应答转移' => '6' }, { prompt: '选择呼叫转移' }, { class: 'span11', id: 's_cf' })
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">*</span>
-              <%= select(:pstn_stop, "s_cf",
-                         { "无条件转移"  => "1", "遇忙转移" => "2", "无应答转移" => "3",
-                           "去无条件转移" => "4", "去遇忙转移" => "5", "去无应答转移" => "6" },
-                         { prompt: "选择呼叫转移" }, { class: 'span11', id: "s_cf" }) %>
+        .span6
+          .control-group
+            label.control-label for="s_cf_no" 呼叫转移号码
 
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label" for="s_cf_no">呼叫转移号码</label>
+            .controls
+              .input-prepend
+                span.add-on *
+                = text_field :pstn_stop, 's_cf_no', { :class => 'span10', :size => '16', :id => 's_cf_no', digits: true }
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">*</span>
-              <%= text_field :pstn_stop, "s_cf_no", { :class => "span10", :size => "16", :id => "s_cf_no", digits: true } %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label.inline for="s_cr" 选择呼出限制
 
-  <div class="row">
-    <div class="span12">
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label inline" for="s_cr">选择呼出限制</label>
+            .controls
+              .input-prepend
+                span.add-on R
+                = select(:pstn_stop, 's_cr', { '开通呼出限制' => '1', '去除呼出限制' => '2' }, { prompt: '选择呼出限制' }, { class: 'span11', id: 's_cr' })
+        .span6
+          .control-group
+            label.control-label for="s_cr_no"
+              a id="pop1"  data-content="密码最长可设置4位，如果超过则后台会出错。" rel="popover" href="#" data-original-title="注意" 呼出限制密码
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">R</span>
-              <%= select(:pstn_stop, "s_cr",
-                         { "开通呼出限制" => "1", "去除呼出限制" => "2" },
-                         { prompt: "选择呼出限制" }, { class: 'span11', id: "s_cr" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label" for="s_cr_no">
-            <a id="pop1"  data-content="密码最长可设置4位，如果超过则后台会出错。" rel="popover" href="#"
-                         data-original-title="注意">呼出限制密码</a>
-          </label>
+            .controls
+              .input-prepend
+                span.add-on R
+                = text_field :pstn_stop, 's_cr_no', { :class => 'span10', placeholder: '默认密码为8888', :size => '16', :id => 's_cr_no'}
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">R</span>
-              <%= text_field :pstn_stop, "s_cr_no", { :class => "span10", placeholder: "默认密码为8888", :size => "16",
-                                                      :id    => "s_cr_no"} %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    .row
+      .span12
+        .span6
+          .control-group
+            label.control-label.inline for="s_mc" 选择叫醒服务
 
-  <div class="row">
-    <div class="span12">
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label inline" for="s_mc">选择叫醒服务</label>
+            .controls
+              .input-prepend
+                span.add-on H
+                = select(:pstn_stop, 's_mc', { '开通叫醒服务' => '1', '去除叫醒服务' => '2' }, { prompt: '选择叫醒服务' }, { class: 'span11', id: 's_mc' })
+        .span6
+          .control-group
+            label.control-label.inline for="s_ad" 选择缩位拔号
 
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">H</span>
-              <%= select(:pstn_stop, "s_mc",
-                         { "开通叫醒服务" => "1", "去除叫醒服务" => "2" },
-                         { prompt: "选择叫醒服务" }, { class: 'span11', id: "s_mc" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label inline" for="s_ad">选择缩位拔号</label>
+            .controls
+              .input-prepend
+                .add-on A
+                = select(:pstn_stop, 's_ad', { '开通缩位拔号' => '1', '去除缩位拔号' => '2' }, { prompt: '选择缩位拔号' }, { class: 'span11', id: 's_ad' })
 
-          <div class="controls">
+    .row
+      .span12.offset4
+        button.btn.btn-large.btn-success.span4#s_b_s
+          i.icon-ok.icon-white
+          | 开通数据
 
-            <div class="input-prepend">
-              <span class="add-on">A</span>
-              <%= select(:pstn_stop, "s_ad",
-                         { "开通缩位拔号" => "1", "去除缩位拔号" => "2" },
-                         { prompt: "选择缩位拔号" }, { class: 'span11', id: "s_ad" }) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+.alert.alert-success#show1
+  span.label.label-warning#succ1 数据提交成功
+  br
+  | 后台程序正在处理中...
+  br
+  | 由于后台数据执行较慢，请稍候再查询结果！
+  br
+  br
+  p
+    a.btn.btn-success#sR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
 
-  <div class="span12 offset4">
-    <button id="s_b_s" class="btn btn-large btn-success span4">
-      <i class="icon-ok icon-white"></i>
-      开通数据
-    </button>
-  </div>
-  </div>
-  </fieldset>
-</form>
-</div>
-<div class="alert alert-success" id="show1">
-  <span class="label label-warning" id="succ1">数据提交成功</span><br/>
-  后台程序正在处理中...<br/>
-  由于后台数据执行较慢，请稍候再查询结果！<br/> <br/>
+.alert.alert-error#show3
+  span.label.label-warning#err1 数据提交失败
+  br
+  | 数据输入有错误...
+  br
+  | 请注意各字段下标红字的字段，按规则进行修改！
+  br
+  br
+  p
+    a.btn.btn-danger#dataR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
 
-  <p>
-    <a href="#" class="btn btn-success " id="sR">
-      <i class="icon-chevron-left icon-white"></i> 返回</a>
-  </p>
-</div>
+.alert.alert-error#show4
+  span.label.label-warning#err2 批量数据提交失败
+  br
+  | 批量数据输入有错误...
+  br
+  | 请仔细检查批量输入号码，按规则进行修改！
+  br
+  br
+  p
+    a.btn.btn-danger#bdataR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
 
-<div class="alert alert-error" id="show3">
-  <span class="label label-warning" id="err1">数据提交失败</span><br/>
-  数据输入有错误...<br/>
-  请注意各字段下标红字的字段，按规则进行修改！<br/> <br/>
+.alert.alert-error#show5
+  span.label.label-warning#err3 数据提交失败
+  br
+  | 指定用户组号和用户类型只能选其一..
+  br
+  | 请不要同时指定此两项，请按规则进行修改！
+  br
+  br
+  p
+    a.btn.btn-danger#gdataR href="#"
+      i.icon-chevron-left.icon-white
+      | 返回
 
-  <p>
-    <a href="#" class="btn btn-danger " id="dataR">
-      <i class="icon-chevron-left icon-white"></i> 返回</a>
-  </p>
-</div>
+.modal.hide.fade.conModal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal" ×
+    h3 条件输入有错误
+  .modal-body
+    h4
+      p 最少需要输入一个号码及一项条件才能进行操作!
+  .modal-footer
+    a href="#" class="btn btn-danger btn-large" data-dismiss="modal" 关 闭
 
-<div class="alert alert-error" id="show4">
-  <span class="label label-warning" id="err2">批量数据提交失败</span><br/>
-  批量数据输入有错误...<br/>
-  请仔细检查批量输入号码，按规则进行修改！<br/> <br/>
+.modal.hide.fade#noModal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal" ×
+    h3 请确认号码输入
+  .modal-body
+    h4
+      p 批量号码和单个号码只需要输入其中任意一项，不能同时两项都输入数据，请修正后再进行操作!
+  .modal-footer
+    a.btn.btn-danger.btn-large href="#" data-dismiss="modal" 关 闭
 
-  <p>
-    <a href="#" class="btn btn-danger " id="bdataR">
-      <i class="icon-chevron-left icon-white"></i> 返回</a>
-  </p>
-</div>
-
-<div class="alert alert-error" id="show5">
-  <span class="label label-warning" id="err3">数据提交失败</span><br/>
-  指定用户组号和用户类型只能选其一..<br/>
-  请不要同时指定此两项，请按规则进行修改！<br/> <br/>
-
-  <p>
-    <a href="#" class="btn btn-danger " id="gdataR">
-      <i class="icon-chevron-left icon-white"></i> 返回</a>
-  </p>
-</div>
-
-<div class="modal hide fade" id="conModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>条件输入有错误</h3>
-  </div>
-  <div class="modal-body">
-    <h4>
-      <p>最少需要输入一个号码及一项条件才能进行操作!</p>
-    </h4>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn btn-danger btn-large" data-dismiss="modal">关 闭</a>
-  </div>
-</div>
-
-<div class="modal hide fade" id="noModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>请确认号码输入</h3>
-  </div>
-  <div class="modal-body">
-    <h4>
-      <p>批量号码和单个号码只需要输入其中任意一项，不能同时两项都输入数据，请修正后再进行操作!</p>
-    </h4>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn btn-danger btn-large" data-dismiss="modal">关 闭</a>
-  </div>
-</div>
-
-<div class="modal hide fade" id="dfModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>请确认欠费标志</h3>
-  </div>
-  <div class="modal-body">
-    <h4>
-      <p>如果你选择了欠费标志，则至少要在用户类型或分组号选填其中任意一项才可，请修正后再进行操作!</p>
-    </h4>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn btn-danger btn-large" data-dismiss="modal">关 闭</a>
-  </div>
-</div>
+.modal.hide.fade#dfModal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal" ×
+    h3 请确认欠费标志
+  .modal-body
+    h4
+      p 如果你选择了欠费标志，则至少要在用户类型或分组号选填其中任意一项才可，请修正后再进行操作!
+  .modal-footer
+    a href="#" class="btn btn-danger btn-large" data-dismiss="modal" 关 闭

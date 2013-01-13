@@ -1,0 +1,33 @@
+h1 密码修改
+hr
+= form_tag 'm_submit', :method => :post do
+  .row
+    .span4.offset4
+      .controls
+        .input-prepend
+          span.add-on
+            i.icon-user.icon-large
+            | 原密码输入
+          = password_field_tag 'o_pass', nil, placeholder: '输入原密码'
+  .row
+    .span4.offset4
+      .controls
+        .input-prepend
+          span.add-on
+            i.icon-edit.icon-large
+            | 新密码输入
+          = password_field_tag 'n_pass', nil, placeholder: '输入新的密码'
+  .row
+    .span4.offset4
+      .controls
+        .input-prepend
+          span.add-on
+            i.icon-edit.icon-large
+            | 新密码确认
+          = password_field_tag 'a_pass', nil, placeholder: '输入新密码进行确认'
+  hr
+  .row
+    .span4.offset5
+      button.btn.btn-info.span5 type="submit"
+        | 修改
+        i.icon-chevron-right.icon-white

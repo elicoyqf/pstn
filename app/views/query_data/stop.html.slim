@@ -1,0 +1,37 @@
+form.well.form-search
+  .alert.alert-block.alert-error
+    h4.alert-heading 查询数据失败情况!
+    | 可以通过此页面查询个人提交的所有数据中后台因各种原因导致失败的情况，此数据状态只查询数据更新一次后的结果...
+  label 指定输入需要查询的号码 :
+  input.input-medium.search-query type="text"
+  button.btn.btn-info type="submit" 查 询 号 码
+
+table.table.table-bordered
+  thead.table-header-owen
+    tr
+      th colspan="5" style="text-align: center;">查询显示结果如下所示：
+    tr
+      th #序号
+      th 停机号码
+      th 后台状态
+      th 下单人
+      th 下单时间
+  - @q_data.each_with_index do |x, index|
+    tr class="#{ cycle('list-line-odd', 'list-line-even') }"
+      td = index
+      td = x.sn
+      td = x.status
+      td = x.user.name
+      td.span3 = x.created_at.strftime('%Y年-%m月%d日 %H:%M:%S')
+
+.pagination.pagination-small
+  = will_paginate @q_data
+
+.well.center
+  |统计信息：共 #{ @q_data.total_entries } 条,共 #{ (@q_data.total_entries / @q_data.per_page)+1 }
+  |页, 当前第 #{ @q_data.current_page} 页.
+
+.well
+  blockquote
+    p 你无法理解我的无理取闹，就像我不懂你一直对我视而不见。
+    small.pull-right 来自某某某的著名言语
