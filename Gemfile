@@ -4,9 +4,17 @@ gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
 
 gem 'sqlite3'
-gem 'slim','1.3.6'
+gem 'slim', '1.3.6'
 gem 'whenever'
 gem 'bootstrap-sass'
 gem 'will_paginate'
