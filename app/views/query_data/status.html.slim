@@ -1,0 +1,22 @@
+#query_data_t1
+  table.table.table-bordered
+    thead.table-header-owen
+      tr
+        th colspan="3" style="text-align: center;" 查询显示结果如下所示：
+      tr
+        th style="text-align: center;" 序号
+        th style="text-align: center;" 机房名称
+        th style="text-align: center;" 服务状态
+    - @status.each_with_index do |x, index|
+      tr class="#{ cycle('list-line-odd', 'list-line-even') }"
+        td style="text-align: center;" = index
+        td style="text-align: center;" = x.name
+        - if x.status == 0
+          td style="text-align: center;" <span class="label label-warning">故障状态</span>
+        - else
+          td style="text-align: center;" <span class="label label-success">正常状态</span>
+  .pagination.pagination-small.center
+    = will_paginate @status, :inner_window => 2
+  .well.center
+    | 统计信息：一共有 #{ @status.total_entries } 条,当前第 #{ @status.current_page } 页，
+    | 共 #{ (@status.total_entries / @status .per_page)+1 } 页.

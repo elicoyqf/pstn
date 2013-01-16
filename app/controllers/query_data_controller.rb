@@ -1,13 +1,34 @@
 #coding: utf-8
 class QueryDataController < ApplicationController
   def stop
-    render layout: "main_layout"
+    render layout: 'main_layout'
   end
 
   def start
     #@q_data = ""
     @q_data = WorkOrder.paginate page: params[:page], per_page: 10
-    render layout: "main_layout"
+    render layout: 'main_layout'
+  end
+
+  def status
+    @status = JfName.paginate page: params[:page], per_page: 10
+    render layout: 'main_layout'
+  end
+
+  def m_status
+    @status = JfName.paginate page: params[:page], per_page: 10
+    render layout: 'main_layout'
+  end
+
+  def mdf_status
+    id = params[:id]
+    jf = JfName.find(id)
+    if jf.status == 0
+      jf.update_attribute(:status,1)
+    else
+      jf.update_attribute(:status,0)
+    end
+    redirect_to action: 'm_status'
   end
 
   def q_cont_data
@@ -72,11 +93,11 @@ class QueryDataController < ApplicationController
     #@q_data = PstnStop.paginate page: params[:page], per_page: 10
     #@q_data = PstnStop.where(q_str,q_hash).paginate page: params[:page], per_page: 10
     @q_data = WorkOrder.where(q_str, q_hash).paginate page: params[:page], per_page: 10
-    puts "---------------q_data"
+    puts '---------------q_data'
     puts @q_data
-    puts "---------------q_data"
+    puts '---------------q_data'
     respond_to do |f|
-      f.html { render layout: "main_layout" }
+      f.html { render layout: 'main_layout' }
       f.json { render json: @q_data }
     end
   end

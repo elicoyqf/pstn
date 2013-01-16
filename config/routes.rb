@@ -18,33 +18,37 @@ Pstn::Application.routes.draw do
   match 'log_book/type/:type' => 'log_book#log_type'
   get 'log_book/switch'
   post 'log_book/log_submit'
-  get "business_logic/change"
-  post "business_logic/bl_submit"
+  get 'business_logic/change'
+  post 'business_logic/bl_submit'
 
-  get "query_data/stop"
-  get "query_data/start"
-  get "welcome/index"
-  get "query_data/q_cont_data"
+  get 'query_data/stop'
+  get 'query_data/start'
+  match 'query_data/mdf_status/:id' => 'query_data#mdf_status'
 
-  post "welcome/pstn_stop"
-  post "welcome/pstn_badp"
-  post "welcome/pstn_deni"
-  post "welcome/pstn_reset"
-  post "welcome/i_pstn_stop"
-  post "welcome/i_pstn_badp"
-  post "welcome/i_pstn_deni"
-  post "welcome/i_pstn_reset"
+  get 'query_data/m_status'
+  get 'query_data/status'
+  get 'welcome/index'
+  get 'query_data/q_cont_data'
 
-  post "welcome/reverse_pstn_stop"
-  post "welcome/reverse_pstn_badp"
-  post "welcome/reverse_pstn_deni"
-  post "welcome/i_reverse_pstn_stop"
-  post "welcome/i_reverse_pstn_badp"
-  post "welcome/i_reverse_pstn_deni"
+  post 'welcome/pstn_stop'
+  post 'welcome/pstn_badp'
+  post 'welcome/pstn_deni'
+  post 'welcome/pstn_reset'
+  post 'welcome/i_pstn_stop'
+  post 'welcome/i_pstn_badp'
+  post 'welcome/i_pstn_deni'
+  post 'welcome/i_pstn_reset'
 
-  post "welcome/main"
-  get "welcome/p_stop"
-  get "welcome/p_start"
+  post 'welcome/reverse_pstn_stop'
+  post 'welcome/reverse_pstn_badp'
+  post 'welcome/reverse_pstn_deni'
+  post 'welcome/i_reverse_pstn_stop'
+  post 'welcome/i_reverse_pstn_badp'
+  post 'welcome/i_reverse_pstn_deni'
+
+  post 'welcome/main'
+  get 'welcome/p_stop'
+  get 'welcome/p_start'
 
   root :to => 'welcome#index'
   # The priority is based upon order of creation:

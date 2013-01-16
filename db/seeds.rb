@@ -13,7 +13,7 @@ User.create(name: "guanyc", password: 'e10adc3949ba59abbe56e057f20f883e', level:
 
 JfName.create(name:  '南郊', ip_address: '192.166.16.11', status: 1,
               p_nat: 3, p_local: 4, p_suburban: 2, p_int: 5, p_emerg: 1)
-JfName.create(name: '南枫', ip_address: '192.166.16.8', status: 1)
+JfName.create(name: '南枫', ip_address: '192.166.16.8', status: 0)
 JfName.create(name:  '茗雅', ip_address: '192.166.16.4', status: 1,
               p_nat: 4, p_local: 2, p_suburban: 3, p_int: 5, p_emerg: 1)
 JfName.create(name:  '工业西', ip_address: '192.166.16.10', status: 1,
