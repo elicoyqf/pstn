@@ -14,6 +14,7 @@ group :test do
 end
 
 gem 'sqlite3'
+gem 'mysql2'
 gem 'slim', '1.3.6'
 gem 'whenever'
 gem 'bootstrap-sass'
