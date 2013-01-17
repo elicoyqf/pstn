@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="测试还未通过。">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="添加了多用户交班日志相互屏蔽功能。">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pstn.iml" afterPath="$PROJECT_DIR$/.idea/pstn.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358441115110" ignored="false" />
+    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358442979739" ignored="false" />
     <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357563952086" ignored="false" />
     <file path="/change.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356795143271" ignored="false" />
     <file path="/routes.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357570379714" ignored="false" />
@@ -42,7 +40,7 @@
     <file path="/main.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357031193927" ignored="false" />
     <file path="/en.yml" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357054116338" ignored="false" />
     <file path="/calendar_helper.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357220350120" ignored="false" />
-    <file path="/calendar_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358442892537" ignored="false" />
+    <file path="/calendar_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358443127610" ignored="false" />
     <file path="/_form.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357149498542" ignored="false" />
     <file path="/events_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357569308677" ignored="false" />
     <file path="/event.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357568866733" ignored="false" />
@@ -152,7 +150,7 @@
       <file leaf-file-name="calendar_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/calendar_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="15" selection-start="461" selection-end="461" vertical-scroll-proportion="0.35855645">
+            <state line="10" column="47" selection-start="354" selection-end="354" vertical-scroll-proportion="0.25611177">
               <folding />
             </state>
           </provider>
@@ -1252,7 +1250,11 @@
       <created>1358325667177</created>
       <updated>1358325667177</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="添加了多用户交班日志相互屏蔽功能。">
+      <created>1358442993041</created>
+      <updated>1358442993041</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1277,8 +1279,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3442438" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32659933" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.6026936" order="3" side_tool="false" content_ui="tabs" />
@@ -1294,7 +1297,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32772166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3442438" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19882101" sideWeight="0.5699774" order="3" side_tool="false" content_ui="tabs" />
@@ -1341,7 +1343,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试还未通过。" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了多用户交班日志相互屏蔽功能。" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1374,6 +1376,7 @@
     <MESSAGE value="在session_store里面添加了session的过期时间为1个小时。" />
     <MESSAGE value="将erb模板换成了slim模板。" />
     <MESSAGE value="测试还未通过。" />
+    <MESSAGE value="添加了多用户交班日志相互屏蔽功能。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1384,11 +1387,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/calendar/index.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="14" selection-start="28" selection-end="28" vertical-scroll-proportion="0.16541353" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/main_layout.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="33" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0" />
@@ -1484,9 +1482,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/enumerator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="8" selection-start="4055" selection-end="4055" vertical-scroll-proportion="-0.30168268">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/calendar_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="15" selection-start="461" selection-end="461" vertical-scroll-proportion="0.35855645">
+        <state line="10" column="47" selection-start="354" selection-end="354" vertical-scroll-proportion="0.25611177">
           <folding />
         </state>
       </provider>
