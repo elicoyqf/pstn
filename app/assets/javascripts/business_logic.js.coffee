@@ -79,6 +79,7 @@ $ ->
           $("#dfModal").modal('show')
           #todo:此处是如果选择了欠费标志，则必须要选择用户组号，否则没有办理进行处理。
         else if s_bt || s_perm || s_cf || s_hs || s_mc || s_cr || s_ad || s_cr_no || s_df_flag || s_sg_no || s_cf_no || s_cid
+          #todo:此处还需要注意限制密码只能是4位，还未做测试
           if crnook(s_cr_no)
             $.post(
               "bl_submit",

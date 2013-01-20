@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="修正了分页出现N+1问题，并添加了各部门日志相互隔离的功能。">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="修正了程控交换各种小bug，界面部分基本完工，下一步就进行具体的实际数据测试。">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/business_logic/change.html.slim" afterPath="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/query_data_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/query_data_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/start.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/start.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358687136083" ignored="false" />
+    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358701829116" ignored="false" />
     <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357563952086" ignored="false" />
     <file path="/change.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356795143271" ignored="false" />
     <file path="/routes.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357570379714" ignored="false" />
@@ -129,10 +122,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="q_cont_data.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="business_logic.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="81" column="38" selection-start="2565" selection-end="2565" vertical-scroll-proportion="0.4680851">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="q_cont_data.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="105" selection-start="2958" selection-end="2958" vertical-scroll-proportion="2.5665963">
+            <state line="78" column="105" selection-start="2958" selection-end="2958" vertical-scroll-proportion="-43.357143">
               <folding />
             </state>
           </provider>
@@ -191,12 +193,12 @@
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..sqlite_sequence" />
         <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..dn_tables" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
         <option value="$PROJECT_DIR$/app/controllers/query_data_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/query_data/start.html.slim" />
         <option value="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
       </list>
     </option>
   </component>
@@ -1263,7 +1265,11 @@
       <created>1358687155220</created>
       <updated>1358687155220</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="修正了程控交换各种小bug，界面部分基本完工，下一步就进行具体的实际数据测试。">
+      <created>1358701844362</created>
+      <updated>1358701844362</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1288,7 +1294,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3442438" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26262626" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
@@ -1300,7 +1306,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39618406" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3973747" sideWeight="0.49429968" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3872054" sideWeight="0.497557" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3872054" sideWeight="0.497557" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32435465" sideWeight="0.49348533" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1352,7 +1358,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正了分页出现N+1问题，并添加了各部门日志相互隔离的功能。" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正了程控交换各种小bug，界面部分基本完工，下一步就进行具体的实际数据测试。" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1388,6 +1394,7 @@
     <MESSAGE value="添加了多用户交班日志相互屏蔽功能。" />
     <MESSAGE value="(添加注释)添加了多用户交班日志相互屏蔽功能。" />
     <MESSAGE value="修正了分页出现N+1问题，并添加了各部门日志相互隔离的功能。" />
+    <MESSAGE value="修正了程控交换各种小bug，界面部分基本完工，下一步就进行具体的实际数据测试。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1398,13 +1405,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/events/show.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_userinfo_slide.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1475,13 +1475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/business_logic_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="13" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/query_data_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="95" column="19" selection-start="2479" selection-end="2479" vertical-scroll-proportion="0.0">
@@ -1508,7 +1501,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="105" selection-start="2958" selection-end="2958" vertical-scroll-proportion="2.5665963">
+        <state line="78" column="105" selection-start="2958" selection-end="2958" vertical-scroll-proportion="-43.357143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/business_logic_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="13" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="38" selection-start="2565" selection-end="2565" vertical-scroll-proportion="0.4680851">
           <folding />
         </state>
       </provider>
