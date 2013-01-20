@@ -9,6 +9,20 @@ class BusinessLogicController < ApplicationController
     render layout: "main_layout"
   end
 
+=begin
+  def cr_no_ok?(s_cr_no)
+    if s_cr_no.blank?
+      true
+    else
+      if s_cr_no =~ /^\d{1,4}$/ && s_cr_no.size <= 4
+        true
+      else
+        false
+      end
+    end
+  end
+=end
+
   def bl_submit
     #s_ad:缩位拔号
     #s_cr:呼出限制
@@ -21,10 +35,10 @@ class BusinessLogicController < ApplicationController
     #s_bt:用户类型
     #s_no:用户号码
     #b_s_no:批量输入号码
-    #s_df_flag:欠费标志
     #s_sg_no:用户组号
     #s_cid:来电显示
     #s_bp:优先级
+    #s_df_flag:欠费标志
     #其中的欠费标志有如下内容:
     #   1：放欠费
     #   2:欠费停机
@@ -54,30 +68,30 @@ class BusinessLogicController < ApplicationController
     #通过使用优先级替代了紧急状态标识
     #emerg = 1
     s_bp      = params[:s_bp]
-    status    = 0
-    #todo:还需要做一个优先级标志，尽量安排新装等业务优先办理。(已完成)
+    #默认状态为等等中
+    status    = 2
+    #判断呼出限制密码是否为4位数字
+    #if cr_no_ok?(s_cr_no)
     if b_s_no.blank?
-      if s_no =~ /\d{7}/
+      if s_no =~ /^\d{7}$/
         WorkOrder.create(user_id: 1, status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf, s_cf_no: s_cf_no,
                          s_cid:   s_cid, s_cr: s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag,
                          s_hs:    s_hs, s_mc: s_mc, s_no: s_no, s_perm: s_perm, s_sg_no: s_sg_no, priority: s_bp)
-        #todo:  一般而言，单个数据输入需要马上进行后台操作。
         @er = '[{"one":"normal"}]'
       else
         @er = '[{"one":"errors"},{"two":"errors"}]'
       end
     else
-      #  需要对批量数据进行分割然后插入数据库中
+      #需要对批量数据进行分割然后插入数据库中
       s_a_no = split_data b_s_no
       @er    = ''
       s_a_no.each do |no|
-        if no !~ /\d{7}/
+        if no !~ /^\d{7}$/
           #返回一数组的json给前台做判断，没有具体意义
           @er = '[{"one":"errors"},{"two":"errors"}]'
         else
           @er = '[{"one":"normal"}]'
         end
-
       end
 
       if @er =~ /normal/
@@ -88,7 +102,12 @@ class BusinessLogicController < ApplicationController
         end
       end
     end
-    wo_make
+    #else
+    #  @er = '[{"one":"errors"},{"two":"errors"}]'
+    #end
+
+
+    #wo_make
     respond_to do |f|
       f.json { render json: @er }
     end

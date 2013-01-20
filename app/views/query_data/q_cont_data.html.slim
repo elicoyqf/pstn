@@ -15,8 +15,8 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
           .span6
             .controls
               .input-prepend
-                span.add-on 业务类型
-                = select(:pstn_stop, 'work_order_t', { '所有' => "0", '放欠费' => '1', '欠费停机' => '2', '停机' => '3', '拆机' => '3' }, { prompt: '选择业务类型' }, { class: 'span6', id: 'q_bt' })
+                span.add-on 后台状态
+                = select(:pstn_stop, "status", { "所有状态" => "0", "成功状态" => "1", "等待状态" => "2", "失败状态" => "3" }, { prompt: "选择后台数据状态" }, { class: 'span6', id: "q_bs" })
         .row-fluid
           .span6
             .controls
@@ -29,12 +29,7 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
                 span.add-on 结束日期
                 = text_field :pstn_stop, "date2", { :class => "span6", :id => "datepicker2" }
         .row-fluid
-          .span6
-            .controls
-              .input-prepend
-                span.add-on 后台状态
-                = select(:pstn_stop, "status", { "所有状态" => "1", "成功状态" => "1", "等待状态" => "2", "失败状态" => "3" }, { prompt: "选择后台数据状态" }, { class: 'span6', id: "q_bs" })
-          .span6
+          .span6.offset3
             button#q_b_s.btn.btn-primary.span8 type="submit" 查 询 数 据
 
 .modal.hide.fade#myModal
@@ -63,23 +58,30 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
       tr
         th colspan="7" style="text-align: center;" 查询显示结果如下所示：
       tr
-        th 序号
-        th 停机号码
-        th 工单类型
-        th 后台状态
-        th 下单人
-        th 下单时间
-        th 完成时间
+        th style="text-align: center;" 序号
+        th style="text-align: center;" 停机号码
+        th.span3 style="text-align: center;" 工单类型
+        th style="text-align: center;width:60px" 后台状态
+        th style="text-align: center;" 下单人
+        th style="text-align: center;" 下单时间
+        th style="text-align: center;" 完成时间
     - @q_data.each_with_index do |x, index|
       tr class="#{ cycle('list-line-odd', 'list-line-even') }"
-        td = index
-        td = x.s_no
-        td = x.s_cid
-        td = x.status
-        td = x.user.name
-        td = x.created_at.strftime("%Y年%m月%d日 %H:%M:%S")
-        td.span3 = x.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")
-  .pagination.pagination-small
+        td style="text-align: center; vertical-align:middle;" = index
+        td style="text-align: center; vertical-align:middle;" = x.s_no
+        td style="text-align: center; vertical-align:middle;" #{@wo_con[index]}
+        - case x.status
+          - when 2
+            td style="text-align: center; vertical-align:middle;" <span class="label label-info">等待中...</span>
+          - when 1
+            td style="text-align: center; vertical-align:middle;" <span class="label label-success">成功了.</span>
+          - when 3
+            td style="text-align: center; vertical-align:middle;" <span class="label label-important">失败了.</span>
+          - else
+        td style="text-align: center; vertical-align:middle;" = x.user.alias_name
+        td.span2 style="text-align: center; vertical-align:middle;" = x.created_at.strftime("%Y年%m月%d日 %H:%M:%S")
+        td.span2 style="text-align: center; vertical-align:middle;" = x.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")
+  .pagination.pagination-small.center
     = will_paginate @q_data, :inner_window => 2
   .well.center
     | 统计信息：一共有 #{ @q_data.total_entries } 条,当前第 #{ @q_data.current_page } 页，

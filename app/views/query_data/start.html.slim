@@ -15,8 +15,8 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
           .span6
             .controls
               .input-prepend
-                span.add-on 业务类型
-                = select(:pstn_stop, 'work_order_t', { '所有' => '0', '放欠费' => '1', '欠费停机' => '2', '停机' => '3', '拆机' => '3' }, { prompt: '选择业务类型' }, { class: 'span6', id: 'q_bt' })
+                span.add-on 后台状态
+                = select(:pstn_stop, 'status', { '所有状态' => '0', '成功状态' => '1', '等待状态' => '2', '失败状态' => '3' }, { prompt: '选择后台数据状态' }, { class: 'span6', id: 'q_bs' })
         .row-fluid
           .span6
             .controls
@@ -29,12 +29,7 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
                 span.add-on 结束日期
                 = text_field :pstn_stop, 'date2', { :class => 'span6', :id => 'datepicker2' }
         .row-fluid
-          .span6
-            .controls
-              .input-prepend
-                span.add-on 后台状态
-                = select(:pstn_stop, 'status', { '所有状态' => '1', '成功状态' => '1', '等待状态' => '2', '失败状态' => '3' }, { prompt: '选择后台数据状态' }, { class: 'span6', id: 'q_bs' })
-          .span6
+          .span6.offset3
             button.btn.btn-primary.span8#q_b_s 查 询 数 据
 
 .modal.hide.fade#myModal

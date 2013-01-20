@@ -51,8 +51,6 @@ class WelcomeController < ApplicationController
   #   2:欠费停机
   #   3:停机
   #   4:拆机
-  #   5:去来电显示
-  #   6:其它...
   #
   # ========================
   #    从50开始相反操作
@@ -61,8 +59,6 @@ class WelcomeController < ApplicationController
   #    52:去欠费停机
   #    53:开机
   #    54:新装机
-  #    55:开来电显示
-  #    56:其它...
   #
 
   def pstn_stop
@@ -74,13 +70,12 @@ class WelcomeController < ApplicationController
     @er  = ''
 
     a_no.each do |no|
-      if no !~ /\d{7}/
+      if no !~ /^\d{7}$/
         #返回一数组的json给前台做判断，没有具体意义
         @er = '[{"one":"errors"},{"two":"errors"}]'
       else
         @er = '[{"one":"normal"}]'
       end
-
     end
 
     if @er =~ /normal/
@@ -92,7 +87,5 @@ class WelcomeController < ApplicationController
     respond_to do |f|
       f.json { render json: @er }
     end
-
   end
-
 end

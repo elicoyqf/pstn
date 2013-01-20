@@ -3,6 +3,15 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  crnook = (cr_no) ->
+    reg1 = ///^\d{1,4}$///
+    if cr_no == ''
+      true
+    else
+      if reg1.test(cr_no) && cr_no.length <=4
+        true
+      else
+        false
   $('#show1').hide()
   $('#show3').hide()
   $('#show4').hide()
@@ -69,48 +78,52 @@ $ ->
         if s_df_flag && !s_bt && !s_sg_no
           $("#dfModal").modal('show')
           #todo:此处是如果选择了欠费标志，则必须要选择用户组号，否则没有办理进行处理。
-        else if s_bt || s_perm || s_cf || s_hs || s_mc || s_cr || s_ad || s_cr_no || s_df_flag || s_sg_no || s_cf_no
-          $.post(
-            "bl_submit",
-            {
-            b_s_no: b_s_no, s_no: s_no, s_bt: s_bt, s_perm: s_perm, s_cf: s_cf,
-            s_cf_no: s_cf_no, s_hs: s_hs, s_mc: s_mc, s_cr: s_cr, s_cr_no: s_cr_no,
-            s_ad: s_ad, s_df_flag: s_df_flag, s_sg_no: s_sg_no, s_cid: s_cid,s_bp:s_bp
-            },
-          (data) ->
-            if data.length == 2
-              $('#content').hide()
-              $('#show4').show()
-              false
-            else
-              $('#content').hide()
-              $('#show1').show()
-              #清空原有数据
-              $('#b_s_no').val("")
-              $('#s_no').val("")
-              $('#s_bt').val("")
-              $('#s_perm').val("")
-              $('#s_cf').val("")
-              $('#s_cf_no').val("")
-              $('#s_hs').val("")
-              $('#s_mc').val("")
-              $('#s_cr').val("")
-              $('#s_cr_no').val("")
-              $('#s_ad').val("")
-              $('#s_df_flag').val("")
-              $('#s_sg_no').val("")
-              $('#s_bp').val("")
-              $('#s_hs').val("")
-              $('#s_mc').val("")
-              $('#s_cr').val("")
-              $('#s_ad').val("")
-              $('#s_cid').val("")
-              ###$("input[name='ns']:checked").each(->
-                $(this).attr("checked", false)
-              )###
-              false
-            "json"
-          )
+        else if s_bt || s_perm || s_cf || s_hs || s_mc || s_cr || s_ad || s_cr_no || s_df_flag || s_sg_no || s_cf_no || s_cid
+          if crnook(s_cr_no)
+            $.post(
+              "bl_submit",
+              {
+              b_s_no: b_s_no, s_no: s_no, s_bt: s_bt, s_perm: s_perm, s_cf: s_cf,
+              s_cf_no: s_cf_no, s_hs: s_hs, s_mc: s_mc, s_cr: s_cr, s_cr_no: s_cr_no,
+              s_ad: s_ad, s_df_flag: s_df_flag, s_sg_no: s_sg_no, s_cid: s_cid,s_bp:s_bp
+              },
+              (data) ->
+                if data.length == 2
+                  $('#content').hide()
+                  $('#show4').show()
+                  false
+                else
+                  $('#content').hide()
+                  $('#show1').show()
+                  #清空原有数据
+                  $('#b_s_no').val("")
+                  $('#s_no').val("")
+                  $('#s_bt').val("")
+                  $('#s_perm').val("")
+                  $('#s_cf').val("")
+                  $('#s_cf_no').val("")
+                  $('#s_hs').val("")
+                  $('#s_mc').val("")
+                  $('#s_cr').val("")
+                  $('#s_cr_no').val("")
+                  $('#s_ad').val("")
+                  $('#s_df_flag').val("")
+                  $('#s_sg_no').val("")
+                  $('#s_bp').val("")
+                  $('#s_hs').val("")
+                  $('#s_mc').val("")
+                  $('#s_cr').val("")
+                  $('#s_ad').val("")
+                  $('#s_cid').val("")
+                  ###$("input[name='ns']:checked").each(->
+                    $(this).attr("checked", false)
+                  )###
+                  false
+                "json"
+              )
+          else
+            $("#crModal").modal('show')
+
         else
           $("#conModal").modal('show')
     else

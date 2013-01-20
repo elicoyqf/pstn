@@ -92,7 +92,7 @@
             .controls
               .input-prepend
                 span.add-on %
-                = select(:pstn_stop, 's_cid', { '开通来电显示' => '1', '去除来电显示' => '2' }, { prompt: '选择来电显示' }, { class: 'span11', id: 's_cid' })
+                = select(:pstn_stop, 's_cid', { '开通来电显示' => '1', '删除来电显示' => '2' }, { prompt: '选择来电显示' }, { class: 'span11', id: 's_cid' })
         .span6
           .control-group
             label.control-label.inline for="s_hs" 选择热线服务
@@ -100,7 +100,7 @@
             .controls
               .input-prepend
                 span.add-on %
-                = select(:pstn_stop, 's_hs', { '开通热线服务' => '1', '去除热线服务' => '2' }, { prompt: '选择热线服务' }, { class: 'span11', id: 's_hs' })
+                = select(:pstn_stop, 's_hs', { '开通热线服务' => '1', '删除热线服务' => '2' }, { prompt: '选择热线服务' }, { class: 'span11', id: 's_hs' })
 
     .row
       .span12
@@ -111,7 +111,7 @@
             .controls
               .input-prepend
                 span.add-on *
-                = select(:pstn_stop, 's_cf', { '无条件转移'  => '1', '遇忙转移' => '2', '无应答转移' => '3', '去无条件转移' => '4', '去遇忙转移' => '5', '去无应答转移' => '6' }, { prompt: '选择呼叫转移' }, { class: 'span11', id: 's_cf' })
+                = select(:pstn_stop, 's_cf', { '开通无条件转移'  => '1', '开通遇忙转移' => '2', '开通无应答转移' => '3', '删除无条件转移' => '4', '删除遇忙转移' => '5', '删除无应答转移' => '6' }, { prompt: '选择呼叫转移' }, { class: 'span10', id: 's_cf' })
 
         .span6
           .control-group
@@ -131,7 +131,7 @@
             .controls
               .input-prepend
                 span.add-on R
-                = select(:pstn_stop, 's_cr', { '开通呼出限制' => '1', '去除呼出限制' => '2' }, { prompt: '选择呼出限制' }, { class: 'span11', id: 's_cr' })
+                = select(:pstn_stop, 's_cr', { '开通呼出限制' => '1', '删除呼出限制' => '2' }, { prompt: '选择呼出限制' }, { class: 'span11', id: 's_cr' })
         .span6
           .control-group
             label.control-label for="s_cr_no"
@@ -151,7 +151,7 @@
             .controls
               .input-prepend
                 span.add-on H
-                = select(:pstn_stop, 's_mc', { '开通叫醒服务' => '1', '去除叫醒服务' => '2' }, { prompt: '选择叫醒服务' }, { class: 'span11', id: 's_mc' })
+                = select(:pstn_stop, 's_mc', { '开通叫醒服务' => '1', '删除叫醒服务' => '2' }, { prompt: '选择叫醒服务' }, { class: 'span11', id: 's_mc' })
         .span6
           .control-group
             label.control-label.inline for="s_ad" 选择缩位拔号
@@ -159,7 +159,7 @@
             .controls
               .input-prepend
                 .add-on A
-                = select(:pstn_stop, 's_ad', { '开通缩位拔号' => '1', '去除缩位拔号' => '2' }, { prompt: '选择缩位拔号' }, { class: 'span11', id: 's_ad' })
+                = select(:pstn_stop, 's_ad', { '开通缩位拔号' => '1', '删除缩位拔号' => '2' }, { prompt: '选择缩位拔号' }, { class: 'span11', id: 's_ad' })
 
     .row
       .span12.offset4
@@ -198,7 +198,7 @@
   br
   | 批量数据输入有错误...
   br
-  | 请仔细检查批量输入号码，按规则进行修改！
+  | 请仔细检查批量输入号码、各匹配条件及呼出限制等，按规则进行修改！
   br
   br
   p
@@ -246,5 +246,15 @@
   .modal-body
     h4
       p 如果你选择了欠费标志，则至少要在用户类型或分组号选填其中任意一项才可，请修正后再进行操作!
+  .modal-footer
+    a href="#" class="btn btn-danger btn-large" data-dismiss="modal" 关 闭
+
+.modal.hide.fade#crModal
+  .modal-header
+    button type="button" class="close" data-dismiss="modal" ×
+    h3 条件输入有错误
+  .modal-body
+    h4
+      p 在输入呼出限制密码时，最长为4位，必须是数字，请按规定输入!
   .modal-footer
     a href="#" class="btn btn-danger btn-large" data-dismiss="modal" 关 闭
