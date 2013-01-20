@@ -56,7 +56,11 @@
     = will_paginate @logs, :inner_window => 2
   .well.center
     | 统计信息：一共有 #{ @logs.total_entries } 条,当前第 #{ @logs.current_page } 页，
-    | 共 #{ (@logs.total_entries / @logs .per_page)+1 } 页.
+    | 共
+    - if (@logs.total_entries % @logs.per_page) ==0
+      | #{ (@logs.total_entries / @logs.per_page) }页.
+    - else
+      | #{ (@logs.total_entries / @logs.per_page) +1 } 页.
 
 .container-fluid.alert.alert-block.alert-info
   .row-fluid

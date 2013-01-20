@@ -1,5 +1,14 @@
 #coding: utf-8
 class EventsController < ApplicationController
+
+  def get_user_ids
+    d_id = session[:d_id]
+    u_id = User.find_all_by_department_id(d_id)
+    id   = []
+    u_id.each { |x| id << x.id }
+    id
+  end
+
   #Get /events/query
   def query
     render layout: 'main_layout'
@@ -46,14 +55,14 @@ class EventsController < ApplicationController
     end
 
     @title  = '查询'
-    @events = Event.where(q_sql, *q_value).paginate page: params[:page], per_page: 10
+    @events = Event.where(q_sql, *q_value).where(:user_id => get_user_ids).paginate page: params[:page], per_page: 10
     render :template => 'events/index', layout: 'main_layout'
   end
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.paginate page: params[:page], per_page: 10
+    @events = Event.where(:user_id => get_user_ids).paginate page: params[:page], per_page: 10
 
     respond_to do |format|
       format.html { render layout: 'main_layout' }

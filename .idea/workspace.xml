@@ -2,17 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="添加了多用户交班日志相互屏蔽功能。">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/calendar_controller.rb" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="(添加注释)添加了多用户交班日志相互屏蔽功能。">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/events_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/events_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/events/index.html.slim" afterPath="$PROJECT_DIR$/app/views/events/index.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/log_book_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/log_book_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/log_book/logging.html.slim" afterPath="$PROJECT_DIR$/app/views/log_book/logging.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/m_status.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/m_status.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/status.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/status.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/stop.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/stop.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358442979739" ignored="false" />
+    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358680864912" ignored="false" />
     <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357563952086" ignored="false" />
     <file path="/change.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356795143271" ignored="false" />
     <file path="/routes.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357570379714" ignored="false" />
-    <file path="/log_book_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357556016213" ignored="false" />
+    <file path="/log_book_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358685937883" ignored="false" />
     <file path="/log_submit.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356871022335" ignored="false" />
     <file path="/_shim.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356872084395" ignored="false" />
     <file path="/custom.css" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357567897978" ignored="false" />
@@ -42,7 +51,7 @@
     <file path="/calendar_helper.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357220350120" ignored="false" />
     <file path="/calendar_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358443127610" ignored="false" />
     <file path="/_form.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357149498542" ignored="false" />
-    <file path="/events_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357569308677" ignored="false" />
+    <file path="/events_controller.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358685644025" ignored="false" />
     <file path="/event.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357568866733" ignored="false" />
     <file path="/events.js.coffee" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357148408086" ignored="false" />
     <file path="/application.js" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357399377815" ignored="false" />
@@ -68,10 +77,14 @@
     <file path="$APPLICATION_HOME_DIR$/lib/rubymine.jar!/standardSchemas/xinclude.xsd" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358315458054" ignored="false" />
     <file path="/welcome_index_pages_spec.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358317202020" ignored="false" />
     <file path="/factories.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358317137229" ignored="false" />
-    <file path="/index.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358317451333" ignored="false" />
+    <file path="/index.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358682343806" ignored="false" />
     <file path="/change.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358319997891" ignored="false" />
     <file path="/_form.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358390475788" ignored="false" />
-    <file path="/Ruby Console" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358441720882" ignored="false" />
+    <file path="/Ruby Console" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358684528824" ignored="false" />
+    <file path="/query.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358682023672" ignored="false" />
+    <file path="/log_book_helper.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358684959834" ignored="false" />
+    <file path="/User.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358685922600" ignored="false" />
+    <file path="/temp.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1358685918137" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,84 +106,63 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <file leaf-file-name="logging.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/log_book/logging.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="21" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
+            <state line="59" column="0" selection-start="2210" selection-end="2384" vertical-scroll-proportion="-46.357143">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="log_book_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/log_book_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="93" selection-start="370" selection-end="402" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
+            <state line="120" column="21" selection-start="2735" selection-end="2735" vertical-scroll-proportion="5.1361866">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..events">
+          <provider editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="event.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/event.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="24" selection-start="203" selection-end="213" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendar_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/helpers/calendar_helper.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="welcome_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendar_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="calendar_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/calendar_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="47" selection-start="354" selection-end="354" vertical-scroll-proportion="0.25611177">
+            <state line="22" column="5" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rescue.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://G:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.11/lib/action_controller/metal/rescue.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0">
+      <file leaf-file-name="departments" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..departments">
+          <provider editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="66" selection-start="6472" selection-end="6472" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
@@ -199,22 +191,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config/initializers/session_store.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_slide.html.erb" />
-        <option value="$PROJECT_DIR$/spec/factories.rb" />
-        <option value="$PROJECT_DIR$/app/views/welcome/index.html.slim" />
-        <option value="$PROJECT_DIR$/spec/requests/welcome_index_pages_spec.rb" />
-        <option value="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
-        <option value="$PROJECT_DIR$/app/views/layouts/main_layout.html.slim" />
-        <option value="$PROJECT_DIR$/app/views/events/_form.html.slim" />
-        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/views/query_data/m_status.html.slim" />
+        <option value="$PROJECT_DIR$/app/views/events/index.html.slim" />
+        <option value="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
+        <option value="$PROJECT_DIR$/app/views/query_data/status.html.slim" />
+        <option value="$PROJECT_DIR$/app/views/query_data/stop.html.slim" />
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..departments" />
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..events" />
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..users" />
+        <option value="$PROJECT_DIR$/app/helpers/log_book_helper.rb" />
+        <option value="$PROJECT_DIR$/app/helpers/events_helper.rb" />
+        <option value="$PROJECT_DIR$/lib/User.rb" />
+        <option value="$PROJECT_DIR$/lib/Userlib.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/Userlib.rb" />
         <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/calendar_helper.rb" />
-        <option value="db-console:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/" />
-        <option value="$PROJECT_DIR$/app/controllers/calendar_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/log_book_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
       </list>
     </option>
   </component>
@@ -279,30 +271,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -391,39 +359,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -500,6 +436,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pstn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pstn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log_book" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -661,6 +619,30 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pstn" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pstn" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -689,7 +671,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Ruby" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
@@ -701,6 +683,9 @@
       <recent name="G:\Rails Proj\pstn\app\assets\images" />
       <recent name="G:\Rails Proj\pstn\app\assets\stylesheets\images" />
       <recent name="G:\Rails Proj\pstn\app\assets\javascripts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Rails Proj\pstn\app\controllers" />
     </key>
   </component>
   <component name="RunManager" selected="IRB console.Rails console: pstn">
@@ -1095,7 +1080,7 @@
         <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
         <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
         <item index="3" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
-        <item index="4" class="java.lang.String" itemvalue="Rake.spec:requests" />
+        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: pstn" />
       </list>
     </recent_temporary>
   </component>
@@ -1254,7 +1239,11 @@
       <created>1358442993041</created>
       <updated>1358442993041</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="(添加注释)添加了多用户交班日志相互屏蔽功能。">
+      <created>1358443156241</created>
+      <updated>1358443156241</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1279,24 +1268,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3442438" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26262626" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32659933" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.6026936" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32772166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.61279464" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2449089" sideWeight="0.22222222" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28938907" sideWeight="0.6038159" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1881029" sideWeight="0.61279464" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39618406" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3973747" sideWeight="0.49429968" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3872054" sideWeight="0.497557" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32492998" sideWeight="0.49348533" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3872054" sideWeight="0.497557" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32435465" sideWeight="0.49348533" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32772166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3442438" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19882101" sideWeight="0.5699774" order="3" side_tool="false" content_ui="tabs" />
@@ -1343,7 +1332,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了多用户交班日志相互屏蔽功能。" />
+    <option name="LAST_COMMIT_MESSAGE" value="(添加注释)添加了多用户交班日志相互屏蔽功能。" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1377,6 +1366,7 @@
     <MESSAGE value="将erb模板换成了slim模板。" />
     <MESSAGE value="测试还未通过。" />
     <MESSAGE value="添加了多用户交班日志相互屏蔽功能。" />
+    <MESSAGE value="(添加注释)添加了多用户交班日志相互屏蔽功能。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1387,111 +1377,116 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/main_layout.html.slim">
+    <entry file="file://$PROJECT_DIR$/app/controllers/calendar_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="33" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://G:/Ruby193/lib/ruby/gems/1.9.1/gems/event-calendar-2.3.3/lib/event_calendar/calendar_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="8" selection-start="3394" selection-end="3394" vertical-scroll-proportion="-8.5361595" />
-      </provider>
-    </entry>
-    <entry file="file://G:/Ruby193/lib/ruby/gems/1.9.1/gems/event-calendar-2.3.3/lib/event_calendar.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="8" selection-start="2650" selection-end="2650" vertical-scroll-proportion="-0.44671202">
+        <state line="22" column="5" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
+    <entry file="file://G:/Ruby193/lib/ruby/gems/1.9.1/gems/activerecord-3.2.11/lib/active_record/querying.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="4" selection-start="95" selection-end="95" vertical-scroll-proportion="-1.4051896">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..departments">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..events">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/log_book/logging.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="2210" selection-end="2384" vertical-scroll-proportion="-46.357143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18389423">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/events_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/calendar_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/welcome/main.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..users">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+        <state line="43" column="7" selection-start="942" selection-end="942" vertical-scroll-proportion="1.1370193">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+    <entry file="file://$PROJECT_DIR$/app/helpers/log_book_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="24" selection-start="203" selection-end="213" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="21" selection-end="21" vertical-scroll-proportion="0.026442308">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/event.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/log_book_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+        <state line="11" column="93" selection-start="370" selection-end="402" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://db-console:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/">
+    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..users">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..events">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://G:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.11/lib/action_controller/metal/rescue.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..departments">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="66" selection-start="6472" selection-end="6472" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/enumerator.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="8" selection-start="4055" selection-end="4055" vertical-scroll-proportion="-0.30168268">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/calendar_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="47" selection-start="354" selection-end="354" vertical-scroll-proportion="0.25611177">
+        <state line="120" column="21" selection-start="2735" selection-end="2735" vertical-scroll-proportion="5.1361866">
           <folding />
         </state>
       </provider>

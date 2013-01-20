@@ -19,4 +19,8 @@
     = will_paginate @status, :inner_window => 2
   .well.center
     | 统计信息：一共有 #{ @status.total_entries } 条,当前第 #{ @status.current_page } 页，
-    | 共 #{ (@status.total_entries / @status .per_page)+1 } 页.
+    | 共
+    - if (@status.total_entries % @status.per_page) ==0
+      | #{ (@status.total_entries / @status.per_page) } 页.
+    - else
+      | #{ (@status.total_entries / @status.per_page) +1 } 页.

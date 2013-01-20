@@ -23,7 +23,11 @@ table.table.table-striped.table-bordered.table-condensed
   = will_paginate @events,:inner_window => 2
 .well.center
   | 统计信息：一共有 #{ @events.total_entries } 条,当前第 #{ @events.current_page } 页，
-  | 共 #{ (@events.total_entries / @events .per_page)+1 } 页.
+  | 共
+  - if (@events.total_entries % @events.per_page) ==0
+    | #{ (@events.total_entries / @events.per_page) } 页.
+  - else
+    | #{ (@events.total_entries / @events.per_page) +1 } 页.
 br
 
 - link_to '新建交班日志', new_event_path, { class: 'btn btn-primary' }

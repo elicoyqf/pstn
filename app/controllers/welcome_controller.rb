@@ -42,8 +42,6 @@ class WelcomeController < ApplicationController
         redirect_to root_path
       end
     end
-
-
   end
 
   #将数据插入数据库中
