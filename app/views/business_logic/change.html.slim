@@ -76,12 +76,12 @@
         .span6
           .control-group
             label.control-label for="s_df_flag"
-              a id="pop"  data-content="如果选择了去欠费或开机类业务，必须要选择用户类型或指定分组号，否则后台会出错。" rel="popover" href="#" data-original-title="注意" 选择业务类型
+              a id="pop"  data-content="如果选择了去欠费或开机类业务，必须要选择用户类型或指定分组号，否则后台会出错。" rel="popover" href="#" data-original-title="注意" 选择去欠费开机类型
 
             .controls
               .input-prepend
                 span.add-on $
-                = select(:pstn_stop, 's_dl_flag', { '放欠费' => '1', '欠费停机' => '2', '停机保号' => '3', '拆机' => '4', '去欠费' => '51', '去欠费开机' => '52', '开机'  => '53' }, { prompt: '选择业务类型' }, { class: 'span11', id: 's_df_flag' })
+                = select(:pstn_stop, 's_dl_flag', { '去欠费' => '51', '去欠费开机' => '52', '开机'  => '53' }, { prompt: '选择业务类型' }, { class: 'span11', id: 's_df_flag' })
 
     .row
       .span12

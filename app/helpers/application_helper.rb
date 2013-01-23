@@ -27,7 +27,7 @@ module ApplicationHelper
     end
   end
 
-  def make_data
+  def make_data_test
     #优先做新装业务，即优先级为1的(work_orders:priotity = 1)
 
 
