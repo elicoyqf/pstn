@@ -4,6 +4,7 @@ require "timeout"
 class BusinessLogicController < ApplicationController
   include ApplicationHelper
   include BusinessLogicHelper
+  include WorkOrderProcess
 
   def change
     render layout: "main_layout"
@@ -105,15 +106,13 @@ class BusinessLogicController < ApplicationController
     #else
     #  @er = '[{"one":"errors"},{"two":"errors"}]'
     #end
-
-
     wo_make
     respond_to do |f|
       f.json { render json: @er }
     end
   end
 
-  def wo_make
+  def wo_make1
     #优先做新装业务，即优先级为1的(work_orders:priotity = 1)
     #状态2为等等中，1为成功，3为失败。
     new_or = WorkOrder.find_all_by_status(2)
@@ -348,7 +347,6 @@ class BusinessLogicController < ApplicationController
         end
       end
     end
-
   end
 
   def pstn_data(ip_address, id, cmd, ad_cmd='', cf_no_cmd='', cf_act_cmd='', df_cmd='')
@@ -376,6 +374,7 @@ class BusinessLogicController < ApplicationController
       telnet.waitfor(/PASSWORD:/) { |c| print c }
       telnet.puts 'PW0009'
 
+      st = 1 #默认是成功的，如果遇到不妥的情况修改状态为3（失败）
       #普通号码测试使用6994951
       #telnet.puts "4294:dn=k'6994951,subgrp=5."
       telnet.puts "#{cmd}"
@@ -393,6 +392,7 @@ class BusinessLogicController < ApplicationController
           bcg_cmd = cmd.gsub(/4294/, '4382')
           telnet.puts "#{bcg_cmd}"
           bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+          st = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
 
           unless cf_no_cmd.blank?
             telnet.puts "MM"
@@ -400,6 +400,7 @@ class BusinessLogicController < ApplicationController
             bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
             telnet.puts "#{bcg_cf_no_cmd}"
             bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if bcg_r_cf_no_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless cf_act_cmd.blank?
@@ -408,6 +409,7 @@ class BusinessLogicController < ApplicationController
             bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
             telnet.puts "#{bcg_cf_act_cmd}"
             bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if bcg_r_cf_act_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless df_cmd.blank?
@@ -416,6 +418,7 @@ class BusinessLogicController < ApplicationController
             bcg_df_cmd = df_cmd.gsub(/4294/, '4382')
             telnet.puts "#{bcg_df_cmd}"
             bcg_r_df_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if bcg_r_df_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
         else
@@ -424,6 +427,7 @@ class BusinessLogicController < ApplicationController
             telnet.waitfor(/</) { |c| print c }
             telnet.puts "#{cf_no_cmd}"
             r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_cf_no_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless cf_act_cmd.blank?
@@ -431,6 +435,7 @@ class BusinessLogicController < ApplicationController
             telnet.waitfor(/</) { |c| print c }
             telnet.puts "#{cf_act_cmd}"
             r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_cf_act_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless df_cmd.blank?
@@ -438,6 +443,7 @@ class BusinessLogicController < ApplicationController
             telnet.waitfor(/</) { |c| print c }
             telnet.puts "#{df_cmd}"
             r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
         end
@@ -447,9 +453,8 @@ class BusinessLogicController < ApplicationController
           telnet.waitfor(/</) { |c| print c }
           telnet.puts "#{ad_cmd}"
           r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
+          st = 3 if r_ad_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
         end
-        #todo:更新数据库状态。
-        WorkOrder.find(id).update_attribute(:status, 1)
       end
 
     rescue
@@ -473,6 +478,7 @@ class BusinessLogicController < ApplicationController
           bcg_cmd = cmd.gsub(/4294/, '4382')
           telnet.puts "#{bcg_cmd}"
           bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+          st = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
 
           unless cf_no_cmd.blank?
             telnet.puts "MM"
@@ -480,6 +486,7 @@ class BusinessLogicController < ApplicationController
             bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
             telnet.puts "#{bcg_cf_no_cmd}"
             bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if bcg_r_cf_no_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless cf_act_cmd.blank?
@@ -488,6 +495,7 @@ class BusinessLogicController < ApplicationController
             bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
             telnet.puts "#{bcg_cf_act_cmd}"
             bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if bcg_r_cf_act_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless df_cmd.blank?
@@ -496,6 +504,7 @@ class BusinessLogicController < ApplicationController
             bcg_df_cmd = df_cmd.gsub(/4294/, '4382')
             telnet.puts "#{bcg_df_cmd}"
             r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
         else
@@ -504,6 +513,7 @@ class BusinessLogicController < ApplicationController
             telnet.waitfor(/</) { |c| print c }
             telnet.puts "#{cf_no_cmd}"
             r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_cf_no_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless cf_act_cmd.blank?
@@ -511,6 +521,7 @@ class BusinessLogicController < ApplicationController
             telnet.waitfor(/</) { |c| print c }
             telnet.puts "#{cf_act_cmd}"
             r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_cf_act_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
           unless df_cmd.blank?
@@ -518,6 +529,7 @@ class BusinessLogicController < ApplicationController
             telnet.waitfor(/</) { |c| print c }
             telnet.puts "#{df_cmd}"
             r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
+            st = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           end
 
         end
@@ -527,12 +539,12 @@ class BusinessLogicController < ApplicationController
           telnet.waitfor(/</) { |c| print c }
           telnet.puts "#{ad_cmd}"
           r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
+          st = 3 if r_ad_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
         end
-
-        #todo:更新数据库状态。
-        WorkOrder.find(id).update_attribute(:status, 1)
       end
     ensure
+      #todo:更新数据库状态。
+      WorkOrder.find(id).update_attribute(:status, st)
       telnet.close
     end
   end

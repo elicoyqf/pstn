@@ -1,6 +1,7 @@
 require 'net/telnet'
 
 module BusinessLogicHelper
+=begin
   def make_data()
 
     telnet = Net::Telnet.new(
@@ -38,5 +39,6 @@ module BusinessLogicHelper
 
     end
   end
+=end
 
 end
