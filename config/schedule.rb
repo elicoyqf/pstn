@@ -49,6 +49,8 @@ every :day, :at => '12:20am', :roles => [:app] do
 end
 =end
 
+set :output, "#{path}/log/whenever.log" #设置日志输出文件
+
 #每天的正常上班时间内，一个小时内做4次，每次15分钟
 every '10,25,40,50 8-18 * * *' do
   rake database: woprocess

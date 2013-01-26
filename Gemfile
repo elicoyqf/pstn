@@ -13,6 +13,7 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+gem 'logging-rails'
 gem 'sqlite3'
 gem 'mysql2'
 gem 'slim', '1.3.6'
