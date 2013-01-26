@@ -53,14 +53,14 @@ set :output, "#{path}/log/whenever.log" #设置日志输出文件
 
 #每天的正常上班时间内，一个小时内做4次，每次15分钟
 every '10,25,40,50 8-18 * * *' do
-  rake database: woprocess
+  rake database:woprocess
 end
 
 #每天的晚班时间内做检查，从2点开始做到5点
 every '20 2-5 * * *' do
-  rake database: wocheck
+  rake database:wocheck
 end
 
 every '20 6 * * *' do
-  rake database: wofailcheck
+  rake database:wofailcheck
 end
