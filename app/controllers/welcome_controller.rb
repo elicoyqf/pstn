@@ -80,7 +80,7 @@ class WelcomeController < ApplicationController
 
     if @er =~ /normal/
       a_no.each do |no|
-        @wo = WorkOrder.create(user_id: user.id, status: 2, s_df_flag: s_df_flag, s_no: no, priority: 5)
+        @wo = WorkOrder.create(user_id: user.id, status: 2, s_df_flag: s_df_flag, s_no: no, priority: 5, check: 2)
       end
     end
 

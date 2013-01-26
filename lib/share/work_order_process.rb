@@ -5,13 +5,15 @@ module WorkOrderProcess
       puts 'hello'
     end
 
-    def wo_make(new_or)
+    def wo_make(new_wo, check=0)
+      #check参数默认为0即未检查，为1是正处于检查状态
+      #check参数在数据库里的意思是：默认为2即未检查，为1是已检查正常状态,为3则已检查但是失败状态
       #优先做新装业务，即优先级为1的(work_orders:priotity = 1)
       #状态2为等等中，1为成功，3为失败。
       #new_or = WorkOrder.where('created_at >= ? And created_at <= ? and status = ?', Time.now.at_beginning_of_day,
       #                         Time.now.at_beginning_of_day + 1.day, 2)
 
-      new_or.each do |x|
+      new_wo.each do |x|
         no    = x.s_no.to_i
         s_cr  = x.s_cr
         cr_no = x.s_cr_no
@@ -228,22 +230,22 @@ module WorkOrderProcess
             else
 
             end
-            puts "cmd---->"+cmd
+            puts 'cmd---->'+cmd
             #cf_no_cmd在删除的时候需要在r_cmd的前面。
-            puts "cf_no_cmd---->"+cf_no_cmd
-            puts "cf_act_cmd---->"+cf_act_cmd
-            puts "r_cmd---->"+r_cmd
-            puts "df_cmd---->"+df_cmd
-            puts "ad_cmd---->"+ad_cmd
-            puts "test_r---->"+test_r.to_s
+            puts 'cf_no_cmd---->'+cf_no_cmd
+            puts 'cf_act_cmd---->'+cf_act_cmd
+            puts 'r_cmd---->'+r_cmd
+            puts 'df_cmd---->'+df_cmd
+            puts 'ad_cmd---->'+ad_cmd
+            puts 'test_r---->'+test_r.to_s
 
-            pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd)
+            pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, check)
           end
         end
       end
     end
 
-    def pstn_data(ip_address, id, cmd, ad_cmd='', cf_no_cmd='', cf_act_cmd='', df_cmd='')
+    def pstn_data(ip_address, id, cmd, ad_cmd='', cf_no_cmd='', cf_act_cmd='', df_cmd='', check)
       telnet = Net::Telnet.new(
           "Host"     => ip_address,
           "Port"     => 10001,
@@ -267,17 +269,18 @@ module WorkOrderProcess
         telnet.waitfor(/PASSWORD:/) { |c| print c }
         telnet.puts 'PW0009'
 
-        st = 1 #默认是成功的，如果遇到不妥的情况修改状态为3（失败）
-               #普通号码测试使用6994951
-               #telnet.puts "4294:dn=k'6994951,subgrp=5."
+        st = 1
+        #默认是成功的，如果遇到不妥的情况修改状态为3（失败）
+        #普通号码测试使用6994951
+        #telnet.puts "4294:dn=k'6994951,subgrp=5."
         telnet.puts "#{cmd}"
         r_cmd_str = telnet.waitfor(/>/) { |c| print c }
 
         #说明返回错误了
         if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           WorkOrder.find(id).update_attribute(:status, 3)
+          WorkOrder.find(id).update_attribute(:check, 3) if check == 1
         else
-          #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
           #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
           if r_cmd_str =~ /BCG/
             telnet.puts "MM"
@@ -313,7 +316,6 @@ module WorkOrderProcess
               bcg_r_df_str = telnet.waitfor(/>/) { |c| print c }
               st = 3 if bcg_r_df_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
-
           else
             unless cf_no_cmd.blank?
               telnet.puts "MM"
@@ -338,9 +340,7 @@ module WorkOrderProcess
               r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
               st = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
-
           end
-
           unless ad_cmd.blank?
             telnet.puts "MM"
             telnet.waitfor(/</) { |c| print c }
@@ -352,7 +352,6 @@ module WorkOrderProcess
 
       rescue
         #为了防止未超时的会话，直接输入命令即可。
-        #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
         #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样
         #普通号码测试使用6994951
         #telnet.puts "4294:dn=k'6994951,subgrp=5."
@@ -362,8 +361,8 @@ module WorkOrderProcess
         #说明返回错误了
         if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
           WorkOrder.find(id).update_attribute(:status, 3)
+          WorkOrder.find(id).update_attribute(:check, 3) if check == 1
         else
-          #todo:还需要判断用户是否是BCG用户，如果是BCG用户需要修改命令
           #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
           if r_cmd_str =~ /BCG/
             telnet.puts "MM"
@@ -424,9 +423,7 @@ module WorkOrderProcess
               r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
               st = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
-
           end
-
           unless ad_cmd.blank?
             telnet.puts "MM"
             telnet.waitfor(/</) { |c| print c }
@@ -437,6 +434,7 @@ module WorkOrderProcess
         end
       ensure
         WorkOrder.find(id).update_attribute(:status, st)
+        WorkOrder.find(id).update_attribute(:check, st) if check == 1
         telnet.close
       end
     end
