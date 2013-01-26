@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="添加了logging-rails的gem包，修正了一些小bug，已正式上线进行测试。v2.1.2">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="修正whenever的小bug，v2.1.3">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/schedule.rb" afterPath="$PROJECT_DIR$/config/schedule.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359213613166" ignored="false" />
+    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359214230845" ignored="false" />
     <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357563952086" ignored="false" />
     <file path="/change.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356795143271" ignored="false" />
     <file path="/routes.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357570379714" ignored="false" />
@@ -129,7 +128,7 @@
       <file leaf-file-name="schedule.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/schedule.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="16" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.7951106">
+            <state line="64" column="28" selection-start="1426" selection-end="1446" vertical-scroll-proportion="0.7951106">
               <folding />
             </state>
           </provider>
@@ -1250,7 +1249,11 @@
       <created>1359213637928</created>
       <updated>1359213637928</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="修正whenever的小bug，v2.1.3">
+      <created>1359214234557</created>
+      <updated>1359214234557</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1339,7 +1342,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了logging-rails的gem包，修正了一些小bug，已正式上线进行测试。v2.1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正whenever的小bug，v2.1.3" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1375,6 +1378,7 @@
     <MESSAGE value="修正编辑event的错误。" />
     <MESSAGE value="修正了gpon菜单的链接问题。v2.1.1" />
     <MESSAGE value="添加了logging-rails的gem包，修正了一些小bug，已正式上线进行测试。v2.1.2" />
+    <MESSAGE value="修正whenever的小bug，v2.1.3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1499,7 +1503,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/schedule.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="16" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.7951106">
+        <state line="64" column="28" selection-start="1426" selection-end="1446" vertical-scroll-proportion="0.7951106">
           <folding />
         </state>
       </provider>
