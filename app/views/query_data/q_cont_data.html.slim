@@ -77,8 +77,9 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
             td style="text-align: center; vertical-align:middle;" <span class="label label-success">成功了.</span>
           - when 3
             td style="text-align: center; vertical-align:middle;" <span class="label label-important">失败了.</span>
-          - else
+          - when 4
             td style="text-align: center; vertical-align:middle;" <span class="label label-inverse">号码错误.</span>
+          - else
         td style="text-align: center; vertical-align:middle;" = x.user.alias_name
         td.span2 style="text-align: center; vertical-align:middle;" = x.created_at.strftime("%Y年%m月%d日 %H:%M:%S")
         td.span2 style="text-align: center; vertical-align:middle;" = x.updated_at.strftime("%Y年%m月%d日 %H:%M:%S")
