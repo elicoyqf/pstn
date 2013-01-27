@@ -48,7 +48,7 @@ every :day, :at => '12:20am', :roles => [:app] do
   rake "app_server:task"
 end
 =end
-`env :PATH, ENV['PATH']`
+env :PATH, ENV['PATH']
 #添加环境变量,否则找不到bundle命令。
 set :output, "#{path}/log/whenever.log" #设置日志输出文件
 
