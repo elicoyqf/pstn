@@ -4,11 +4,11 @@
 
 $ ->
   crnook = (cr_no) ->
-    reg1 = ///^\d{1,4}$///
+    reg1 = ///^\d{4}$///
     if cr_no == ''
       true
     else
-      if reg1.test(cr_no) && cr_no.length <=4
+      if reg1.test(cr_no) && cr_no.length == 4
         true
       else
         false

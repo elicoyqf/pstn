@@ -1,6 +1,4 @@
 #encoding: utf-8
-require "net/telnet"
-require "timeout"
 class BusinessLogicController < ApplicationController
   include ApplicationHelper
   include BusinessLogicHelper
