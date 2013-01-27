@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="在whenever里面添加环境变量，以免找不到命令，软件版更新至v2.2.1">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/business_logic/change.html.slim" afterPath="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/share/work_order_process.rb" afterPath="$PROJECT_DIR$/lib/share/work_order_process.rb" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="优化了后台工单制做代码，修复了lib/work_order_process.rb缺少库文件 的bug，修正了js在验证限制密码的bug，添加了汇接局6994950-9的号段用于测试，软件版更新至v2.2.2">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" afterPath="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359252095324" ignored="false" />
+    <file path="/Dummy.txt" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359255948138" ignored="false" />
     <file path="/logging.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357563952086" ignored="false" />
     <file path="/change.html.erb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1356795143271" ignored="false" />
     <file path="/routes.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1357570379714" ignored="false" />
@@ -86,6 +81,7 @@
     <file path="/work_order.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359215204990" ignored="false" />
     <file path="/_main_footer.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359218093295" ignored="false" />
     <file path="/schedule.rb" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359251813074" ignored="false" />
+    <file path="/q_cont_data.html.slim" changelist="663f4392-246e-43fe-9ca5-c1637a004e33" time="1359256252004" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +106,16 @@
       <file leaf-file-name="work_order_process.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/share/work_order_process.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
+            <state line="28" column="8" selection-start="926" selection-end="926" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="q_cont_data.html.slim" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="86" column="14" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.70415646">
               <folding />
             </state>
           </provider>
@@ -129,24 +134,6 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/business_logic_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="1" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/business_logic/change.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="65" selection-start="4800" selection-end="4800" vertical-scroll-proportion="-15.714286">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="business_logic.js.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="45" selection-start="366" selection-end="366" vertical-scroll-proportion="0.26862028">
               <folding />
             </state>
           </provider>
@@ -204,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/work_order.rb" />
         <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/database.rake" />
@@ -220,6 +206,7 @@
         <option value="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
       </list>
     </option>
   </component>
@@ -1383,7 +1370,11 @@
       <created>1359252098362</created>
       <updated>1359252098362</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="优化了后台工单制做代码，修复了lib/work_order_process.rb缺少库文件 的bug，修正了js在验证限制密码的bug，添加了汇接局6994950-9的号段用于测试，软件版更新至v2.2.2">
+      <created>1359255975293</created>
+      <updated>1359255975293</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1472,7 +1463,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="在whenever里面添加环境变量，以免找不到命令，软件版更新至v2.2.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化了后台工单制做代码，修复了lib/work_order_process.rb缺少库文件 的bug，修正了js在验证限制密码的bug，添加了汇接局6994950-9的号段用于测试，软件版更新至v2.2.2" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1485,7 +1476,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="添加数据库文件。" />
     <MESSAGE value="添加了后台制做基本命令，还需要进一步测试。" />
     <MESSAGE value="公司开发电脑最后一份保存副本。" />
     <MESSAGE value="生成命令字符串v1.1" />
@@ -1510,6 +1500,7 @@
     <MESSAGE value="再次修正whenever的小bug，v2.1.4" />
     <MESSAGE value="在工单表中添加检查字段，并修改了相关的rake task，修复了一些小bug，将版本号写在applicationHelper里面，软件版更新至v2.2" />
     <MESSAGE value="在whenever里面添加环境变量，以免找不到命令，软件版更新至v2.2.1" />
+    <MESSAGE value="优化了后台工单制做代码，修复了lib/work_order_process.rb缺少库文件 的bug，修正了js在验证限制密码的bug，添加了汇接局6994950-9的号段用于测试，软件版更新至v2.2.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1524,11 +1515,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_footer.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="54" selection-start="171" selection-end="171" vertical-scroll-proportion="0.39402986" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="20" selection-start="117" selection-end="117" vertical-scroll-proportion="0.052884616">
@@ -1560,23 +1546,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/database.rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="3" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="78" column="65" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.64468867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/business_logic/change.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="65" selection-start="4800" selection-end="4800" vertical-scroll-proportion="-15.714286">
           <folding />
         </state>
       </provider>
@@ -1615,16 +1587,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/share/work_order_process.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
+        <state line="82" column="113" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="113" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.0">
+        <state line="34" column="29" selection-start="970" selection-end="970" vertical-scroll-proportion="0.9133089">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/business_logic/change.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="65" selection-start="4800" selection-end="4800" vertical-scroll-proportion="0.5378973">
           <folding />
         </state>
       </provider>
@@ -1636,9 +1615,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee">
+    <entry file="file://$PROJECT_DIR$/lib/tasks/database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="366" selection-end="366" vertical-scroll-proportion="0.26862028">
+        <state line="31" column="3" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/share/work_order_process.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="8" selection-start="926" selection-end="926" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="14" selection-start="3507" selection-end="3507" vertical-scroll-proportion="0.70415646">
           <folding />
         </state>
       </provider>
