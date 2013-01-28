@@ -62,7 +62,7 @@ class WelcomeController < ApplicationController
   #
 
   def pstn_stop
-    user      = session[:user_id]
+    user_id      = session[:user_id]
     number    = params[:number]
     s_df_flag = params[:wo_type]
     puts "--------------->"
@@ -80,7 +80,7 @@ class WelcomeController < ApplicationController
 
     if @er =~ /normal/
       a_no.each do |no|
-        @wo = WorkOrder.create(user_id: user.id, status: 2, s_df_flag: s_df_flag, s_no: no, priority: 5, check: 2)
+        @wo = WorkOrder.create(user_id: user_id, status: 2, s_df_flag: s_df_flag, s_no: no, priority: 5, check: 2)
       end
     end
 
