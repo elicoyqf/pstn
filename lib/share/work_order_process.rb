@@ -297,10 +297,10 @@ module WorkOrderProcess
             unless r_cmd.blank? && r_cmd != '.'
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
-              bcg_r_cmd = r_cmd.gsub(/4294/, '4382')
-              telnet.puts "#{bcg_r_cmd}"
-              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+              bcg_r_r_cmd = r_cmd.gsub(/4294/, '4382')
+              telnet.puts "#{bcg_r_r_cmd}"
+              bcg_r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
 
             unless cf_no_cmd.blank?
@@ -334,8 +334,8 @@ module WorkOrderProcess
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
               telnet.puts "#{r_cmd}"
-              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+              r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
 
             unless cf_no_cmd.blank?
@@ -396,10 +396,10 @@ module WorkOrderProcess
             unless r_cmd.blank? && r_cmd != '.'
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
-              bcg_r_cmd = r_cmd.gsub(/4294/, '4382')
-              telnet.puts "#{bcg_r_cmd}"
-              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+              bcg_r_r_cmd = r_cmd.gsub(/4294/, '4382')
+              telnet.puts "#{bcg_r_r_cmd}"
+              bcg_r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
 
             unless cf_no_cmd.blank?
@@ -434,8 +434,8 @@ module WorkOrderProcess
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
               telnet.puts "#{r_cmd}"
-              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+              r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
             unless cf_no_cmd.blank?
               telnet.puts "MM"
