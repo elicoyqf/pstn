@@ -31,7 +31,7 @@ module WorkOrderProcess
           #生成命令行字符串
           ip_address = dn.jf_name.ip_address
           #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
-          cmd        = ""
+          cmd        = "4294:dn=k'#{no}"
           df_cmd     = ""
           r_cmd      = cmd
           subctrl    = 'subctrl=1'
@@ -49,8 +49,8 @@ module WorkOrderProcess
           p_emerg    = dn.jf_name.p_emerg
 
           #todo:需要在用户类型和组号二选一，已经在前台完成限制了，后台不用管它。
-          (cmd += "4294:dn=k'#{no},subgrp=#{bt}"; test_r << "SUBGRP  :  #{bt}") unless x.s_bt.blank?
-          (cmd += "4294:dn=k'#{no},subgrp=#{sg_no}"; test_r << "SUBGRP  :  #{sg_no}") unless x.s_sg_no.blank?
+          (cmd += ",subgrp=#{bt}"; test_r << "SUBGRP  :  #{bt}") unless x.s_bt.blank?
+          (cmd += ",subgrp=#{sg_no}"; test_r << "SUBGRP  :  #{sg_no}") unless x.s_sg_no.blank?
           #todo:用户权限的生成字符串还需要根据不同机房生成不同的权限字符
           #"国内" => "1", "市话" => "2", "郊话" => "3", "国际" => "4", "紧急" => "5"
           #各个机房的权限已经放到jf_name里面p_nat,p_local,p_suburban,p_int,p_emerg.
