@@ -62,7 +62,7 @@ class WelcomeController < ApplicationController
   #
 
   def pstn_stop
-    user      = User.first
+    user      = session[:user_id]
     number    = params[:number]
     s_df_flag = params[:wo_type]
     puts "--------------->"

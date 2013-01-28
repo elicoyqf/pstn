@@ -72,6 +72,7 @@ DnTable.create(jf_name_id: 6, dn_start: 6998000, dn_end: 6998899)
 DnTable.create(jf_name_id: 6, dn_start: 6999900, dn_end: 6999999)
 DnTable.create(jf_name_id: 6, dn_start: 6980000, dn_end: 6980999)
 DnTable.create(jf_name_id: 6, dn_start: 6983000, dn_end: 6983999)
+DnTable.create(jf_name_id: 6, dn_start: 6987500, dn_end: 6987999)
 #汇接局
 DnTable.create(jf_name_id: 7, dn_start: 6176000, dn_end: 6176999)
 DnTable.create(jf_name_id: 7, dn_start: 6101000, dn_end: 6101999)

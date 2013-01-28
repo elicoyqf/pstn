@@ -73,9 +73,10 @@ class BusinessLogicController < ApplicationController
     #if cr_no_ok?(s_cr_no)
     if b_s_no.blank?
       if s_no =~ /^\d{7}$/
-        WorkOrder.create(user_id:  1, status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf, s_cf_no: s_cf_no, s_cid: s_cid, s_cr: s_cr,
-                         s_cr_no:  s_cr_no, s_df_flag: s_df_flag, s_hs: s_hs, s_mc: s_mc, s_no: s_no, s_perm: s_perm, s_sg_no: s_sg_no,
-                         priority: s_bp, check: 2)
+        WorkOrder.create(user_id:  session[:user_id], status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf,
+                          s_cf_no: s_cf_no, s_cid: s_cid, s_cr: s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag,
+                          s_hs: s_hs, s_mc: s_mc, s_no: s_no, s_perm: s_perm, s_sg_no: s_sg_no, priority: s_bp,
+                          check: 2)
         @er = '[{"one":"normal"}]'
       else
         @er = '[{"one":"errors"},{"two":"errors"}]'
@@ -95,9 +96,10 @@ class BusinessLogicController < ApplicationController
 
       if @er =~ /normal/
         s_a_no.each do |no|
-          @wo = WorkOrder.create(user_id:  1, status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf, s_cf_no: s_cf_no, s_cid: s_cid, s_cr: s_cr,
-                                 s_cr_no:  s_cr_no, s_df_flag: s_df_flag, s_hs: s_hs, s_mc: s_mc, s_no: no, s_perm: s_perm, s_sg_no: s_sg_no,
-                                 priority: s_bp, check: 2)
+          @wo = WorkOrder.create(user_id:  session[:user_id],  status: status, s_ad: s_ad, s_bt: s_bt, s_cf: s_cf,
+                                 s_cf_no: s_cf_no, s_cid: s_cid, s_cr: s_cr, s_cr_no: s_cr_no, s_df_flag: s_df_flag,
+                                 s_hs: s_hs, s_mc: s_mc, s_no: no, s_perm: s_perm, s_sg_no: s_sg_no,  priority: s_bp,
+                                 check: 2)
         end
       end
     end
