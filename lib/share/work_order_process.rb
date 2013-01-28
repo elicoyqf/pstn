@@ -33,7 +33,7 @@ module WorkOrderProcess
           #jf_py      = HanziToPinyin.hanzi_to_pinyin(dn.jf_name.name)
           cmd        = "4294:dn=k'#{no}"
           df_cmd     = ""
-          r_cmd      = cmd
+          r_cmd      = "4294:dn=k'#{no}"
           subctrl    = 'subctrl=1'
           r_subctrl  = 'subctrl=2'
           ad_cmd     = ""
@@ -99,7 +99,7 @@ module WorkOrderProcess
             if x.s_cid == '1'
               cmd += ",23=1&1"; test_r << "CGLIP"
             else
-              r_cmd += ",23=2&1"; test_r << "CGLIP"
+              r_cmd += ',23=2&1'; test_r << "CGLIP"
             end
           end
 
@@ -111,64 +111,65 @@ module WorkOrderProcess
             end
           end
 
-          case x.s_cf
-            when "1"
-              subctrl += '&cfwdu'
-              cf_act  = 'cfwdu'
-              test_r << 'CFWDU'
-              unless cf_no.blank?
-                cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
-                cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
+          unless x.s_cf.blank?
+            case x.s_cf
+              when "1"
+                subctrl += '&cfwdu'
+                cf_act  = 'cfwdu'
+                test_r << 'CFWDU'
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
+                  test_r << 'ACTIVATE'
+                end
+              when "2"
+                subctrl += '&cfwdbsub'
+                cf_act  = 'cfwdbsub'
+                test_r << 'CFWDBSUB'
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
+                  test_r << 'ACTIVATE'
+                end
+              when "3"
+                subctrl += '&cfwdnor'
+                cf_act  = 'cfwdnor'
+                test_r << 'CFWDNOR'
+                unless cf_no.blank?
+                  cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
+                  cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
+                  test_r << "ACTIVATE"
+                end
+              when "4"
+                r_subctrl += '&cfwdu'
+                cf_act    = 'cfwdu'
+                test_r << 'CFWDU'
+
+                cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
+                #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
                 test_r << 'ACTIVATE'
-              end
-            when "2"
-              subctrl += '&cfwdbsub'
-              cf_act  = 'cfwdbsub'
-              test_r << 'CFWDBSUB'
-              unless cf_no.blank?
-                cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
-                cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
+
+              when "5"
+                r_subctrl += '&cfwdbsub'
+                cf_act    = 'cfwdbsub'
+                test_r << 'CFWDBSUB'
+
+                cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
+                #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
                 test_r << 'ACTIVATE'
-              end
-            when "3"
-              subctrl += '&cfwdnor'
-              cf_act  = 'cfwdnor'
-              test_r << 'CFWDNOR'
-              unless cf_no.blank?
-                cf_no_cmd  = "4294:dn=k'#{no},cfwd=add&#{cf_act}&k'#{cf_no}."
-                cf_act_cmd = "4294:dn=k'#{no},cfwd=activate&#{cf_act}&k'#{cf_no}."
-                test_r << "ACTIVATE"
-              end
-            when "4"
-              r_subctrl += '&cfwdu'
-              cf_act    = 'cfwdu'
-              test_r << 'CFWDU'
 
-              cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
-              #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
-              test_r << 'ACTIVATE'
+              when "6"
+                r_subctrl += '&cfwdnor'
+                cf_act    = 'cfwdnor'
+                test_r << 'CFWDNOR'
 
-            when "5"
-              r_subctrl += '&cfwdbsub'
-              cf_act    = 'cfwdbsub'
-              test_r << 'CFWDBSUB'
+                cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
+                #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
+                test_r << 'ACTIVATE'
 
-              cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
-              #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
-              test_r << 'ACTIVATE'
-
-            when "6"
-              r_subctrl += '&cfwdnor'
-              cf_act    = 'cfwdnor'
-              test_r << 'CFWDNOR'
-
-              cf_no_cmd = "4294:dn=k'#{no},cfwd=remove."
-              #cf_act_cmd = "4294:dn=k'#{no},#{r_subctrl}."
-              test_r << 'ACTIVATE'
-
-            else
-
-          end unless x.s_cf.blank?
+              else
+            end
+          end
 
           unless s_cr.blank?
             if s_cr == "1"
@@ -207,7 +208,7 @@ module WorkOrderProcess
           end
 
           if r_subctrl !~ /^subctrl=2$/
-            r_cmd += ','+r_subctrl+"."
+            r_cmd += ','+r_subctrl+'.'
           else
             r_cmd += '.'
           end
@@ -220,17 +221,16 @@ module WorkOrderProcess
 
           puts x.id
           #如果cmd或者r_cmd没有数据，则不发送到终端。
-          if r_cmd =~/4294:dn=k'#{no}.$/
+          if r_cmd =~/^4294:dn=k'#{no}.$/
             puts '不发送命令'
-          else
-
+            r_cmd = '.'
           end
 
-          if cmd =~/4294:dn=k'#{no}.$/
+          if cmd =~/^4294:dn=k'#{no}.$/
             puts '不发送命令'
-          else
-
+            cmd = '.'
           end
+
           puts 'cmd---->'+cmd
           #cf_no_cmd在删除的时候需要在r_cmd的前面。
           puts 'cf_no_cmd---->'+cf_no_cmd
@@ -240,7 +240,7 @@ module WorkOrderProcess
           puts 'ad_cmd---->'+ad_cmd
           puts 'test_r---->'+test_r.to_s
 
-          pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, check)
+          #pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
         else
           WorkOrder.find(x.id).update_attribute(:status, 4)
           WorkOrder.find(x.id).update_attribute(:check, 4)
@@ -248,14 +248,14 @@ module WorkOrderProcess
       end
     end
 
-    def pstn_data(ip_address, id, cmd, ad_cmd='', cf_no_cmd='', cf_act_cmd='', df_cmd='', check)
-      telnet = Net::Telnet.new(
+    def pstn_data(ip_address, id, cmd, ad_cmd='', cf_no_cmd='', cf_act_cmd='', df_cmd='', r_cmd='', check)
+      telnet    = Net::Telnet.new(
           "Host"     => ip_address,
           "Port"     => 10001,
           "Timeout"  => 10,
           "Waittime" => 5
       )
-      h_st = {}
+      h_st      = { }
       h_st[:st] = 1
       #默认是成功的，如果遇到不妥的情况修改状态为3（失败）
       begin
@@ -294,6 +294,15 @@ module WorkOrderProcess
             bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
             h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
 
+            unless r_cmd.blank? && r_cmd != '.'
+              telnet.puts "MM"
+              telnet.waitfor(/</) { |c| print c }
+              bcg_r_cmd = r_cmd.gsub(/4294/, '4382')
+              telnet.puts "#{bcg_r_cmd}"
+              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+            end
+
             unless cf_no_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
@@ -321,6 +330,14 @@ module WorkOrderProcess
               h_st[:st] = 3 if bcg_r_df_str =~ /ERROR: UNRECOGNIZED COMMAND/
             end
           else
+            unless r_cmd.blank? && r_cmd != '.'
+              telnet.puts "MM"
+              telnet.waitfor(/</) { |c| print c }
+              telnet.puts "#{r_cmd}"
+              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+            end
+
             unless cf_no_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
@@ -376,6 +393,15 @@ module WorkOrderProcess
             bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
             h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
 
+            unless r_cmd.blank? && r_cmd != '.'
+              telnet.puts "MM"
+              telnet.waitfor(/</) { |c| print c }
+              bcg_r_cmd = r_cmd.gsub(/4294/, '4382')
+              telnet.puts "#{bcg_r_cmd}"
+              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+            end
+
             unless cf_no_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
@@ -404,6 +430,13 @@ module WorkOrderProcess
             end
 
           else
+            unless r_cmd.blank? && r_cmd != '.'
+              telnet.puts "MM"
+              telnet.waitfor(/</) { |c| print c }
+              telnet.puts "#{r_cmd}"
+              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+            end
             unless cf_no_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
