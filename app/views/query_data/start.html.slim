@@ -16,7 +16,7 @@ form.form-vertical.well#q_data_form action="q_cont_data" method="get"
             .controls
               .input-prepend
                 span.add-on 后台状态
-                = select(:pstn_stop, 'status', { '所有状态' => '0', '成功状态' => '1', '等待状态' => '2', '失败状态' => '3' }, { prompt: '选择后台数据状态' }, { class: 'span6', id: 'q_bs' })
+                = select(:pstn_stop, 'status', { '所有状态' => '0', '成功状态' => '1', '等待状态' => '2', '失败状态' => '3', '号码错误' =>  '4' }, { prompt: '选择后台数据状态' }, { class: 'span6', id: 'q_bs' })
         .row-fluid
           .span6
             .controls

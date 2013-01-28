@@ -54,8 +54,12 @@ class QueryDataController < ApplicationController
     end
 
     unless q_bs.blank?
-      q_str       += ' and status = :bs'
-      q_hash[:bs] = q_bs
+      q_str += ' and status in (:bs)'
+      if q_bs.to_i == 0
+        q_hash[:bs] = [1, 2, 3, 4]
+      else
+        q_hash[:bs] = q_bs
+      end
     end
 
     unless q_date1.blank?
