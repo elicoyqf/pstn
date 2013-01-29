@@ -9,9 +9,9 @@ module WorkOrderProcess
 
     def wo_make(new_wo, check=0)
       #check参数默认为0即未检查，为1是正处于检查状态
-      #check参数在数据库里的意思是：默认为2即未检查，为1是已检查正常状态,为3则已检查但是失败状态，4为所在号码非贝尔交换机号码或台帐有误
+      #check参数在数据库里的意思是：默认为2即未检查，为1是已检查正常状态,为3则已检查但是失败状态，4为所在号码非贝尔交换机号码或台帐有误,5机房故障
       #优先做新装业务，即优先级为1的(work_orders:priotity = 1)
-      #状态2为等等中，1为成功，3为失败,4号码未登记无法识别。
+      #状态2为等等中，1为成功，3为失败,4号码未登记无法识别,5机房故障。
       #new_or = WorkOrder.where('created_at >= ? And created_at <= ? and status = ?', Time.now.at_beginning_of_day,
       #                         Time.now.at_beginning_of_day + 1.day, 2)
 
@@ -242,8 +242,13 @@ module WorkOrderProcess
 
           pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
         else
-          WorkOrder.find(x.id).update_attribute(:status, 4)
-          WorkOrder.find(x.id).update_attribute(:check, 4)
+          if dn.jf_name.status == 0
+            WorkOrder.find(x.id).update_attribute(:status, 5)
+            WorkOrder.find(x.id).update_attribute(:check, 5)
+          else
+            WorkOrder.find(x.id).update_attribute(:status, 4)
+            WorkOrder.find(x.id).update_attribute(:check, 4)
+          end
         end
       end
     end
