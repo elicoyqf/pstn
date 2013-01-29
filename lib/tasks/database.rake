@@ -14,7 +14,7 @@ namespace :database do
     yesterday_wo = WorkOrder.where('created_at >= ? and created_at <= ?',
                                    Time.now.at_beginning_of_day - 1.day,
                                    Time.now.at_beginning_of_day).where(:check => 2).limit(300)
-    te.wo_make yesterday_wo unless yesterday_wo.blank?
+    te.wo_make(yesterday_wo, 1) unless yesterday_wo.blank?
   end
 
   desc '定时对昨日失败工单进行重做'
