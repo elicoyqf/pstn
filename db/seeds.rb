@@ -80,9 +80,6 @@ DnTable.create(jf_name_id: 7, dn_start: 6170000, dn_end: 6171999)
 DnTable.create(jf_name_id: 7, dn_start: 6114000, dn_end: 6114999)
 DnTable.create(jf_name_id: 7, dn_start: 6909000, dn_end: 6909199)
 DnTable.create(jf_name_id: 7, dn_start: 6994950, dn_end: 6994959)
-#五里亭
-DnTable.create(jf_name_id: 7, dn_start: 6123000, dn_end: 6123399)
-DnTable.create(jf_name_id: 7, dn_start: 6123500, dn_end: 6123999)
 #东河
 DnTable.create(jf_name_id: 8, dn_start: 6113000, dn_end: 6113999)
 DnTable.create(jf_name_id: 8, dn_start: 6115000, dn_end: 6115999)
