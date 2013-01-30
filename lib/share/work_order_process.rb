@@ -87,7 +87,7 @@ module WorkOrderProcess
               when '2'
                 df_cmd += "4294:dn=k'#{no},subgrp=18,intcp=badp."
               when '3'
-                df_cmd += "4294:dn=k'#{no},subgrp=18,intcp=deni."
+                df_cmd += "4294:dn=k'#{no},intcp=deni."
               when '4'
                 df_cmd += "4294:dn=k'#{no},subgrp=1,23=2&1,ocb=modify&perm&#{p_emerg},intcp=deni."
               else
