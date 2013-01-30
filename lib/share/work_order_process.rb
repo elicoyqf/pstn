@@ -242,12 +242,12 @@ module WorkOrderProcess
 
           pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
         else
-          if dn.jf_name.status == 0
-            WorkOrder.find(x.id).update_attribute(:status, 5)
-            WorkOrder.find(x.id).update_attribute(:check, 5)
-          else
+          if dn.blank?
             WorkOrder.find(x.id).update_attribute(:status, 4)
             WorkOrder.find(x.id).update_attribute(:check, 4)
+          else
+            WorkOrder.find(x.id).update_attribute(:status, 5)
+            WorkOrder.find(x.id).update_attribute(:check, 5)
           end
         end
       end
