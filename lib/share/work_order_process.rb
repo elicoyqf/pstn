@@ -329,7 +329,7 @@ module WorkOrderProcess
             unless df_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
-              bcg_df_cmd = df_cmd.gsub(/4294/, '4382')
+              bcg_df_cmd = df_cmd.gsub(/4294/, '4382').gsub(/deni/,'badp')
               telnet.puts "#{bcg_df_cmd}"
               bcg_r_df_str = telnet.waitfor(/>/) { |c| print c }
               h_st[:st] = 3 if bcg_r_df_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_df_str =~ /NOT SUCCESSFUL/
@@ -428,7 +428,7 @@ module WorkOrderProcess
             unless df_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
-              bcg_df_cmd = df_cmd.gsub(/4294/, '4382')
+              bcg_df_cmd = df_cmd.gsub(/4294/, '4382').gsub(/deni/,'badp')
               telnet.puts "#{bcg_df_cmd}"
               r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
               h_st[:st] = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_df_cmd_str =~ /NOT SUCCESSFUL/
