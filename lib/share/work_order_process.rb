@@ -91,7 +91,7 @@ module WorkOrderProcess
               when '4'
                 df_cmd += "4294:dn=k'#{no},subgrp=1,23=2&1,ocb=modify&perm&#{p_emerg},intcp=deni."
               else
-                cmd += ",intcp=remove"
+                cmd += ',intcp=remove'
             end
           end
 
@@ -178,7 +178,7 @@ module WorkOrderProcess
                 subctrl += '&ocbvar'
                 test_r << 'PASSWORD'
               else
-                cmd     += ",password=1&"+"\""+"#{cr_no}"+"\""
+                cmd     += ',password=1&'+"\""+"#{cr_no}"+"\""
                 subctrl += '&ocbvar'
                 test_r << 'PASSWORD'
               end
@@ -234,6 +234,17 @@ module WorkOrderProcess
               cmd    = df_cmd
               df_cmd = ''
             end
+
+            unless cf_no_cmd.blank? && cmd !~ /./
+              cmd       = cf_no_cmd
+              cf_no_cmd = ''
+            end
+
+            unless cf_act_cmd.blank? && cmd !~ /./
+              cmd        = cf_act_cmd
+              cf_act_cmd = ''
+            end
+
           end
 
           puts 'cmd---->'+cmd
@@ -262,10 +273,10 @@ module WorkOrderProcess
       telnet    = Net::Telnet.new(
           "Host"     => ip_address,
           "Port"     => 10001,
-          "Timeout"  => 10,
+          "Timeout"  => 20,
           "Waittime" => 5
       )
-      h_st      = { }
+      h_st      = {}
       h_st[:st] = 1
       #默认是成功的，如果遇到不妥的情况修改状态为3（失败）
       begin
