@@ -235,14 +235,19 @@ module WorkOrderProcess
               df_cmd = ''
             end
 
-            unless cf_no_cmd.blank? && cmd !~ /./
+            unless cf_no_cmd.blank? && cmd !~ /^.$/
               cmd       = cf_no_cmd
               cf_no_cmd = ''
             end
 
-            unless cf_act_cmd.blank? && cmd !~ /./
+            unless cf_act_cmd.blank? && cmd !~ /^.$/
               cmd        = cf_act_cmd
               cf_act_cmd = ''
+            end
+
+            unless r_cmd.blank? && cmd !~ /^.$/
+              cmd = r_cmd
+              r_cmd = ''
             end
 
           end
