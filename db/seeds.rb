@@ -89,7 +89,7 @@ DnTable.create(jf_name_id: 9, dn_start: 6178000, dn_end: 6178499)
 DnTable.create(jf_name_id: 9, dn_start: 6118000, dn_end: 6118799)
 DnTable.create(jf_name_id: 9, dn_start: 6118900, dn_end: 6118999)
 DnTable.create(jf_name_id: 9, dn_start: 6105500, dn_end: 6105999)
-DnTable.create(jf_name_id: 9, dn_start: 6178800, dn_end: 6178999)
+DnTable.create(jf_name_id: 9, dn_start: 6178700, dn_end: 6178999)
 #始兴
 DnTable.create(jf_name_id: 10, dn_start: 6130000, dn_end: 6133999)
 #南雄
