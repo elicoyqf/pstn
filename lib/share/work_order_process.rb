@@ -261,7 +261,7 @@ module WorkOrderProcess
           puts 'ad_cmd---->'+ad_cmd
           puts 'test_r---->'+test_r.to_s
 
-          #pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
+          pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
         else
           if dn.blank?
             WorkOrder.find(x.id).update_attribute(:status, 4)
