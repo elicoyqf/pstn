@@ -308,8 +308,7 @@ module WorkOrderProcess
 
         #说明返回错误了
         if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
-          WorkOrder.find(id).update_attribute(:status, 3)
-          WorkOrder.find(id).update_attribute(:check, 3) if check == 1
+          h_st[:st] = 3
         else
           #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
           if r_cmd_str =~ /BCG/
@@ -407,8 +406,7 @@ module WorkOrderProcess
 
         #说明返回错误了
         if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
-          WorkOrder.find(id).update_attribute(:status, 3)
-          WorkOrder.find(id).update_attribute(:check, 3) if check == 1
+          h_st[:st] = 3
         else
           #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
           if r_cmd_str =~ /BCG/
