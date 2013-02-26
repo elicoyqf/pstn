@@ -57,11 +57,11 @@ every '9,25,41,57 8-22 * * *' do
   rake 'database:woprocess'
 end
 
-#每天的晚班时间内做检查，从2点开始做到5点
-every '20 2-6 * * *' do
+#每天的晚班时间内做检查，从1点开始做到7点
+every '20 0-7 * * *' do
   rake 'database:wocheck'
 end
 
-every '20 7 * * *' do
+every '20 8 * * *' do
   rake 'database:wofailcheck'
 end
