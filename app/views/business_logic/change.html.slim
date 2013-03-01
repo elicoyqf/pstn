@@ -53,7 +53,7 @@
             .controls
               .input-prepend
                 span.add-on #
-                = select(:pstn_stop, 's_bt', { '普通公网用户' => '1', '语音专线' => '5', '预付费' => '7', '易套餐' => '5' }, { prompt: '选择用户类型' }, { class: 'span11', id: 's_bt' })
+                = select(:pstn_stop, 's_bt', { '普通公网用户' => '1', '语音专线' => '5', '预付费' => '7', '易套餐' => '5', '南郊专网用户' => '8' },{ prompt: '选择用户类型' }, { class: 'span11', id: 's_bt' })
         .span6
           .control-group
             label.control-label for="s_sg_no" 指定分组号(虚拟网)

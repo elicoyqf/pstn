@@ -36,6 +36,7 @@ DnTable.create(jf_name_id: 1, dn_start: 6177500, dn_end: 6177999)
 DnTable.create(jf_name_id: 1, dn_start: 6179000, dn_end: 6179999)
 DnTable.create(jf_name_id: 1, dn_start: 6986000, dn_end: 6986499)
 DnTable.create(jf_name_id: 1, dn_start: 6962000, dn_end: 6962299)
+DnTable.create(jf_name_id: 1, dn_start: 6177000, dn_end: 6177499)
 #南枫
 DnTable.create(jf_name_id: 2, dn_start: 6187000, dn_end: 6189999)
 DnTable.create(jf_name_id: 2, dn_start: 6968500, dn_end: 6968999)
