@@ -8,10 +8,11 @@ module WorkOrderProcess
     end
 
     def cfwd_make(mobile, ctype, id = nil)
+      #6114114现在做去了金洲，要在金洲机房上面做数据
       cmd1   = "4316:gdn=k'6114114,cfwd=activate&cfwdu&k'#{mobile}."
       cmd2   = "4316：gdn=k'6114114,cfwd=remove."
       telnet = Net::Telnet.new(
-          'Host'     => '192.166.16.3',
+          'Host'     => '192.166.16.13',
           'Port'     => 10001,
           'Timeout'  => 20,
           'Waittime' => 5
