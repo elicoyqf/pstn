@@ -4,6 +4,7 @@
 $ ->
   $("#datepicker1").datepicker(changeMonth: true)
   $("#datepicker2").datepicker(changeMonth: true)
+  $("#datepicker3").datepicker(changeMonth: true)
 #  $('#query_data_t1').hide()
 
   $('#q_b_s').click ->

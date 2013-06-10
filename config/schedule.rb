@@ -62,6 +62,22 @@ every '20 0-7 * * *' do
   rake 'database:wocheck'
 end
 
+#每天的8点20复查工单失败的那部分工单
 every '20 8 * * *' do
   rake 'database:wofailcheck'
+end
+
+#每天的8点35复查工单失败的那部分工单
+every '35 8 * * *' do
+  rake 'database:holidays_cfwd'
+end
+
+#每天的17点35复查工单失败的那部分工单
+every '35 17 * * *' do
+  rake 'database:night_cfwd'
+end
+
+#每天的20点58取消呼转
+every '58 20 * * *' do
+  rake 'database:cfwd_cancel'
 end

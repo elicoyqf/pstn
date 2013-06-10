@@ -26,6 +26,8 @@ Pstn::Application.routes.draw do
   match 'query_data/mdf_status/:id' => 'query_data#mdf_status'
 
   get 'query_data/m_status'
+  get 'query_data/m_cfd'
+  get 'query_data/p_m_cfd'
   get 'query_data/status'
   get 'welcome/index'
   get 'query_data/q_cont_data'

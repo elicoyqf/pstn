@@ -1,0 +1,21 @@
+<p></p>
+<div class="container-fluid content-wrapper">
+  <div class="row-fluid">
+    <div class="span12">
+      <% unless @cfd.blank? %>
+        <% if @cfd.errors.any? %>
+          <div class="alert alert-error">
+            <h1><strong>出错了，登记不成功，一共有<%= @cfd.errors.count %>个错误</strong></h1>
+
+            <ul>
+              <% @cfd.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+      <a class="btn btn-danger btn-large pull-right" href='/query_data/m_cfd'> 返 回 </a>
+    </div>
+  </div>
+</div>

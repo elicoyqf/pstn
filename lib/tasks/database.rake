@@ -26,6 +26,33 @@ namespace :database do
     te.wo_make fail_wo unless fail_wo.blank?
   end
 
+  desc '定时对节假日值守呼叫进行登记'
+  task :holidays_cfwd => :environment do
+    hcfwdreg = CfwdReg.where('c_date = ? and status = 1 and cf_type = 1', Time.now.at_beginning_of_day).last
+    unless hcfwdreg.blank?
+      te = WorkOrderProcess::BackgroundProcedure.new
+      te.cfwd_make hcfwdreg.mobile, 1, hcfwdreg.id
+    end
+
+  end
+
+  desc '定时对晚班值守呼叫进行登记'
+  task :night_cfwd => :environment do
+    hcfwdreg = CfwdReg.where('c_date = ? and status = 1 and cf_type = 2', Time.now.at_beginning_of_day).last
+    unless hcfwdreg.blank?
+      te = WorkOrderProcess::BackgroundProcedure.new
+      te.cfwd_make hcfwdreg.mobile, 1, hcfwdreg.id
+    end
+  end
+
+  desc '定时对值守呼叫进行取消'
+  task :cfwd_cancel => :environment do
+    #到时间点后直接删除就好
+    te = WorkOrderProcess::BackgroundProcedure.new
+    te.cfwd_make hcfwdreg.mobile, 2
+
+  end
+
   desc '测试是否生效'
   task :test => :environment do
     te = WorkOrderProcess::BackgroundProcedure.new

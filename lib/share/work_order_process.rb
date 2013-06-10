@@ -7,6 +7,61 @@ module WorkOrderProcess
       puts 'hello'
     end
 
+    def cfwd_make(mobile, ctype, id = nil)
+      cmd1   = "4316:gdn=k'6114114,cfwd=activate&cfwdu&k'#{mobile}."
+      cmd2   = "4316：gdn=k'6114114,cfwd=remove."
+      telnet = Net::Telnet.new(
+          'Host'     => '192.166.16.3',
+          'Port'     => 10001,
+          'Timeout'  => 20,
+          'Waittime' => 5
+      )
+
+      cmd = ''
+      if ctype == 1
+        cmd = cmd1
+      else
+        cmd = cmd2
+      end
+      h_st      = {}
+      h_st[:st] = 2
+      puts '@'*50
+      puts cmd
+      puts '@'*50
+
+      begin
+        telnet.puts "\n"
+        telnet.puts "\n"
+        telnet.puts "\n"
+
+        telnet.waitfor(/>/) { |c| print c }
+        telnet.puts 'MM'
+
+        telnet.waitfor(/USERID:/) { |c| print c }
+        telnet.puts 'PW0009'
+
+        telnet.waitfor(/PASSWORD:/) { |c| print c }
+        telnet.puts 'PW0009'
+
+        telnet.puts "#{cmd}"
+        r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+        if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+          h_st[:st] = 3
+        end
+      rescue
+        telnet.puts "#{cmd}"
+        r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+
+        if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+          h_st[:st] = 3
+        end
+      ensure
+        CfwdReg.find(id).update_attribute(:status, h_st[:st])
+        telnet.close
+      end
+
+    end
+
     def wo_make(new_wo, check=0)
       #check参数默认为0即未检查，为1是正处于检查状态
       #check参数在数据库里的意思是：默认为2即未检查，为1是已检查正常状态,为3则已检查但是失败状态，4为所在号码非贝尔交换机号码或台帐有误,5机房故障

@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   has_many :work_orders
   has_many :logbooks
   has_many :events
+  has_many :cfwd_regs
   belongs_to :department
 end

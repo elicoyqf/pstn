@@ -20,6 +20,24 @@ class QueryDataController < ApplicationController
     render layout: 'main_layout'
   end
 
+  def m_cfd
+    @cfd_rec = CfwdReg.paginate page: params[:page], per_page: 10, order: 'created_at DESC'
+    render layout: 'main_layout'
+  end
+
+  def p_m_cfd
+    mb     = params[:mobile]
+    type   = params[:ds][:type]
+    c_date = params[:ds][:date]
+    userid = session[:user_id]
+    @cfd   = CfwdReg.new(cf_type: type, mobile: mb, user_id: userid, c_date: Time.parse(c_date), status: 1)
+    if @cfd.save
+      redirect_to action: 'm_cfd'
+    else
+      render layout: 'main_layout', template: 'query_data/db_save_fail'
+    end
+  end
+
   def mdf_status
     id = params[:id]
     jf = JfName.find(id)
