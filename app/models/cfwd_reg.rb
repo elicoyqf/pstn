@@ -1,6 +1,6 @@
 #encoding : utf-8
 class CfwdReg < ActiveRecord::Base
-  attr_accessible :cf_type, :mobile, :user_id, :c_date
+  attr_accessible :cf_type, :mobile, :user_id, :c_date, :status
   belongs_to :user
 
   validates :mobile, numericality: { message: '呼转号码存在非数字输入，请检查!' }
