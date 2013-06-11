@@ -49,7 +49,7 @@ namespace :database do
   task :cfwd_cancel => :environment do
     #到时间点后直接删除就好
     te = WorkOrderProcess::BackgroundProcedure.new
-    te.cfwd_make hcfwdreg.mobile, 2
+    te.cfwd_make 1, 2
 
   end
 
