@@ -33,7 +33,24 @@ namespace :database do
       te = WorkOrderProcess::BackgroundProcedure.new
       te.cfwd_make hcfwdreg.mobile, 1, hcfwdreg.id
     end
+  end
 
+  desc '定时对中午值守呼叫进行登记'
+  task :noon_cfwd => :environment do
+    hcfwdreg = CfwdReg.where('c_date = ? and status = 1 and cf_type = 3', Time.now.at_beginning_of_day).last
+    unless hcfwdreg.blank?
+      te = WorkOrderProcess::BackgroundProcedure.new
+      te.cfwd_make hcfwdreg.mobile, 1, hcfwdreg.id
+    end
+  end
+
+  desc '定时对中午值守呼叫进行取消'
+  task :noon_cancel => :environment do
+    hcfwdreg = CfwdReg.where('c_date = ? and cf_type = 3', Time.now.at_beginning_of_day)
+    unless hcfwdreg.blank?
+      te = WorkOrderProcess::BackgroundProcedure.new
+      te.cfwd_make 1, 2
+    end
   end
 
   desc '定时对晚班值守呼叫进行登记'
@@ -50,7 +67,6 @@ namespace :database do
     #到时间点后直接删除就好
     te = WorkOrderProcess::BackgroundProcedure.new
     te.cfwd_make 1, 2
-
   end
 
   desc '测试是否生效'

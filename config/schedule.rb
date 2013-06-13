@@ -67,12 +67,12 @@ every '20 8 * * *' do
   rake 'database:wofailcheck'
 end
 
-#每天的8点35复查工单失败的那部分工单
+#每天的8点35登记转节假日值班呼转
 every '35 8 * * *' do
   rake 'database:holidays_cfwd'
 end
 
-#每天的17点35复查工单失败的那部分工单
+#每天的17点35登记转晚班值班呼转
 every '35 17 * * *' do
   rake 'database:night_cfwd'
 end
@@ -80,4 +80,14 @@ end
 #每天的20点58取消呼转
 every '58 20 * * *' do
   rake 'database:cfwd_cancel'
+end
+
+#每天的11点56登记是中午值班呼转
+every '56 11 * * *' do
+  rake 'database:noon_cfwd'
+end
+
+#每天的13点56取消中午值班呼转
+every '56 13 * * *' do
+  rake 'database:noon_cancel'
 end

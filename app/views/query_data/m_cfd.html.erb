@@ -6,7 +6,7 @@
         <h1>6114114值班呼转登记</h1>
 
         <p>
-          节假日值守默认时间段为8:30-21:00。 晚班值守默认时间段为17:30-21:00。<br/>
+          节假日值守默认时间段为8:30-21:00，中午值守默认时间段为12:00-14:00，晚班值守默认时间段为17:30-21:00。<br/>
           <span class="label label-warning">注意！</span>
           如果在一天时间内重复登记则以最后登记的呼转号码为准，系统以当日8:30和17:30登记的数据为准，如有其它需求请及时反馈。
         </p>
@@ -20,7 +20,7 @@
     呼转号码:
     <%= text_field_tag :mobile, nil, class: 'span2', required: true, digits: true %>
     &nbsp;类型:
-    <%= select(:ds, :type, { '节假日值守' => '1', '晚班值守' => '2' }, { prompt: '选择值守类型' }, { class: 'span3', required: true }) -%>
+    <%= select(:ds, :type, { '节假日值守' => '1', '晚班值守' => '2', '中午值守' => '3' }, { prompt: '选择值守类型' }, { class: 'span3', required: true }) -%>
     &nbsp;日期:
     <%= text_field :ds, 'date', { :class => 'span2', :id => 'datepicker3', required: true } -%>
     &nbsp;
@@ -45,8 +45,10 @@
         <td style="text-align:center;">
           <% if line.cf_type.to_i == 1 %>
             节假日值守
-          <% else %>
+          <% elsif line.cf_type.to_i == 2 %>
             晚班值守
+          <% else %>
+            中午值守
           <% end %>
         </td>
 
