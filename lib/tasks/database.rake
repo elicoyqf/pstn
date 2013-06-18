@@ -4,7 +4,15 @@ namespace :database do
   task :woprocess => :environment do
     te     = WorkOrderProcess::BackgroundProcedure.new
     new_wo = WorkOrder.where('created_at >= ? and created_at <= ? and status = ?', Time.now.at_beginning_of_day,
-                             Time.now.at_beginning_of_day + 1.day, 2).limit(35)
+                             Time.now.at_beginning_of_day + 1.day, 2).limit(50)
+    te.wo_make new_wo unless new_wo.blank?
+  end
+
+  desc '将昨天未完成的工单进行更新'
+  task :wop_yes => :environment do
+    te     = WorkOrderProcess::BackgroundProcedure.new
+    new_wo = WorkOrder.where('created_at >= ? and created_at <= ? and status = ?', Time.now.at_beginning_of_day - 1.day,
+                             Time.now.at_beginning_of_day, 2).limit(50)
     te.wo_make new_wo unless new_wo.blank?
   end
 
