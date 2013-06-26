@@ -104,5 +104,5 @@ end
 
 #每隔20分钟检测一次机房状态是否正常
 every '*/20 * * * *' do
-  rake 'database:noon_cancel'
+  rake 'database:detect_ss'
 end
