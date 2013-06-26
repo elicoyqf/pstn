@@ -1,5 +1,12 @@
 #encoding: utf-8
 namespace :database do
+  desc '定时检测DCN登录服务器状态'
+  task :detect_ss => :environment do
+    #每隔半小时检测一次
+    te = WorkOrderProcess::BackgroundProcedure.new
+    te.detect_ss
+  end
+
   desc '定时执行将数据库里面的数据进行更新'
   task :woprocess => :environment do
     te     = WorkOrderProcess::BackgroundProcedure.new

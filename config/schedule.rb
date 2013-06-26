@@ -82,6 +82,11 @@ every '58 20 * * *' do
   rake 'database:cfwd_cancel'
 end
 
+#每天的21点10取消呼转
+every '10 21 * * *' do
+  rake 'database:cfwd_cancel'
+end
+
 #每天的11点56登记是中午值班呼转
 every '56 11 * * *' do
   rake 'database:noon_cfwd'
@@ -89,5 +94,15 @@ end
 
 #每天的13点56取消中午值班呼转
 every '56 13 * * *' do
+  rake 'database:noon_cancel'
+end
+
+#每天的14点10取消中午值班呼转
+every '10 14 * * *' do
+  rake 'database:noon_cancel'
+end
+
+#每隔20分钟检测一次机房状态是否正常
+every '*/20 * * * *' do
   rake 'database:noon_cancel'
 end

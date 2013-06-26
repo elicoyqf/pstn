@@ -1,8 +1,24 @@
 #encoding : utf-8
 require 'net/telnet'
 require 'timeout'
+require 'net/ping'
 module WorkOrderProcess
   class BackgroundProcedure
+    def detect_ss
+      jfa = JfName.all
+      jfa.each do |jf|
+        pr = Net::Ping::ICMP.new(jf.ip_address)
+        if pr.ping?
+          jf.update_attribute(:status, 1)
+        else
+          puts '@'*50
+          puts jf.name.to_s + ' 检测不通，请检查.'
+          puts '@'*50
+          jf.update_attribute(:status, 0)
+        end
+      end
+    end
+
     def testrake
       puts 'hello'
     end
@@ -320,7 +336,11 @@ module WorkOrderProcess
           puts 'ad_cmd---->'+ad_cmd
           puts 'test_r---->'+test_r.to_s
 
-          pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
+          begin
+            pstn_data(ip_address, x.id, cmd, ad_cmd, cf_no_cmd, cf_act_cmd, df_cmd, r_cmd, check)
+          rescue
+            next
+          end
         else
           if dn.blank?
             WorkOrder.find(x.id).update_attribute(:status, 4)
@@ -366,7 +386,7 @@ module WorkOrderProcess
         r_cmd_str = telnet.waitfor(/>/) { |c| print c }
 
         #说明返回错误了
-        if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
+        if r_cmd_str =~ /ERROR/
           h_st[:st] = 3
         else
           #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
@@ -456,101 +476,105 @@ module WorkOrderProcess
         end
 
       rescue
-        #为了防止未超时的会话，直接输入命令即可。
-        #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样
-        #普通号码测试使用6994951
-        #telnet.puts "4294:dn=k'6994951,subgrp=5."
-        telnet.puts "#{cmd}"
-        r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+        begin
+          #为了防止未超时的会话，直接输入命令即可。
+          #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样
+          #普通号码测试使用6994951
+          #telnet.puts "4294:dn=k'6994951,subgrp=5."
+          telnet.puts "#{cmd}"
+          r_cmd_str = telnet.waitfor(/>/) { |c| print c }
 
-        #说明返回错误了
-        if r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/
-          h_st[:st] = 3
-        else
-          #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
-          if r_cmd_str =~ /BCG/
-            telnet.puts "MM"
-            telnet.waitfor(/</) { |c| print c }
-            bcg_cmd = cmd.gsub(/4294/, '4382').gsub(/deni/, 'badp')
-            telnet.puts "#{bcg_cmd}"
-            bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-            h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_cmd_str =~ /NOT SUCCESSFUL/
-
-            unless cf_no_cmd.blank?
-              telnet.puts "MM"
-              telnet.waitfor(/</) { |c| print c }
-              bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
-              telnet.puts "#{bcg_cf_no_cmd}"
-              bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_cf_no_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_cf_no_str =~ /NOT SUCCESSFUL/
-            end
-
-            unless cf_act_cmd.blank?
-              telnet.puts "MM"
-              telnet.waitfor(/</) { |c| print c }
-              bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
-              telnet.puts "#{bcg_cf_act_cmd}"
-              bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_cf_act_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_cf_act_str =~ /NOT SUCCESSFUL/
-            end
-
-            unless df_cmd.blank?
-              telnet.puts "MM"
-              telnet.waitfor(/</) { |c| print c }
-              bcg_df_cmd = df_cmd.gsub(/4294/, '4382').gsub(/deni/, 'badp')
-              telnet.puts "#{bcg_df_cmd}"
-              r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_df_cmd_str =~ /NOT SUCCESSFUL/
-            end
-
-            unless r_cmd.blank?
-              telnet.puts "MM"
-              telnet.waitfor(/</) { |c| print c }
-              bcg_r_r_cmd = r_cmd.gsub(/4294/, '4382')
-              telnet.puts "#{bcg_r_r_cmd}"
-              bcg_r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if bcg_r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_r_cmd_str =~ /NOT SUCCESSFUL/
-            end
+          #说明返回错误了
+          if r_cmd_str =~ /ERROR/
+            h_st[:st] = 3
           else
-            unless cf_no_cmd.blank?
+            #判断其是不是BCG用户需要查询返回结果是否包含了BCG字样,测试号码:6118101
+            if r_cmd_str =~ /BCG/
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
-              telnet.puts "#{cf_no_cmd}"
-              r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if r_cf_no_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_cf_no_cmd_str =~ /NOT SUCCESSFUL/
-            end
+              bcg_cmd = cmd.gsub(/4294/, '4382').gsub(/deni/, 'badp')
+              telnet.puts "#{bcg_cmd}"
+              bcg_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if bcg_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_cmd_str =~ /NOT SUCCESSFUL/
 
-            unless cf_act_cmd.blank?
-              telnet.puts "MM"
-              telnet.waitfor(/</) { |c| print c }
-              telnet.puts "#{cf_act_cmd}"
-              r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if r_cf_act_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_cf_act_cmd_str =~ /NOT SUCCESSFUL/
-            end
+              unless cf_no_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                bcg_cf_no_cmd = cf_no_cmd.gsub(/4294/, '4382')
+                telnet.puts "#{bcg_cf_no_cmd}"
+                bcg_r_cf_no_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if bcg_r_cf_no_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_cf_no_str =~ /NOT SUCCESSFUL/
+              end
 
-            unless df_cmd.blank?
-              telnet.puts "MM"
-              telnet.waitfor(/</) { |c| print c }
-              telnet.puts "#{df_cmd}"
-              r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_df_cmd_str =~ /NOT SUCCESSFUL/
-            end
+              unless cf_act_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                bcg_cf_act_cmd = cf_act_cmd.gsub(/4294/, '4382')
+                telnet.puts "#{bcg_cf_act_cmd}"
+                bcg_r_cf_act_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if bcg_r_cf_act_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_cf_act_str =~ /NOT SUCCESSFUL/
+              end
 
-            unless r_cmd.blank?
+              unless df_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                bcg_df_cmd = df_cmd.gsub(/4294/, '4382').gsub(/deni/, 'badp')
+                telnet.puts "#{bcg_df_cmd}"
+                r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_df_cmd_str =~ /NOT SUCCESSFUL/
+              end
+
+              unless r_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                bcg_r_r_cmd = r_cmd.gsub(/4294/, '4382')
+                telnet.puts "#{bcg_r_r_cmd}"
+                bcg_r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if bcg_r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || bcg_r_r_cmd_str =~ /NOT SUCCESSFUL/
+              end
+            else
+              unless cf_no_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                telnet.puts "#{cf_no_cmd}"
+                r_cf_no_cmd_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if r_cf_no_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_cf_no_cmd_str =~ /NOT SUCCESSFUL/
+              end
+
+              unless cf_act_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                telnet.puts "#{cf_act_cmd}"
+                r_cf_act_cmd_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if r_cf_act_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_cf_act_cmd_str =~ /NOT SUCCESSFUL/
+              end
+
+              unless df_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                telnet.puts "#{df_cmd}"
+                r_df_cmd_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if r_df_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_df_cmd_str =~ /NOT SUCCESSFUL/
+              end
+
+              unless r_cmd.blank?
+                telnet.puts "MM"
+                telnet.waitfor(/</) { |c| print c }
+                telnet.puts "#{r_cmd}"
+                r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
+                h_st[:st] = 3 if r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_r_cmd_str =~ /NOT SUCCESSFUL/
+              end
+            end
+            unless ad_cmd.blank?
               telnet.puts "MM"
               telnet.waitfor(/</) { |c| print c }
-              telnet.puts "#{r_cmd}"
-              r_r_cmd_str = telnet.waitfor(/>/) { |c| print c }
-              h_st[:st] = 3 if r_r_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_r_cmd_str =~ /NOT SUCCESSFUL/
+              telnet.puts "#{ad_cmd}"
+              r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
+              h_st[:st] = 3 if r_ad_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_ad_cmd_str =~ /NOT SUCCESSFUL/
             end
           end
-          unless ad_cmd.blank?
-            telnet.puts "MM"
-            telnet.waitfor(/</) { |c| print c }
-            telnet.puts "#{ad_cmd}"
-            r_ad_cmd_str = telnet.waitfor(/>/) { |c| print c }
-            h_st[:st] = 3 if r_ad_cmd_str =~ /ERROR: UNRECOGNIZED COMMAND/ || r_ad_cmd_str =~ /NOT SUCCESSFUL/
-          end
+        rescue
+          h_st[:st] = 3
         end
       ensure
         WorkOrder.find(id).update_attribute(:status, h_st[:st])
