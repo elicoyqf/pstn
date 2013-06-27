@@ -10,6 +10,7 @@ module WorkOrderProcess
         pr = Net::Ping::ICMP.new(jf.ip_address)
         if pr.ping?
           jf.update_attribute(:status, 1)
+          puts '@'*50 + '测试正常。'
         else
           puts '@'*50
           puts jf.name.to_s + ' 检测不通，请检查.'
