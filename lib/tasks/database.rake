@@ -11,7 +11,7 @@ namespace :database do
   task :woprocess => :environment do
     te     = WorkOrderProcess::BackgroundProcedure.new
     new_wo = WorkOrder.where('created_at >= ? and created_at <= ? and status = ?', Time.now.at_beginning_of_day,
-                             Time.now.at_beginning_of_day + 1.day, 2).limit(50)
+                             Time.now.at_beginning_of_day + 1.day, 2).limit(40)
     te.wo_make new_wo unless new_wo.blank?
   end
 
