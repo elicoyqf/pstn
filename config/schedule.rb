@@ -82,8 +82,13 @@ every '58 20 * * *' do
   rake 'database:cfwd_cancel'
 end
 
-#每天的21点10取消呼转
-every '10 21 * * *' do
+#每天的0点10取消呼转
+every '10 0 * * *' do
+  rake 'database:cfwd_cancel'
+end
+
+#每天的0点12取消呼转
+every '12 0 * * *' do
   rake 'database:cfwd_cancel'
 end
 
