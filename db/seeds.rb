@@ -58,6 +58,8 @@ DnTable.create(jf_name_id: 4, dn_start: 6186000, dn_end: 6186999)
 DnTable.create(jf_name_id: 4, dn_start: 6990550, dn_end: 6990999)
 DnTable.create(jf_name_id: 4, dn_start: 6105000, dn_end: 6105499)
 DnTable.create(jf_name_id: 4, dn_start: 6989200, dn_end: 6989999)
+DnTable.create(jf_name_id: 4, dn_start: 6995000, dn_end: 6995999)
+DnTable.create(jf_name_id: 4, dn_start: 6988500, dn_end: 6988999)
 #金洲
 DnTable.create(jf_name_id: 5, dn_start: 6181000, dn_end: 6185999)
 DnTable.create(jf_name_id: 5, dn_start: 6111700, dn_end: 6111899)
