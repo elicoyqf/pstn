@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
     <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="修复前台显示工单状态4未知的问题，软件版更新至v2.2.3">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
@@ -34,7 +35,7 @@
       <file leaf-file-name="work_order_process.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/share/work_order_process.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="478" column="8" selection-start="15628" selection-end="15628" vertical-scroll-proportion="0.0" vertical-offset="10516" max-vertical-offset="13024">
+            <state line="478" column="0" selection-start="15655" selection-end="15655" vertical-scroll-proportion="0.0" vertical-offset="10516" max-vertical-offset="13046">
               <folding />
             </state>
           </provider>
@@ -43,7 +44,7 @@
       <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.0165877" vertical-offset="858" max-vertical-offset="2706">
+            <state line="61" column="65" selection-start="4632" selection-end="4632" vertical-scroll-proportion="0.76521736" vertical-offset="990" max-vertical-offset="2816">
               <folding />
             </state>
           </provider>
@@ -79,7 +80,7 @@
       <file leaf-file-name="schedule.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/schedule.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="7" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.0" vertical-offset="2288" max-vertical-offset="2486">
+            <state line="104" column="7" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.0" vertical-offset="2288" max-vertical-offset="2596">
               <folding />
             </state>
           </provider>
@@ -115,7 +116,6 @@
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..work_orders" />
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..dn_tables" />
         <option value="dbtable:/f8ec3554/6893ee01-9814-4666-ad32-fc77e5226ba1/..jf_names" />
-        <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/controllers/business_logic_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
@@ -126,6 +126,7 @@
         <option value="$PROJECT_DIR$/lib/tasks/database.rake" />
         <option value="$PROJECT_DIR$/config/schedule.rb" />
         <option value="$PROJECT_DIR$/lib/share/work_order_process.rb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
       </list>
     </option>
   </component>
@@ -200,6 +201,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="pstn" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -528,31 +539,21 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="72" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="136" />
     <property name="options.splitter.main.proportions" value="0.1890875" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="72" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="72" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="D:/cygwin/bin/git.exe" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="83" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="907" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="83" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="945" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="907" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="91" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="90" />
@@ -568,8 +569,8 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Ruby" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1056,7 +1057,11 @@
       <created>1379421433731</created>
       <updated>1379421433731</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="修复前台显示工单状态4未知的问题，软件版更新至v2.2.3">
+      <created>1379421528789</created>
+      <updated>1379421528789</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1080,15 +1085,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.431946" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.431946" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32659933" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19721329" sideWeight="0.56790125" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20203644" sideWeight="0.24803591" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2073955" sideWeight="0.568054" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21007502" sideWeight="0.568054" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39730638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2454448" sideWeight="0.4365881" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7535014" sideWeight="0.49783862" order="13" side_tool="true" content_ui="tabs" />
@@ -1219,7 +1224,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/schedule.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="7" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state line="104" column="7" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.0" vertical-offset="2288" max-vertical-offset="2596">
           <folding />
         </state>
       </provider>
@@ -1243,14 +1248,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/share/work_order_process.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="478" column="8" selection-start="15628" selection-end="15628" vertical-scroll-proportion="0.0" vertical-offset="10516" max-vertical-offset="13024">
+        <state line="478" column="0" selection-start="15655" selection-end="15655" vertical-scroll-proportion="0.0" vertical-offset="10516" max-vertical-offset="13046">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.0165877" vertical-offset="858" max-vertical-offset="2706">
+        <state line="61" column="65" selection-start="4632" selection-end="4632" vertical-scroll-proportion="0.76521736" vertical-offset="990" max-vertical-offset="2816">
           <folding />
         </state>
       </provider>
