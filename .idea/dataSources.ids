@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source source="LOCAL" name="Rails pstn: development" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="8edf166d-6a5b-4281-8f7b-87642daa527b">
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
     <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
     <jdbc-url>jdbc:sqlite:G:\Project\Rails Proj\pstn\db\development.sqlite3</jdbc-url>
     <libraries>
@@ -130,139 +131,6 @@
       </library>
     </libraries>
     <schema name="" catalog=""/>
-  </data-source>
-  <data-source source="LOCAL" name="Rails pstn: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="bae2a439-9919-4d9b-b5c8-17d0040a3814">
-    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-    <jdbc-url>jdbc:mysql://127.0.0.1/boss</jdbc-url>
-    <user-name>elico</user-name>
-    <user-password>df93df93df9adf9bdf98df99df98df9f</user-password>
-    <libraries>
-      <library>
-        <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-license.txt</url>
-      </library>
-      <library>
-        <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.18-bin.jar</url>
-      </library>
-    </libraries>
-  </data-source>
-  <data-source source="LOCAL" name="Rails pstn: development" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="6893ee01-9814-4666-ad32-fc77e5226ba1">
-    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-    <jdbc-url>jdbc:sqlite:G:\Rails Proj\pstn\db\development.sqlite3</jdbc-url>
-    <libraries>
-      <library>
-        <url>file://$USER_HOME$/.RubyMine40/config/jdbc-drivers/xerial-sqlite-license.txt</url>
-      </library>
-      <library>
-        <url>file://$USER_HOME$/.RubyMine40/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
-      </library>
-    </libraries>
-    <schema name="" catalog=""/>
-    <table name="departments" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="f_node" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="dn_tables" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="jf_name_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="dn_start" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="dn_end" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="events" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="start_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="end_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="event_type" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="update_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="jf_names" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="ip_address" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="status" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="p_nat" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="p_local" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="p_suburban" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="p_int" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="p_emerg" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="logbooks" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="content" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="log_type" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="schema_migrations" schema="" catalog="" type="TABLE">
-      <column name="version" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <index name="unique_schema_migrations" unique="true" columns="version"/>
-    </table>
-    <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
-      <column name="name" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="seq" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-    </table>
-    <table name="users" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="password" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="level" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="department_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="alias_name" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="work_orders" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="s_cf_no" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="s_cr_no" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="status" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="s_ad" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_cr" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_mc" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_hs" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_cf" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_perm" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_bt" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_no" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="s_df_flag" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_sg_no" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="s_cid" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="priority" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <column name="check" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
-      <primary-key columns="id"/>
-    </table>
-  </data-source>
-  <data-source source="LOCAL" name="Rails pstn: test" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="328f6cd2-193e-48f1-b080-9375cdd08479">
-    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-    <jdbc-url>jdbc:sqlite:G:\Rails Proj\pstn\db\test.sqlite3</jdbc-url>
-    <libraries>
-      <library>
-        <url>file://$USER_HOME$/.RubyMine40/config/jdbc-drivers/xerial-sqlite-license.txt</url>
-      </library>
-      <library>
-        <url>file://$USER_HOME$/.RubyMine40/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
-      </library>
-    </libraries>
   </data-source>
   <data-source source="LOCAL" name="Rails pstn: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="e6c3c561-2921-4282-8086-1c09efbb3e9f">
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

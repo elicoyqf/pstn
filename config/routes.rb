@@ -1,5 +1,8 @@
 Pstn::Application.routes.draw do
 
+  get "gpon/preconfig"
+  post "gpon/g_command"
+
   get 'pass_modify/modify'
   post 'pass_modify/m_submit'
 
