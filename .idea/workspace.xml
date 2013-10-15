@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="cc18fb15-8e0a-4af4-a9f6-0d04865411dc" name="Default" comment="命令字符" />
-    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="更新工业西号段，软件版更新至v2.2.7">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/gpon_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/controllers/gpon_controller_spec.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/gpon_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/helpers/gpon_helper_spec.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/gpon/preconfig.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/views/gpon/preconfig.html.erb_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_gpon_slide.html.slim" afterPath="$PROJECT_DIR$/app/views/layouts/_gpon_slide.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+    <list default="true" id="663f4392-246e-43fe-9ca5-c1637a004e33" name="种子已经完成。&#10;(cherry-picked from ca7ea77)" comment="更新了生成gpon命令的菜单及内容，软件版更新至v2.2.8">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/gpon/error.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/gpon/g_command.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/preconfig_layout.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/gpon_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/gpon_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/gpon/preconfig.html.erb" afterPath="$PROJECT_DIR$/app/views/gpon/preconfig.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pstn.iws" />
@@ -25,7 +20,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="false" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/pstn@Development__pstn.coverage" NAME="Development: pstn Coverage Results" MODIFIED="1381506424587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="pstn" />
+    <SUITE FILE_PATH="coverage/pstn@Development__pstn.coverage" NAME="Development: pstn Coverage Results" MODIFIED="1381851361345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="pstn" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="D:\rails proj\pstn" />
@@ -42,7 +37,7 @@
       <file leaf-file-name="_gpon_slide.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_gpon_slide.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="37" selection-start="115" selection-end="115" vertical-scroll-proportion="-3.9285715" vertical-offset="0" max-vertical-offset="374">
+            <state line="5" column="37" selection-start="115" selection-end="115" vertical-scroll-proportion="-0.0" vertical-offset="110" max-vertical-offset="374">
               <folding />
             </state>
           </provider>
@@ -60,16 +55,34 @@
       <file leaf-file-name="preconfig.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/gpon/preconfig.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="85" selection-start="3718" selection-end="3718" vertical-scroll-proportion="-20.178572" vertical-offset="1877" max-vertical-offset="2706">
+            <state line="107" column="14" selection-start="3651" selection-end="3651" vertical-scroll-proportion="-84.07143" vertical-offset="0" max-vertical-offset="2728">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gpon_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gpon_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/gpon_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.32489452" vertical-offset="0" max-vertical-offset="474">
+            <state line="29" column="38" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="1936">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="preconfig_layout.html.slim" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/preconfig_layout.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="31" selection-start="407" selection-end="407" vertical-scroll-proportion="0.45542637" vertical-offset="51" max-vertical-offset="880">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="g_command.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/gpon/g_command.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="4" selection-start="213" selection-end="213" vertical-scroll-proportion="-11.0" vertical-offset="0" max-vertical-offset="440">
               <folding />
             </state>
           </provider>
@@ -100,9 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/business_logic/change.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/business_logic.js.coffee" />
-        <option value="$PROJECT_DIR$/app/views/query_data/q_cont_data.html.slim" />
         <option value="dbtable:/60bedb71/8edf166d-6a5b-4281-8f7b-87642daa527b/..jf_names" />
         <option value="dbtable:/60bedb71/6893ee01-9814-4666-ad32-fc77e5226ba1/..jf_names" />
         <option value="$PROJECT_DIR$/Gemfile" />
@@ -113,9 +123,12 @@
         <option value="dbtable:/60bedb71/6893ee01-9814-4666-ad32-fc77e5226ba1/..users" />
         <option value="dbtable:/60bedb71/8edf166d-6a5b-4281-8f7b-87642daa527b/..users" />
         <option value="$PROJECT_DIR$/app/views/layouts/_gpon_slide.html.slim" />
-        <option value="$PROJECT_DIR$/app/controllers/gpon_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/gpon/preconfig.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/gpon/error.html.erb.html" />
+        <option value="$PROJECT_DIR$/app/views/gpon/g_command.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/gpon_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/preconfig_layout.html.slim" />
       </list>
     </option>
   </component>
@@ -180,12 +193,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
+      <pane id="RailsProjectView">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pstn" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pstn" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -469,10 +486,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -505,19 +518,37 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pstn" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -555,14 +586,16 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Project\Rails Proj\pstn\app\views\layouts" />
       <recent name="D:\rails proj\pstn\spec" />
       <recent name="G:\Rails Proj\pstn\app\views\layouts" />
       <recent name="G:\Rails Proj\pstn\app\assets\images" />
       <recent name="G:\Rails Proj\pstn\app\assets\stylesheets\images" />
-      <recent name="G:\Rails Proj\pstn\app\assets\javascripts" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.Development: pstn">
@@ -755,6 +788,9 @@
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
@@ -1058,7 +1094,11 @@
       <created>1379422036125</created>
       <updated>1379422036125</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="更新了生成gpon命令的菜单及内容，软件版更新至v2.2.8">
+      <created>1381509512273</created>
+      <updated>1381509512273</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1085,12 +1125,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43082115" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.352081" sideWeight="0.49348533" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32659933" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32733408" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19721329" sideWeight="0.56790125" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20203644" sideWeight="0.24803591" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21543409" sideWeight="0.56902355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21811362" sideWeight="0.56902355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39730638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2454448" sideWeight="0.4365881" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7535014" sideWeight="0.49783862" order="13" side_tool="true" content_ui="tabs" />
@@ -1100,7 +1141,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32772166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.342312" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1119,7 +1159,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <MESSAGE value="生成命令字符串v1.1" />
     <MESSAGE value="生成命令字符1.2.4" />
     <MESSAGE value="生成命令字符v1.2.6" />
     <MESSAGE value="交班日志完善v0.1" />
@@ -1144,7 +1183,8 @@
     <MESSAGE value="优化了后台工单制做代码，修复了lib/work_order_process.rb缺少库文件 的bug，修正了js在验证限制密码的bug，添加了汇接局6994950-9的号段用于测试，软件版更新至v2.2.2" />
     <MESSAGE value="修复前台显示工单状态4未知的问题，软件版更新至v2.2.3" />
     <MESSAGE value="更新工业西号段，软件版更新至v2.2.7" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新工业西号段，软件版更新至v2.2.7" />
+    <MESSAGE value="更新了生成gpon命令的菜单及内容，软件版更新至v2.2.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了生成gpon命令的菜单及内容，软件版更新至v2.2.8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1159,86 +1199,54 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_logbook_slide.html.slim">
+    <entry file="file://$PROJECT_DIR$/app/views/log_book/logging.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
+        <state line="16" column="10" selection-start="429" selection-end="429" vertical-scroll-proportion="-0.32293987" vertical-offset="497" max-vertical-offset="1804" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/business_logic/change.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="4" selection-start="5751" selection-end="5878" vertical-scroll-proportion="0.26960784" vertical-offset="3366" max-vertical-offset="5830" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="22" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2662">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/controllers/business_logic_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="24" selection-start="734" selection-end="734" vertical-scroll-proportion="0.738255" vertical-offset="418" max-vertical-offset="1408">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.0023336" vertical-offset="1716" max-vertical-offset="2618">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/app/controllers/calendar_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="484">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="857">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/query_data_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="7" selection-start="2262" selection-end="2269" vertical-scroll-proportion="0.46207702" vertical-offset="1474" max-vertical-offset="4620">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.566265" vertical-offset="3790" max-vertical-offset="4620">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/database.rake">
+    <entry file="file://$PROJECT_DIR$/app/controllers/pass_modify_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="14" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="830">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/schedule.rb">
+    <entry file="file://$PROJECT_DIR$/app/helpers/gpon_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="7" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.64060676" vertical-offset="1739" max-vertical-offset="2596">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="65" selection-start="3167" selection-end="3167" vertical-scroll-proportion="0.93838865" vertical-offset="0" max-vertical-offset="2816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/share/work_order_process.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="478" column="0" selection-start="15655" selection-end="15655" vertical-scroll-proportion="0.23103851" vertical-offset="10318" max-vertical-offset="13046">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_gpon_slide.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="37" selection-start="115" selection-end="115" vertical-scroll-proportion="-3.9285715" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/business_logic/bl_submit.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="477">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/log_book/logging.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="10" selection-start="429" selection-end="429" vertical-scroll-proportion="-0.32293987" vertical-offset="497" max-vertical-offset="1804">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="22" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2662">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="830">
           <folding />
         </state>
       </provider>
@@ -1250,23 +1258,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/business_logic/change.html.slim">
+    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="4" selection-start="5751" selection-end="5878" vertical-scroll-proportion="0.26960784" vertical-offset="3366" max-vertical-offset="5830">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.2322054" vertical-offset="1056" max-vertical-offset="3322">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/gpon/error.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="23" selection-start="89" selection-end="89" vertical-scroll-proportion="0.15922798" vertical-offset="0" max-vertical-offset="829">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/gpon/preconfig.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="85" selection-start="3718" selection-end="3718" vertical-scroll-proportion="-20.178572" vertical-offset="1877" max-vertical-offset="2706">
+        <state line="107" column="14" selection-start="3651" selection-end="3651" vertical-scroll-proportion="-84.07143" vertical-offset="0" max-vertical-offset="2728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/main_layout.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="-0.09799554" vertical-offset="264" max-vertical-offset="880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/gpon/g_command.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="4" selection-start="213" selection-end="213" vertical-scroll-proportion="-11.0" vertical-offset="0" max-vertical-offset="440">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/gpon_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.32489452" vertical-offset="0" max-vertical-offset="474">
+        <state line="29" column="38" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="1936">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/preconfig_layout.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="31" selection-start="407" selection-end="407" vertical-scroll-proportion="0.45542637" vertical-offset="51" max-vertical-offset="880">
           <folding />
         </state>
       </provider>

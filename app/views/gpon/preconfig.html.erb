@@ -1,5 +1,6 @@
 <div id="content">
-  <form class="form-horizontal well" action="/gpon/g_command" method="post">
+  <!--<form class="form-horizontal well" action="/gpon/g_command" method="post">-->
+  <%= form_tag '/gpon/g_command',{class: 'form-horizontal well' } do-%>
     <fieldset>
       <legend>输入以下必要信息以便生成相应的命令字符串</legend>
     </fieldset>
@@ -13,7 +14,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> K </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'olt_id', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -25,7 +26,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> P </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'port', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -42,7 +43,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> L </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'line_id', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -54,7 +55,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> S </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'srv_id', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -71,7 +72,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> V </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'pe_vlan', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -83,7 +84,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> v </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'ce_vlan', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -100,7 +101,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"> N </span>
-                <%= text_field :pstn_stop, 's_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
+                <%= text_field :preconfig, 'cmd_no', { :class => 'span10', :size => '16', :id => 's_no' } %>
               </div>
             </div>
           </div>
@@ -113,6 +114,6 @@
         </div>
       </div>
     </div>
-
-  </form>
+  <% end -%>
+  <!--</form>-->
 </div>
