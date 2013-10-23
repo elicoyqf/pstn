@@ -59,7 +59,7 @@ class GponController < ApplicationController
         else
           tmp = t
         end
-        ont_str << "ont add #{port} #{tmp} password-auth #{set} always-on no-aging omci ont-lineprofile-id #{lineid} ont-srvprofile-id #{srvid}"
+        ont_str << "ont add #{port} #{tmp} password-auth #{set} always-on omci ont-lineprofile-id #{lineid} ont-srvprofile-id #{srvid}"
       end
     end
     [pass_set,ont_str]
