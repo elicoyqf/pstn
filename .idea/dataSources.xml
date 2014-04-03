@@ -2,6 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" hash="4265542497">
     <data-source source="LOCAL" name="Rails pstn: development" uuid="8edf166d-6a5b-4281-8f7b-87642daa527b">
+      <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:G:\Project\Rails Proj\pstn\db\development.sqlite3</jdbc-url>
       <libraries>
@@ -14,6 +15,7 @@
       </libraries>
     </data-source>
     <data-source source="LOCAL" name="Rails pstn: test" uuid="8d7848ef-750f-49b9-837a-8211c6e97369">
+      <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:G:\Project\Rails Proj\pstn\db\test.sqlite3</jdbc-url>
       <libraries>
@@ -26,6 +28,7 @@
       </libraries>
     </data-source>
     <data-source source="LOCAL" name="Rails pstn: production" uuid="e6c3c561-2921-4282-8086-1c09efbb3e9f">
+      <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/boss</jdbc-url>
       <user-name>elico</user-name>

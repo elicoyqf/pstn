@@ -78,7 +78,7 @@ every '35 17 * * *' do
 end
 
 #每天的20点58取消呼转
-every '58 20 * * *' do
+every '58 22 * * *' do
   rake 'database:cfwd_cancel'
 end
 
